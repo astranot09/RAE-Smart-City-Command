@@ -18,7 +18,24 @@ public class VCamManager : MonoBehaviour
 
     public void ChangeCamera(int index)
     {
+        int allCamera = cinemachineCameras.Count;
 
+        if(index > allCamera - 1)
+        {
+            return;
+        }
+
+        for (int i = 0; i < allCamera; i++)
+        {
+            if(i == index)
+            {
+                cinemachineCameras[i].Priority = 5;
+            }
+            else
+            {
+                cinemachineCameras[i].Priority = 1;
+            }
+        }
     }
 
 }
