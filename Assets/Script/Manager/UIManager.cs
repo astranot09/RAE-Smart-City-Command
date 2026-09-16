@@ -15,11 +15,11 @@ public class UIManager : MonoBehaviour
 
 
     [SerializeField] private List<GameObject> openPanels = new List<GameObject>();
-
+    private bool canOpenPanel = true;
 
     public void OpenPanel(GameObject panel)
     {
-        if (panel == null) return;
+        if (panel == null || !canOpenPanel) return;
 
         if (!openPanels.Contains(panel))
         {
@@ -62,9 +62,6 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Deactivates and clears all currently open panels.
-    /// </summary>
     public void CloseAllPanels()
     {
         for (int i = 0; i < openPanels.Count; i++)
@@ -76,5 +73,10 @@ public class UIManager : MonoBehaviour
         }
 
         openPanels.Clear();
+    }
+
+    public void CanOpenPanel(bool x)
+    {
+        canOpenPanel = x;
     }
 }
