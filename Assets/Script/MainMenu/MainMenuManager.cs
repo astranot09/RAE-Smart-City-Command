@@ -18,12 +18,32 @@ public class MainMenuManager : MonoBehaviour
 
     public void SettingPanel()
     {
-        settingPanel.SetActive(!settingPanel.activeSelf);
-        Debug.Log("Game ini ga ada Setting :v");
+        if(UIManager.instance != null)
+        {
+            if (settingPanel.activeSelf)
+            {
+                UIManager.instance.ClosePanel(settingPanel);
+            }
+            else
+            {
+                UIManager.instance.ChangeAllPanel(settingPanel);
+            }
+        }
+
     }
     public void CreditPanel()
     {
-        creditPanel.SetActive(!creditPanel.activeSelf);
+        if (UIManager.instance != null)
+        {
+            if (creditPanel.activeSelf)
+            {
+                UIManager.instance.ClosePanel(creditPanel);
+            }
+            else
+            {
+                UIManager.instance.ChangeAllPanel(creditPanel);
+            }
+        }
     }
 
     public void ExitGame()
