@@ -52,6 +52,8 @@ public class OutpostManager : MonoBehaviour
     private int totalPopulationLoss = 0;
     private int totalEvacuation;
 
+    [SerializeField] private Animator animator;
+
     private void Start()
     {
         if(outPostUnlocked)
@@ -109,6 +111,18 @@ public class OutpostManager : MonoBehaviour
         //chart naik
         yield return new WaitForSeconds(beginning_Stage_of_Disaster);
         //mainin animasi disaster
+        switch (disasterType)
+        {
+            case DisasterType.Volcano:
+                animator.SetTrigger("Volcano");
+                break;
+            case DisasterType.Tsunami:
+                animator.SetTrigger("Tsunami");
+                break;
+            case DisasterType.Earthquake:
+                animator.SetTrigger("Earthquake");
+                break;
+        }
     }
 
     //Ini dipasang di animasi kena
@@ -125,7 +139,7 @@ public class OutpostManager : MonoBehaviour
             NPCScript x = npcSpawner.GetChild(i).gameObject.GetComponent<NPCScript>();
             if (!x.InEvacuationArea)
             {
-                totalPopulationLoss++;
+                totalPopulationLoss--;
                 x.NPC_Dead();
             }
         }
@@ -143,7 +157,7 @@ public class OutpostManager : MonoBehaviour
             x.SetUp(this, evacuationLocation);
             x.ChangeState(NPCState.Evacuation);
         }
-        EvacuateManager.instance.SetUpEvacuate(disasterType, this);
+        EvacuateManager.instance.SetUpEvacuate();
         Time.timeScale = 0; //Dipause
     }
 

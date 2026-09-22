@@ -15,7 +15,8 @@ public class VCamManager : MonoBehaviour
     }
 
     [SerializeField] private List<CinemachineCamera> cinemachineCameras = new List<CinemachineCamera>();
-    private int index;
+    [SerializeField] private int index;
+    public int Index => index;
 
     public void ChangeCamera(int idx)
     {

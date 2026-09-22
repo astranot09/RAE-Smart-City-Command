@@ -210,6 +210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 73163382}
   - component: {fileID: 73163381}
+  - component: {fileID: 73163383}
   m_Layer: 0
   m_Name: Daerah2
   m_TagString: Untagged
@@ -292,6 +293,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &73163383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73163380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bc0a5877f3f2844daa38c8bc9a53514, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OutpostManager
+  minTimeDisaster: 12
+  maxTimeDisaster: 45
+  disasterType: 0
+  population: 0
+  beginning_Stage_of_Disaster: 4
+  outPostUnlocked: 0
+  delay_Before_Check_False_Alarm: 2
+  maxNpcShow: 5
+  npcSpawner: {fileID: 0}
+  npcPrefab: {fileID: 0}
+  evacuationLocation: {fileID: 0}
+  populationLoss_Because_No_Evacuation: -30
+  populationLoss_Because_Wrong_Evacuation: -15
+  populationLoss_Because_FalseAlarm: -5
+  animator: {fileID: 0}
 --- !u!1 &74563751
 GameObject:
   m_ObjectHideFlags: 0
@@ -2582,8 +2610,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1843994380}
-        m_TargetAssemblyTypeName: OutpostManager, Assembly-CSharp
+      - m_Target: {fileID: 1031137936}
+        m_TargetAssemblyTypeName: EvacuateManager, Assembly-CSharp
         m_MethodName: Evacuate
         m_Mode: 1
         m_Arguments:
@@ -3671,7 +3699,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 960585966}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1432291550}
+        m_TargetAssemblyTypeName: DayReportManager, Assembly-CSharp
+        m_MethodName: Confirm
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &960585966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4113,8 +4153,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08ab785067fdd5540a0cc2e31d0697cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EvacuateManager
-  outpostManager: {fileID: 0}
   disasterChoosePanel: {fileID: 1434041547}
+  outpostManagers:
+  - {fileID: 1158078240}
+  - {fileID: 73163383}
+  - {fileID: 1843994380}
 --- !u!4 &1031137937
 Transform:
   m_ObjectHideFlags: 0
@@ -4383,9 +4426,10 @@ MonoBehaviour:
   npcSpawner: {fileID: 0}
   npcPrefab: {fileID: 0}
   evacuationLocation: {fileID: 0}
-  populationLoss_Because_No_Evacuation: 30
-  populationLoss_Because_Wrong_Evacuation: 15
-  populationLoss_Because_FalseAlarm: 5
+  populationLoss_Because_No_Evacuation: -30
+  populationLoss_Because_Wrong_Evacuation: -15
+  populationLoss_Because_FalseAlarm: -5
+  animator: {fileID: 0}
 --- !u!1 &1165182200
 GameObject:
   m_ObjectHideFlags: 0
@@ -5132,8 +5176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DayReportManager
   outpostManager: {fileID: 0}
   earningValue: 50
-  evacuationFee: 10
-  pop: 0
+  evacuationFee: -10
   dayReportPanel: {fileID: 16331296}
   earningText: {fileID: 1165182202}
   evacFeeText: {fileID: 1056535162}
@@ -5567,6 +5610,7 @@ MonoBehaviour:
   - {fileID: 581651585}
   - {fileID: 757962454}
   - {fileID: 322919550}
+  index: 2
 --- !u!4 &1481377975
 Transform:
   m_ObjectHideFlags: 0
@@ -6772,7 +6816,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1829992214}
-  - component: {fileID: 1829992215}
   m_Layer: 0
   m_Name: ==Disaster==
   m_TagString: Untagged
@@ -6798,28 +6841,6 @@ Transform:
   - {fileID: 1025388384}
   m_Father: {fileID: 1843994379}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1829992215
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1829992213}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 85c7321a04247324a8bae38eaafa1d72, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1838599137
 GameObject:
   m_ObjectHideFlags: 0
@@ -6985,6 +7006,7 @@ GameObject:
   - component: {fileID: 1843994379}
   - component: {fileID: 1843994378}
   - component: {fileID: 1843994380}
+  - component: {fileID: 1843994381}
   m_Layer: 0
   m_Name: Daerah3
   m_TagString: Untagged
@@ -7083,20 +7105,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bc0a5877f3f2844daa38c8bc9a53514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OutpostManager
-  minTimeDisaster: 12
-  maxTimeDisaster: 45
+  minTimeDisaster: 4
+  maxTimeDisaster: 5
   disasterType: 0
   population: 0
   beginning_Stage_of_Disaster: 4
-  outPostUnlocked: 0
+  outPostUnlocked: 1
   delay_Before_Check_False_Alarm: 2
   maxNpcShow: 5
   npcSpawner: {fileID: 1601368644}
   npcPrefab: {fileID: 5498666156244975234, guid: 699e974f585fd2743a34363002892b1e, type: 3}
   evacuationLocation: {fileID: 1659916307}
-  populationLoss_Because_No_Evacuation: 30
-  populationLoss_Because_Wrong_Evacuation: 15
-  populationLoss_Because_FalseAlarm: 5
+  populationLoss_Because_No_Evacuation: -30
+  populationLoss_Because_Wrong_Evacuation: -15
+  populationLoss_Because_FalseAlarm: -5
+  animator: {fileID: 1843994381}
+--- !u!95 &1843994381
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843994377}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 85c7321a04247324a8bae38eaafa1d72, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1867470097
 GameObject:
   m_ObjectHideFlags: 0
@@ -8414,11 +8459,11 @@ SceneRoots:
   - {fileID: 1843994379}
   - {fileID: 581651586}
   - {fileID: 757962455}
-  - {fileID: 1481377975}
   - {fileID: 77965113}
   - {fileID: 985963352}
   - {fileID: 1253030530}
   - {fileID: 74563753}
   - {fileID: 1509512238}
+  - {fileID: 1481377975}
   - {fileID: 1031137937}
   - {fileID: 1432291551}
