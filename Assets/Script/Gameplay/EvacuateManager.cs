@@ -12,7 +12,6 @@ public class EvacuateManager : MonoBehaviour
             Destroy(gameObject);
     }
 
-    [SerializeField] private DisasterType disasterType;
     [SerializeField] private OutpostManager outpostManager;
 
     [Header("Panel")]
@@ -20,7 +19,6 @@ public class EvacuateManager : MonoBehaviour
 
     public void SetUpEvacuate(DisasterType type, OutpostManager outpost)
     {
-        disasterType = type;
         outpostManager = outpost;
         UIManager.instance.OpenPanel(disasterChoosePanel);
     }
@@ -43,7 +41,6 @@ public class EvacuateManager : MonoBehaviour
 
     private void CloseEvactuate()
     {
-        disasterType = DisasterType.None;
         outpostManager = null;
         UIManager.instance.ClosePanel(disasterChoosePanel);
     }

@@ -30,6 +30,7 @@ public class OutpostManager : MonoBehaviour
     [Header("Setting")]
     [SerializeField] private float beginning_Stage_of_Disaster = 4f;
     [SerializeField] private bool outPostUnlocked = false;
+    [SerializeField] private float delay_Before_Check_False_Alarm = 2f;
     private bool onEvacuate = false;
 
     [Header("NPC")]
@@ -38,14 +39,18 @@ public class OutpostManager : MonoBehaviour
     private int currentNpcEscape;
     [SerializeField] private Transform npcSpawner;
     [SerializeField] private GameObject npcPrefab;
+    [SerializeField] private Transform evacuationLocation;
 
     [Header("Failed")]
-    [SerializeField] private int populationLoss = 30;
+    [SerializeField] private int populationLoss_Because_No_Evacuation = 30;
+    [SerializeField] private int populationLoss_Because_Wrong_Evacuation = 15;
+    [SerializeField] private int populationLoss_Because_FalseAlarm = 5;
 
     [Header("Conclusion")]
     private bool correctEvacuation = false;
+    private bool falseAlarm = false;
     private int totalPopulationLoss = 0;
-
+    private int totalEvacuation;
 
     private void Start()
     {
@@ -69,6 +74,12 @@ public class OutpostManager : MonoBehaviour
     {
         onEvacuate = false;
         currTime = 0f;
+        totalPopulationLoss = 0;
+        totalEvacuation = 0;
+        currentNpcEscape = 0;
+        correctEvacuation = false;
+        falseAlarm = false;
+
         disasterTime = Random.Range(minTimeDisaster, maxTimeDisaster);
         disasterType = DisasterType.None;
     }
@@ -105,8 +116,8 @@ public class OutpostManager : MonoBehaviour
     {
         if (!onEvacuate)
         {
-            PopulationDecrease(populationLoss);
-            totalPopulationLoss += populationLoss;
+            PopulationDecrease(populationLoss_Because_No_Evacuation);
+            totalPopulationLoss += populationLoss_Because_No_Evacuation;
         }
 
         for (int i = 0; i < npcSpawner.childCount; i++)
@@ -118,15 +129,19 @@ public class OutpostManager : MonoBehaviour
                 x.NPC_Dead();
             }
         }
+        DayReportManager.instance.DayReportSetUp(population, totalPopulationLoss, this, totalEvacuation);
     }
 
-
+    //pasang di tombol
     public void Evacuate()
     {
+        totalEvacuation++;
         onEvacuate = true;
         for(int i = 0; i < npcSpawner.childCount; i++)
         {
-            npcSpawner.GetChild(i).gameObject.GetComponent<NPCScript>().ChangeState(NPCState.Evacuation);
+            NPCScript x = npcSpawner.GetChild(i).gameObject.GetComponent<NPCScript>();
+            x.SetUp(this, evacuationLocation);
+            x.ChangeState(NPCState.Evacuation);
         }
         EvacuateManager.instance.SetUpEvacuate(disasterType, this);
         Time.timeScale = 0; //Dipause
@@ -156,20 +171,31 @@ public class OutpostManager : MonoBehaviour
             EvacuateFinished();
         }
     }
-
+    public void NPCLeaveEvacuateArea()
+    {
+        currentNpcEscape--;
+    }
 
     private void CheckEvacuateType()
     {
-        if(disasterChoosen == disasterType)
+        falseAlarm = false;
+        if (disasterChoosen == disasterType)
         {
+            Debug.Log("Pilihan benar");
             //bener
         }
         else if (disasterType == DisasterType.None)
         {
-            //false alarm
+            Debug.Log("False Alarm");
+            falseAlarm = true;
+            PopulationDecrease(populationLoss_Because_FalseAlarm);
+            totalPopulationLoss += (populationLoss_Because_FalseAlarm);
         }
         else
         {
+            Debug.Log("Pilihan Salah");
+            PopulationDecrease(populationLoss_Because_Wrong_Evacuation);
+            totalPopulationLoss += (populationLoss_Because_Wrong_Evacuation);
             //salah
         }
     }
@@ -177,7 +203,7 @@ public class OutpostManager : MonoBehaviour
 
     private void EvacuateFinished()
     {
-        //DayReportManager.instance.DayReportSetUp(totalPopulationLoss, );
+        CheckEvacuateType();
     }
 
 
