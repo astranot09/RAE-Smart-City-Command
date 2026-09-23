@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
@@ -37,7 +39,8 @@ public class OutpostManager : MonoBehaviour
     [SerializeField] private int maxNpcShow = 5;
     private int currentNpcShow;
     private int currentNpcEscape;
-    [SerializeField] private Transform npcSpawner;
+    private int npcIdle;
+    [SerializeField] private List<Transform> npcSpawner;
     [SerializeField] private GameObject npcPrefab;
     [SerializeField] private Transform evacuationLocation;
 
@@ -54,15 +57,26 @@ public class OutpostManager : MonoBehaviour
 
     [SerializeField] private Animator animator;
 
+    public event Action cycleStart;
+
+    private void OnEnable()
+    {
+        cycleStart += CycleReset;
+    }
+    private void OnDisable()
+    {
+        cycleStart -= CycleReset;
+    }
+
     private void Start()
     {
         if(outPostUnlocked)
-            StartTimer();
+            StartCycle();
     }
 
     private void Update()
     {
-        if(DisasterType.None == disasterType)
+        if(disasterType == DisasterType.None)
         {
             if(currTime >= disasterTime)
             {
@@ -72,7 +86,12 @@ public class OutpostManager : MonoBehaviour
         }
     }
 
-    public void StartTimer()
+    public void StartCycle()
+    {
+        cycleStart?.Invoke();
+    }
+
+    private void CycleReset()
     {
         onEvacuate = false;
         currTime = 0f;
@@ -81,14 +100,37 @@ public class OutpostManager : MonoBehaviour
         currentNpcEscape = 0;
         correctEvacuation = false;
         falseAlarm = false;
+        disasterChoosen = DisasterType.None;
 
-        disasterTime = Random.Range(minTimeDisaster, maxTimeDisaster);
+
+        for (int i = 0; i < npcSpawner.Count; i++)
+        {
+            if (npcSpawner[i] != null && npcSpawner[i].childCount > 0)
+            {
+                GameObject x = npcSpawner[i].GetChild(0).gameObject;
+                if (x != null)
+                {
+                    NPCScript y = x.GetComponent<NPCScript>();
+                    if (y != null)
+                    {
+                        y.ChangeState(NPCState.BackFromEvacuation);
+                    }
+                }
+            }
+
+        }
+
+
+        SpawnNPC();
+
+
+        disasterTime = UnityEngine.Random.Range(minTimeDisaster, maxTimeDisaster);
         disasterType = DisasterType.None;
     }
 
     private void RandomizerDisaster()
     {
-        int x = Random.Range(0, 3);
+        int x = UnityEngine.Random.Range(0, 3);
         switch (x)
         {
             case 0:
@@ -134,14 +176,25 @@ public class OutpostManager : MonoBehaviour
             totalPopulationLoss += populationLoss_Because_No_Evacuation;
         }
 
-        for (int i = 0; i < npcSpawner.childCount; i++)
+        for (int i = 0; i < npcSpawner.Count; i++)
         {
-            NPCScript x = npcSpawner.GetChild(i).gameObject.GetComponent<NPCScript>();
-            if (!x.InEvacuationArea)
+            if (npcSpawner[i] != null && npcSpawner[i].childCount > 0)
             {
-                totalPopulationLoss--;
-                x.NPC_Dead();
+                GameObject x = npcSpawner[i].GetChild(0).gameObject;
+                if (x != null)
+                {
+                    NPCScript y = x.GetComponent<NPCScript>();
+                    if (y != null && !y.InEvacuationArea)
+                    {
+                        totalPopulationLoss--;
+                        currentNpcShow--;
+                        PopulationDecrease(-1);
+                        CheckNPCEvac();
+                        y.NPC_Dead();
+                    }
+                }
             }
+
         }
         DayReportManager.instance.DayReportSetUp(population, totalPopulationLoss, this, totalEvacuation);
     }
@@ -149,13 +202,27 @@ public class OutpostManager : MonoBehaviour
     //pasang di tombol
     public void Evacuate()
     {
+        if(onEvacuate || !outPostUnlocked) return;
         totalEvacuation++;
         onEvacuate = true;
-        for(int i = 0; i < npcSpawner.childCount; i++)
+        npcIdle = 0;
+
+        for (int i = 0; i < npcSpawner.Count; i++)
         {
-            NPCScript x = npcSpawner.GetChild(i).gameObject.GetComponent<NPCScript>();
-            x.SetUp(this, evacuationLocation);
-            x.ChangeState(NPCState.Evacuation);
+            if (npcSpawner[i] != null && npcSpawner[i].childCount > 0)
+            {
+                GameObject x = npcSpawner[i].GetChild(0).gameObject;
+                if (x != null)
+                {
+                    NPCScript y = x.GetComponent<NPCScript>();
+                    if (y != null)
+                    {
+                        y.SetUp(this, evacuationLocation);
+                        y.ChangeState(NPCState.Evacuation);
+                    }
+                }
+            }
+
         }
         EvacuateManager.instance.SetUpEvacuate();
         Time.timeScale = 0; //Dipause
@@ -169,7 +236,29 @@ public class OutpostManager : MonoBehaviour
 
     public void PopulationDecrease(int value)
     {
-        population -= value;
+        population += value;
+
+
+        if (currentNpcShow > population)
+        {
+            int difference = currentNpcShow - population;
+            for (int i = npcSpawner.Count - 1; i >= 0; i--)
+            {
+                if (npcSpawner[i] != null && npcSpawner[i].childCount > 0)
+                {
+                    difference--;
+                    GameObject x = npcSpawner[i].GetChild(0).gameObject;
+                    Destroy(x);
+                    if (difference <= 0)
+                    {
+                        break;
+                    }
+                }
+
+            }
+        }
+
+
         if (population <= 0)
         {
             //kalah
@@ -180,30 +269,70 @@ public class OutpostManager : MonoBehaviour
     public void NPCEscaped()
     {
         currentNpcEscape++;
-        if(currentNpcEscape >= currentNpcShow)
+        CheckNPCEvac();
+    }
+
+    private void CheckNPCEvac()
+    {
+        Debug.Log($"{currentNpcEscape}/{currentNpcShow}");
+        if (currentNpcEscape >= currentNpcShow)
         {
+            Debug.Log("Halo");
             EvacuateFinished();
         }
     }
-    public void NPCLeaveEvacuateArea()
+    //public void NPCLeaveEvacuateArea()
+    //{
+    //    currentNpcEscape--;
+    //    Mathf.Clamp(currentNpcEscape, 0, maxNpcShow);
+    //}
+
+    public void NPCBackFromEvacuateArea()
     {
-        currentNpcEscape--;
+        npcIdle++;
+        if(npcIdle >= currentNpcShow)
+        {
+            onEvacuate = false;
+        }
     }
 
     private void CheckEvacuateType()
     {
-        falseAlarm = false;
         if (disasterChoosen == disasterType)
         {
             Debug.Log("Pilihan benar");
             //bener
         }
-        else if (disasterType == DisasterType.None)
+        else if (disasterType == DisasterType.None && !falseAlarm)
+        {
+            falseAlarm = true;
+            Debug.Log("Check bakal false alarm ga");
+            StartCoroutine(DoubleCheckDisaster());
+        }
+        else if (disasterType == DisasterType.None && falseAlarm)
         {
             Debug.Log("False Alarm");
-            falseAlarm = true;
+            falseAlarm = false;
             PopulationDecrease(populationLoss_Because_FalseAlarm);
             totalPopulationLoss += (populationLoss_Because_FalseAlarm);
+
+            for (int i = 0; i < npcSpawner.Count; i++)
+            {
+                if (npcSpawner[i] != null && npcSpawner[i].childCount > 0)
+                {
+                    GameObject x = npcSpawner[i].GetChild(0).gameObject;
+                    if (x != null)
+                    {
+                        NPCScript y = x.GetComponent<NPCScript>();
+                        if (y != null)
+                        {
+                            y.ChangeState(NPCState.BackFromEvacuation);
+                        }
+                    }
+                }
+
+            }
+            currentNpcEscape = 0;
         }
         else
         {
@@ -214,11 +343,26 @@ public class OutpostManager : MonoBehaviour
         }
     }
 
+    IEnumerator DoubleCheckDisaster()
+    {
+        yield return new WaitForSeconds(delay_Before_Check_False_Alarm);
+        CheckEvacuateType();
+    }
 
     private void EvacuateFinished()
     {
         CheckEvacuateType();
     }
 
-
+    private void SpawnNPC()
+    {
+        foreach (Transform x in npcSpawner)
+        {
+            if (x != null && x.childCount == 0 && currentNpcShow <= maxNpcShow && currentNpcShow < population)
+            {
+                GameObject spawnedNpc = Instantiate(npcPrefab, x.position, x.rotation, x);
+                currentNpcShow++;
+            }
+        }
+    }
 }

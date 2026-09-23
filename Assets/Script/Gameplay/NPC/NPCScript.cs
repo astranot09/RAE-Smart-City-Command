@@ -1,4 +1,5 @@
 using UnityEngine;
+using DG.Tweening;
 
 [System.Serializable]
 public enum NPCState
@@ -28,14 +29,21 @@ public class NPCScript : MonoBehaviour
 
     [Header("Reference")]
     private OutpostManager outpostManager;
+    private SpriteRenderer spriteRenderer;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
     private void Start()
     {
+        Color color = spriteRenderer.color;
+        color.a = 0f;
+        spriteRenderer.color = color;
+
         spawnPosition = transform.position;
+        spriteRenderer.DOFade(1f, 0.5f);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -49,7 +57,7 @@ public class NPCScript : MonoBehaviour
     {
         if (collision.CompareTag("EvacuateArea"))
         {
-            outpostManager.NPCLeaveEvacuateArea();
+            //outpostManager.NPCLeaveEvacuateArea();
             inEvacuationArea = false;
         }
     }
@@ -101,6 +109,7 @@ public class NPCScript : MonoBehaviour
             // Jika sudah selesai kembali dari evakuasi, ubah state kembali ke Idle
             if (currentState == NPCState.BackFromEvacuation)
             {
+                outpostManager.NPCBackFromEvacuateArea();
                 ChangeState(NPCState.Idle);
             }
         }

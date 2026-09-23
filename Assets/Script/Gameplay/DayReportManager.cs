@@ -45,7 +45,7 @@ public class DayReportManager : MonoBehaviour
 
     public void Confirm()
     {
-        outpostManager.StartTimer();
+        outpostManager.StartCycle();
         UIManager.instance.ClosePanel(dayReportPanel);
         Time.timeScale = 1;
     }

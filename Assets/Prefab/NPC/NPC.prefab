@@ -111,6 +111,7 @@ MonoBehaviour:
   currentState: 0
   moveSpeed: 5
   stopDistance: 0.5
+  evacLoc: {fileID: 0}
 --- !u!50 &966296686256346514
 Rigidbody2D:
   serializedVersion: 5
@@ -190,7 +191,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8920183284370362544
 Transform:
   m_ObjectHideFlags: 0
