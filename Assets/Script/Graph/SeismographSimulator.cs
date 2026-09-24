@@ -12,14 +12,22 @@ public class SeismographSimulator : MonoBehaviour
     private bool isSpiking = false;
     private int spikeTimer = 0;
 
+    public float updateInterval = 0.1f; // Ubah nilai ini untuk mengatur kecepatan (misal: 0.1 detik)
+    private float timer = 0f;
+
     void Update()
     {
-        float value = GenerateNextValue();
+        timer += Time.deltaTime;
+        if (timer >= updateInterval)
+        {
+            timer = 0f;
 
-        values.Add(value);
-        if (values.Count > maxPoints) values.RemoveAt(0);
+            float value = GenerateNextValue();
+            values.Add(value);
+            if (values.Count > maxPoints) values.RemoveAt(0);
 
-        graphLine.SetValues(values);
+            graphLine.SetValues(values);
+        }
     }
 
     float GenerateNextValue()

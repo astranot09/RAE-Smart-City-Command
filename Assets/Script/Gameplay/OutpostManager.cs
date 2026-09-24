@@ -76,7 +76,7 @@ public class OutpostManager : MonoBehaviour
 
     private void Update()
     {
-        if(disasterType == DisasterType.None)
+        if(disasterType == DisasterType.None && outPostUnlocked)
         {
             if(currTime >= disasterTime)
             {
@@ -298,6 +298,7 @@ public class OutpostManager : MonoBehaviour
 
     private void CheckEvacuateType()
     {
+        if (!onEvacuate) return;
         if (disasterChoosen == disasterType)
         {
             Debug.Log("Pilihan benar");
@@ -365,4 +366,10 @@ public class OutpostManager : MonoBehaviour
             }
         }
     }
+
+    public void UnlockOutpost()
+    {
+        outPostUnlocked = true;
+    }
+
 }

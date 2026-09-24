@@ -15,6 +15,14 @@ public class DayReportManager : MonoBehaviour
             Destroy(gameObject);
     }
 
+    [SerializeField] private int dayCurrent = 0;
+    public int DayCurrent => dayCurrent;
+    [Header("Outpost")]
+    [SerializeField] private OutpostManager outpost2;
+    [SerializeField] private int outPost_2_Unlocked = 4;
+    [SerializeField] private OutpostManager outpost3;
+    [SerializeField] private int outPost_3_Unlocked = 6;
+
     [Header("Setting")]
     [SerializeField] private OutpostManager outpostManager;
     [SerializeField] private int earningValue = 50;
@@ -47,6 +55,21 @@ public class DayReportManager : MonoBehaviour
     {
         outpostManager.StartCycle();
         UIManager.instance.ClosePanel(dayReportPanel);
-        Time.timeScale = 1;
+        UpgradeManager.instance.UpgradeSetUp();
+        dayCurrent++;
+    }
+
+
+    public void CheckDay()
+    {
+        if(dayCurrent == outPost_2_Unlocked)
+        {
+            outpost2.UnlockOutpost();
+        }
+        else if(dayCurrent == outPost_3_Unlocked)
+        {
+            outpost3.UnlockOutpost();
+        }
+
     }
 }

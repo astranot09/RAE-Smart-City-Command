@@ -24,7 +24,12 @@ public class UIGraphLine : Graphic
         for (int i = 0; i < values.Count; i++)
         {
             float x = rect.xMin + i * step;
-            float y = minY + values[i] * valueScale;
+            float rawY = minY + values[i] * valueScale;
+
+            // clamp biar gak keluar dari tinggi rect
+            float halfHeight = rect.height / 2f;
+            float y = Mathf.Clamp(rawY, -halfHeight, halfHeight);
+
             points[i] = new Vector2(x, y);
         }
 
