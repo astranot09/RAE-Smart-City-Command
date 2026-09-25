@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameplayManager : MonoBehaviour
@@ -13,23 +15,35 @@ public class GameplayManager : MonoBehaviour
     }
 
 
-    [Header("Seismograph")]
-    [SerializeField] private SeismographSimulator seismographSimulator;
+    [Header("Outpost")]
+    [SerializeField] private List<OutpostManager> outpostManagers = new List<OutpostManager>();
 
-    [Header("Gas Sensor")]
-    [SerializeField] private GameObject GasSensorPanel;
+    [Header("GraphLine Script")]
+    [SerializeField] private UIGraphLine seismographGraphLine;
+    [SerializeField] private UIGraphLine gasSensorGraphLine;
+    [SerializeField] private UIGraphLine buoyAGraphLine;
+    [SerializeField] private UIGraphLine buoyBGraphLine;
+    [SerializeField] private TMP_Text tideGaugeText;
 
-    [Header("Buoy Type A")]
-    [SerializeField] private BuoySimulator buoySimulator_A;
+    [SerializeField] private VCamManager vcamManager;
 
-    [Header("Buoy Type B")]
-    [SerializeField] private BuoySimulator buoySimulator_B;
+    private void OnEnable()
+    {
+        vcamManager.onCameraChange += OutPostGraphSetUp;
+    }
 
-    [Header("Tide Gauge")]
-    [SerializeField] private GameObject TideGaugePanel;
+    private void OnDisable()
+    {
+        vcamManager.onCameraChange -= OutPostGraphSetUp;
+    }
 
-    [Header("Currency")]
-    [SerializeField] private int currency;
-
+    public void OutPostGraphSetUp()
+    {
+        for(int i = 0; i < outpostManagers.Count; i++)
+        {
+            outpostManagers[i].CloseUIGraph();
+        }
+        outpostManagers[VCamManager.instance.Index].OutpostDisasterGraphSetUp(seismographGraphLine,gasSensorGraphLine,buoyAGraphLine,buoyBGraphLine, tideGaugeText);
+    }
 
 }

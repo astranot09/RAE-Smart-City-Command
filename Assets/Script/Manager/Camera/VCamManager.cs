@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Cinemachine;
+using System;
 
 public class VCamManager : MonoBehaviour
 {
@@ -12,11 +13,15 @@ public class VCamManager : MonoBehaviour
             instance = this;
         else
             Destroy(gameObject);
+        onCameraChange?.Invoke();
     }
 
     [SerializeField] private List<CinemachineCamera> cinemachineCameras = new List<CinemachineCamera>();
     [SerializeField] private int index;
     public int Index => index;
+
+    public event Action onCameraChange;
+
 
     public void ChangeCamera(int idx)
     {
@@ -61,6 +66,7 @@ public class VCamManager : MonoBehaviour
                 cinemachineCameras[i].Priority = 1;
             }
         }
+        onCameraChange?.Invoke();
     }
     public void ChangeToPreviousCamera()
     {
@@ -84,6 +90,7 @@ public class VCamManager : MonoBehaviour
                 cinemachineCameras[i].Priority = 1;
             }
         }
+        onCameraChange?.Invoke();
     }
 
 }

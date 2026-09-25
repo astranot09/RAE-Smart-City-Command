@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection.Metadata;
+using TMPro;
 using UnityEngine;
 
 [System.Serializable]
@@ -25,12 +27,21 @@ public class OutpostManager : MonoBehaviour
     [SerializeField] private DisasterType disasterType = DisasterType.None;
     private DisasterType disasterChoosen = DisasterType.None;
 
+    [Header("Disaster Script")]
+    [SerializeField] private SeismographSimulator seismographSimulator;
+    [SerializeField] private GasSensorSimulator gasSensorSimulator;
+    [SerializeField] private BuoySimulator buoySimulatorA;
+    [SerializeField] private BuoySimulator buoySimulatorB;
+
+    //Tide Gauge
 
     [Header("Population")]
     [SerializeField] private int population;
 
     [Header("Setting")]
-    [SerializeField] private float beginning_Stage_of_Disaster = 4f;
+    [SerializeField] private float beginning_Stage_of_Disaster = 2f;
+    [SerializeField] private float second_Stage_of_Disaster = 2f;
+    [SerializeField] private float third_Stage_of_Disaster = 1f;
     [SerializeField] private bool outPostUnlocked = false;
     [SerializeField] private float delay_Before_Check_False_Alarm = 2f;
     private bool onEvacuate = false;
@@ -43,6 +54,8 @@ public class OutpostManager : MonoBehaviour
     [SerializeField] private List<Transform> npcSpawner;
     [SerializeField] private GameObject npcPrefab;
     [SerializeField] private Transform evacuationLocation;
+    [SerializeField] private float minRangeWandering;
+    [SerializeField] private float maxRangeWandering;
 
     [Header("Failed")]
     [SerializeField] private int populationLoss_Because_No_Evacuation = 30;
@@ -150,8 +163,12 @@ public class OutpostManager : MonoBehaviour
 
     IEnumerator DisasterCountDown(DisasterType type)
     {
-        //chart naik
+        //chart naik (versi upgrade)
         yield return new WaitForSeconds(beginning_Stage_of_Disaster);
+        //chart naik (versi normal)
+        yield return new WaitForSeconds(second_Stage_of_Disaster);
+        //Predicted status muncul
+        yield return new WaitForSeconds(third_Stage_of_Disaster);
         //mainin animasi disaster
         switch (disasterType)
         {
@@ -217,7 +234,7 @@ public class OutpostManager : MonoBehaviour
                     NPCScript y = x.GetComponent<NPCScript>();
                     if (y != null)
                     {
-                        y.SetUp(this, evacuationLocation);
+                        y.SetUp(this, evacuationLocation, minRangeWandering, maxRangeWandering);
                         y.ChangeState(NPCState.Evacuation);
                     }
                 }
@@ -362,6 +379,7 @@ public class OutpostManager : MonoBehaviour
             if (x != null && x.childCount == 0 && currentNpcShow <= maxNpcShow && currentNpcShow < population)
             {
                 GameObject spawnedNpc = Instantiate(npcPrefab, x.position, x.rotation, x);
+                spawnedNpc.GetComponent<NPCScript>().SetUp(this, evacuationLocation, minRangeWandering, maxRangeWandering);
                 currentNpcShow++;
             }
         }
@@ -370,6 +388,33 @@ public class OutpostManager : MonoBehaviour
     public void UnlockOutpost()
     {
         outPostUnlocked = true;
+    }
+
+    public void OutpostDisasterGraphSetUp(UIGraphLine seis, UIGraphLine gasSensor, UIGraphLine buoyA, UIGraphLine buoyB, TMP_Text tideGauge)
+    {
+        if (!outPostUnlocked)
+        {
+            Debug.Log("Outpost belum unlock");
+            return;
+        }
+        if(seismographSimulator == null || gasSensorSimulator == null || buoySimulatorA == null || buoySimulatorB == null)
+        {
+            Debug.Log("Graph kureng lengkap");
+            return;
+        }
+        seismographSimulator.graphLine = seis;
+        gasSensorSimulator.graphLine = gasSensor;
+        buoySimulatorA.graphLine = buoyA;
+        buoySimulatorB.graphLine = buoyB;
+        Debug.Log("SetUpGraph");
+    }
+
+    public void CloseUIGraph()
+    {
+        seismographSimulator.graphLine = null;
+        gasSensorSimulator.graphLine = null;
+        buoySimulatorA.graphLine = null;
+        buoySimulatorB.graphLine = null;
     }
 
 }

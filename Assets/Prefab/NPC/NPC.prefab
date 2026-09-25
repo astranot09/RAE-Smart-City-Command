@@ -110,8 +110,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NPCScript
   currentState: 0
   moveSpeed: 5
-  stopDistance: 0.5
+  stopDistance: 0.1
   evacLoc: {fileID: 0}
+  waderingSpeed: 2
+  minXLoc: 0
+  maxXLoc: 0
+  minWanderDistance: 3
 --- !u!50 &966296686256346514
 Rigidbody2D:
   serializedVersion: 5

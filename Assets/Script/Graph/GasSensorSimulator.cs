@@ -44,7 +44,7 @@ public class GasSensorSimulator : MonoBehaviour
 
         values.Add(newValue);
         if (values.Count > maxPoints) values.RemoveAt(0);
-
+        if (graphLine == null) return;
         graphLine.SetValues(values);
     }
 }

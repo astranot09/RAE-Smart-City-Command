@@ -57,6 +57,7 @@ public class DayReportManager : MonoBehaviour
         UIManager.instance.ClosePanel(dayReportPanel);
         UpgradeManager.instance.UpgradeSetUp();
         dayCurrent++;
+        CheckDay();
     }
 
 

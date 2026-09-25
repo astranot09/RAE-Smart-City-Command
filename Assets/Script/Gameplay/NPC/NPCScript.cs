@@ -1,66 +1,73 @@
+using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 
 [System.Serializable]
 public enum NPCState
 {
-    Idle,
+    Wandering,
     Evacuation,
     BackFromEvacuation,
-    MoveAround,
     Dead
 }
 
-
 public class NPCScript : MonoBehaviour
 {
-    bool inEvacuationArea = false;
+    private bool inEvacuationArea = false;
     public bool InEvacuationArea => inEvacuationArea;
 
-    [SerializeField] private NPCState currentState = NPCState.Idle;
+    [SerializeField] private NPCState currentState = NPCState.Wandering;
 
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float stopDistance = 0.5f; // Jarak toleransi berhenti saat sampai target
-    private Rigidbody2D rb;
+    [SerializeField] private float stopDistance = 0.5f;
     [SerializeField] private Transform evacLoc;
 
+    private Rigidbody2D rb;
     private Vector3 spawnPosition;
+
+    [Header("Wandering")]
+    [SerializeField] private float waderingSpeed = 2f;
+    [SerializeField] private float minXLoc;
+    [SerializeField] private float maxXLoc;
+    [SerializeField] private float minWanderDistance = 3f;
 
     [Header("Reference")]
     private OutpostManager outpostManager;
     private SpriteRenderer spriteRenderer;
+    private Coroutine wanderCoroutine;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
+
     private void Start()
     {
+        // Effect fade-in saat awal spawn
         Color color = spriteRenderer.color;
         color.a = 0f;
         spriteRenderer.color = color;
 
         spawnPosition = transform.position;
         spriteRenderer.DOFade(1f, 0.5f);
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("EvacuateArea"))
+
+        // Langsung jalankan logika wandering sejak awal
+        if (currentState == NPCState.Wandering)
         {
-            outpostManager.NPCEscaped();
-            inEvacuationArea = true;
+            wanderCoroutine = StartCoroutine(WanderingRoutine());
         }
     }
-    private void OnTriggerExit2D(Collider2D collision)
+
+    public void SetUp(OutpostManager manager, Transform evacuationLocation, float minWandering, float maxWandering)
     {
-        if (collision.CompareTag("EvacuateArea"))
-        {
-            //outpostManager.NPCLeaveEvacuateArea();
-            inEvacuationArea = false;
-        }
+        outpostManager = manager;
+        evacLoc = evacuationLocation;
+        minXLoc = minWandering;
+        maxXLoc = maxWandering;
     }
+
     private void FixedUpdate()
     {
         HandleMovement();
@@ -70,20 +77,24 @@ public class NPCScript : MonoBehaviour
     {
         switch (currentState)
         {
-            case NPCState.Idle:
-                rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
+            case NPCState.Wandering:
+                
                 break;
 
             case NPCState.Evacuation:
                 if (evacLoc == null) return;
-
-                // Pergerakan menuju Evacuation Location
                 MoveToTargetX(evacLoc.position.x);
                 break;
 
             case NPCState.BackFromEvacuation:
-                // Pergerakan kembali ke Spawn Position
-                MoveToTargetX(spawnPosition.x);
+                // Jika sudah kembali sampai lokasi awal, kembalikan ke Wandering
+                if (MoveToTargetX(spawnPosition.x))
+                {
+                    if (outpostManager != null)
+                        outpostManager.NPCBackFromEvacuateArea();
+
+                    ChangeState(NPCState.Wandering);
+                }
                 break;
 
             case NPCState.Dead:
@@ -91,41 +102,98 @@ public class NPCScript : MonoBehaviour
                 break;
         }
     }
-    private void MoveToTargetX(float targetX)
+
+    private bool MoveToTargetX(float targetX)
     {
-        // Formula pergerakan: Target - Posisi Sekarang
         float distanceX = targetX - transform.position.x;
 
         if (Mathf.Abs(distanceX) > stopDistance)
         {
             float directionX = Mathf.Sign(distanceX);
-            rb.linearVelocity = new Vector2(directionX * moveSpeed, rb.linearVelocity.y);
+
+            if(currentState == NPCState.Wandering)
+            {
+                rb.linearVelocity = new Vector2(directionX * waderingSpeed, rb.linearVelocity.y);
+            }
+            else
+            {
+                rb.linearVelocity = new Vector2(directionX * moveSpeed, rb.linearVelocity.y);
+            }
+
+            // Membalikkan arah visual sprite (facing left/right)
+            if (directionX != 0)
+                spriteRenderer.flipX = directionX < 0;
+
+            return false;
         }
         else
         {
-            // Sampai di tujuan
             rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
-
-            // Jika sudah selesai kembali dari evakuasi, ubah state kembali ke Idle
-            if (currentState == NPCState.BackFromEvacuation)
-            {
-                outpostManager.NPCBackFromEvacuateArea();
-                ChangeState(NPCState.Idle);
-            }
+            return true;
         }
     }
-    public void SetUp(OutpostManager x, Transform evacLocation)
+
+    public void ChangeState(NPCState newState)
     {
-        outpostManager = x;
-        evacLoc = evacLocation;
+        if (currentState == newState) return;
+
+        // Hentikan coroutine jalan terus jika berpindah state (misal: Evakuasi/Mati)
+        if (wanderCoroutine != null)
+        {
+            StopCoroutine(wanderCoroutine);
+            wanderCoroutine = null;
+        }
+
+        currentState = newState;
+
+        // Jalankan kembali coroutine jika masuk ke state Wandering
+        if (currentState == NPCState.Wandering)
+        {
+            wanderCoroutine = StartCoroutine(WanderingRoutine());
+        }
     }
 
-    public void ChangeState(NPCState state)
+    private IEnumerator WanderingRoutine()
     {
-        currentState = state;
+        while (currentState == NPCState.Wandering)
+        {
+            // Ambil titik tujuan acak baru
+            float targetX = Random.Range(minXLoc - 1, maxXLoc + 1);
+            Mathf.Clamp(targetX, minXLoc, maxXLoc);
+
+            // Terus berjalan frame demi frame hingga sampai ke targetX
+            while (!MoveToTargetX(targetX) && currentState == NPCState.Wandering)
+            {
+                yield return new WaitForFixedUpdate();
+            }
+
+            // Setelah sampai target, langsung loop ke atas untuk mencari target baru (tanpa jeda/idle)
+            yield return null;
+        }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("EvacuateArea"))
+        {
+            if (outpostManager != null)
+                outpostManager.NPCEscaped();
+
+            inEvacuationArea = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("EvacuateArea"))
+        {
+            inEvacuationArea = false;
+        }
+    }
+
     public void NPC_Dead()
     {
+        ChangeState(NPCState.Dead);
         Destroy(gameObject);
     }
 }
