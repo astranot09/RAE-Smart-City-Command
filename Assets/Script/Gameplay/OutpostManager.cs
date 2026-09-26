@@ -71,6 +71,8 @@ public class OutpostManager : MonoBehaviour
     [SerializeField] private Animator animator;
 
     public event Action cycleStart;
+    public event Action earlyStageOfDisasterEvent;
+    public event Action finalStageOfDisasterEvent;
 
     private void OnEnable()
     {
@@ -164,10 +166,13 @@ public class OutpostManager : MonoBehaviour
     IEnumerator DisasterCountDown(DisasterType type)
     {
         //chart naik (versi upgrade)
+        earlyStageOfDisasterEvent?.Invoke();
         yield return new WaitForSeconds(beginning_Stage_of_Disaster);
         //chart naik (versi normal)
+        earlyStageOfDisasterEvent?.Invoke();
         yield return new WaitForSeconds(second_Stage_of_Disaster);
         //Predicted status muncul
+        finalStageOfDisasterEvent?.Invoke();
         yield return new WaitForSeconds(third_Stage_of_Disaster);
         //mainin animasi disaster
         switch (disasterType)

@@ -19,6 +19,13 @@ public class BuoySimulator : MonoBehaviour
     private float bumpTimer = 0f;
     private float bumpPosition = -10f; // Posisi bump di sepanjang x
 
+
+    [Header("Reference")]
+    [SerializeField] private OutpostManager outpostManager;
+
+    [Header("Upgrade")]
+    [SerializeField] private int level = 0;
+
     // Variabel untuk menyimpan amplitude saat ini
     private float currentAmplitude;
 

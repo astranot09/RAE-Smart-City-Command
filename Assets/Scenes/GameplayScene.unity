@@ -1928,19 +1928,127 @@ MonoBehaviour:
     upgradeName: 
     upgradeEvents:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 2031213766}
+          m_TargetAssemblyTypeName: SeismographSimulator, Assembly-CSharp
+          m_MethodName: Upgrade
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1093587777}
+          m_TargetAssemblyTypeName: SeismographSimulator, Assembly-CSharp
+          m_MethodName: Upgrade
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 834932911}
+          m_TargetAssemblyTypeName: SeismographSimulator, Assembly-CSharp
+          m_MethodName: Upgrade
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - price: 0
     icon: {fileID: 0}
     upgradeName: 
     upgradeEvents:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 2031213766}
+          m_TargetAssemblyTypeName: SeismographSimulator, Assembly-CSharp
+          m_MethodName: Upgrade
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1093587777}
+          m_TargetAssemblyTypeName: SeismographSimulator, Assembly-CSharp
+          m_MethodName: Upgrade
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 834932911}
+          m_TargetAssemblyTypeName: SeismographSimulator, Assembly-CSharp
+          m_MethodName: Upgrade
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - price: 0
     icon: {fileID: 0}
     upgradeName: 
     upgradeEvents:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 2031213766}
+          m_TargetAssemblyTypeName: SeismographSimulator, Assembly-CSharp
+          m_MethodName: Upgrade
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1093587777}
+          m_TargetAssemblyTypeName: SeismographSimulator, Assembly-CSharp
+          m_MethodName: Upgrade
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 834932911}
+          m_TargetAssemblyTypeName: SeismographSimulator, Assembly-CSharp
+          m_MethodName: Upgrade
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   iconUpgradeImage_Type2: {fileID: 1044669805}
   upgradeName_Type2: {fileID: 1772700156}
   orbUpgradeSpawner_Type2: {fileID: 901299203}
@@ -1948,24 +2056,132 @@ MonoBehaviour:
   level_Type2: 0
   maxLevel_Type2: 4
   upgrade_Type2:
-  - price: 200
+  - price: 0
     icon: {fileID: 0}
     upgradeName: 
     upgradeEvents:
       m_PersistentCalls:
-        m_Calls: []
-  - price: 200
+        m_Calls:
+        - m_Target: {fileID: 1990734514}
+          m_TargetAssemblyTypeName: GasSensorSimulator, Assembly-CSharp
+          m_MethodName: Upgrade
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 2066748671}
+          m_TargetAssemblyTypeName: GasSensorSimulator, Assembly-CSharp
+          m_MethodName: Upgrade
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 886899504}
+          m_TargetAssemblyTypeName: GasSensorSimulator, Assembly-CSharp
+          m_MethodName: Upgrade
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - price: 0
     icon: {fileID: 0}
     upgradeName: 
     upgradeEvents:
       m_PersistentCalls:
-        m_Calls: []
-  - price: 200
+        m_Calls:
+        - m_Target: {fileID: 1990734514}
+          m_TargetAssemblyTypeName: GasSensorSimulator, Assembly-CSharp
+          m_MethodName: Upgrade
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 2066748671}
+          m_TargetAssemblyTypeName: GasSensorSimulator, Assembly-CSharp
+          m_MethodName: Upgrade
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 886899504}
+          m_TargetAssemblyTypeName: GasSensorSimulator, Assembly-CSharp
+          m_MethodName: Upgrade
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - price: 0
     icon: {fileID: 0}
     upgradeName: 
     upgradeEvents:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 1990734514}
+          m_TargetAssemblyTypeName: GasSensorSimulator, Assembly-CSharp
+          m_MethodName: Upgrade
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 2066748671}
+          m_TargetAssemblyTypeName: GasSensorSimulator, Assembly-CSharp
+          m_MethodName: Upgrade
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 886899504}
+          m_TargetAssemblyTypeName: GasSensorSimulator, Assembly-CSharp
+          m_MethodName: Upgrade
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   iconUpgradeImage_Type3: {fileID: 932009398}
   upgradeName_Type3: {fileID: 639171785}
   orbUpgradeSpawner_Type3: {fileID: 669959677}
@@ -2715,6 +2931,8 @@ MonoBehaviour:
   isAlerting: 0
   alertAmplitude: 1
   transitionSpeed: 1
+  outpostManager: {fileID: 2093833826}
+  level: 0
 --- !u!1 &411649909
 GameObject:
   m_ObjectHideFlags: 0
@@ -4021,7 +4239,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 605927766}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03e79126e2781164ca587a69eb8d3a38, type: 3}
   m_Name: 
@@ -4035,6 +4253,8 @@ MonoBehaviour:
   isAlerting: 0
   alertAmplitude: 1
   transitionSpeed: 1
+  outpostManager: {fileID: 1843994380}
+  level: 0
 --- !u!1 &608530039
 GameObject:
   m_ObjectHideFlags: 0
@@ -5722,6 +5942,11 @@ MonoBehaviour:
   spikeIntensity: 0.5
   updateInterval: 0.2
   isAlerting: 0
+  outpostManager: {fileID: 2093833826}
+  level: 0
+  noiseUpgrade: 0.2
+  statusGameObject: {fileID: 0}
+  statusUnlock: 0
 --- !u!1 &886899502
 GameObject:
   m_ObjectHideFlags: 0
@@ -5772,6 +5997,16 @@ MonoBehaviour:
   riseSpeed: 0.05
   maxValue: 8
   isAlerting: 0
+  falseAlarmCheckInterval: 3
+  falseAlarmChance: 0.3
+  falseAlarmRiseAmount: 3
+  falseAlarmDuration: 0.5
+  falseAlarmFallSpeed: 0.15
+  outpostManager: {fileID: 2093833826}
+  level: 0
+  flatNoiseUpgrade: 0.15
+  statusGameObject: {fileID: 0}
+  statusUnlock: 0
 --- !u!1 &888640952
 GameObject:
   m_ObjectHideFlags: 0
@@ -7076,6 +7311,11 @@ MonoBehaviour:
   spikeIntensity: 0.5
   updateInterval: 0.2
   isAlerting: 0
+  outpostManager: {fileID: 138020435}
+  level: 0
+  noiseUpgrade: 0.2
+  statusGameObject: {fileID: 0}
+  statusUnlock: 0
 --- !u!1 &1148109009
 GameObject:
   m_ObjectHideFlags: 0
@@ -7792,6 +8032,8 @@ MonoBehaviour:
   isAlerting: 0
   alertAmplitude: 1
   transitionSpeed: 1
+  outpostManager: {fileID: 138020435}
+  level: 0
 --- !u!1001 &1253030530
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8496,6 +8738,8 @@ MonoBehaviour:
   isAlerting: 0
   alertAmplitude: 1
   transitionSpeed: 1
+  outpostManager: {fileID: 1843994380}
+  level: 0
 --- !u!1 &1432291549
 GameObject:
   m_ObjectHideFlags: 0
@@ -10555,6 +10799,8 @@ MonoBehaviour:
   isAlerting: 0
   alertAmplitude: 1
   transitionSpeed: 1
+  outpostManager: {fileID: 2093833826}
+  level: 0
 --- !u!1 &1770014037
 GameObject:
   m_ObjectHideFlags: 0
@@ -12995,6 +13241,16 @@ MonoBehaviour:
   riseSpeed: 0.05
   maxValue: 8
   isAlerting: 0
+  falseAlarmCheckInterval: 3
+  falseAlarmChance: 1
+  falseAlarmRiseAmount: 3
+  falseAlarmDuration: 0.5
+  falseAlarmFallSpeed: 0.15
+  outpostManager: {fileID: 1843994380}
+  level: 0
+  flatNoiseUpgrade: 0.15
+  statusGameObject: {fileID: 0}
+  statusUnlock: 0
 --- !u!1 &2005704984
 GameObject:
   m_ObjectHideFlags: 0
@@ -13185,6 +13441,8 @@ MonoBehaviour:
   isAlerting: 0
   alertAmplitude: 1
   transitionSpeed: 1
+  outpostManager: {fileID: 138020435}
+  level: 0
 --- !u!1 &2008604783
 GameObject:
   m_ObjectHideFlags: 0
@@ -13559,6 +13817,11 @@ MonoBehaviour:
   spikeIntensity: 0.5
   updateInterval: 0.2
   isAlerting: 0
+  outpostManager: {fileID: 1843994380}
+  level: 0
+  noiseUpgrade: 0.2
+  statusGameObject: {fileID: 0}
+  statusUnlock: 0
 --- !u!1 &2044623362
 GameObject:
   m_ObjectHideFlags: 0
@@ -13838,6 +14101,16 @@ MonoBehaviour:
   riseSpeed: 0.05
   maxValue: 8
   isAlerting: 0
+  falseAlarmCheckInterval: 3
+  falseAlarmChance: 0.3
+  falseAlarmRiseAmount: 3
+  falseAlarmDuration: 0.5
+  falseAlarmFallSpeed: 0.15
+  outpostManager: {fileID: 138020435}
+  level: 0
+  flatNoiseUpgrade: 0.15
+  statusGameObject: {fileID: 0}
+  statusUnlock: 0
 --- !u!1 &2071709551
 GameObject:
   m_ObjectHideFlags: 0

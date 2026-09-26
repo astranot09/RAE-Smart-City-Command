@@ -20,6 +20,15 @@ public class SeismographSimulator : MonoBehaviour
     [Header("Trigger")]
     public bool isAlerting = false;
 
+
+    [Header("Reference")]
+    [SerializeField] private OutpostManager outpostManager;
+
+    [Header("Upgrade")]
+    [SerializeField] private int level = 0;
+    [SerializeField] private float noiseUpgrade = 0.2f;
+    [SerializeField] private GameObject statusGameObject;
+    [SerializeField] private bool statusUnlock;
     private void Start()
     {
         InitSeimograph();
@@ -81,4 +90,22 @@ public class SeismographSimulator : MonoBehaviour
             return Random.Range(-baseNoise, baseNoise);
         }
     }
+
+    public void Upgrade()
+    {
+        level++;
+        switch (level)
+        {
+            case 1:
+                spikeChance = 0;
+                break;
+            case 2:
+                baseNoise = noiseUpgrade;
+                break;
+            case 3:
+                statusUnlock = true;
+                break;
+        }
+    }
+
 }
