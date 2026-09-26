@@ -18,6 +18,9 @@ public class GameplayManager : MonoBehaviour
     [Header("Outpost")]
     [SerializeField] private List<OutpostManager> outpostManagers = new List<OutpostManager>();
 
+    [Header("UI--Population")]
+    [SerializeField] private TMP_Text populationText;
+
     [Header("GraphLine Script")]
     [SerializeField] private UIGraphLine seismographGraphLine;
     [SerializeField] private UIGraphLine gasSensorGraphLine;
@@ -30,11 +33,13 @@ public class GameplayManager : MonoBehaviour
     private void OnEnable()
     {
         vcamManager.onCameraChange += OutPostGraphSetUp;
+        vcamManager.onCameraChange += OutPostPopulationSetUp;
     }
 
     private void OnDisable()
     {
         vcamManager.onCameraChange -= OutPostGraphSetUp;
+        vcamManager.onCameraChange += OutPostPopulationSetUp;
     }
 
     public void OutPostGraphSetUp()
@@ -45,5 +50,8 @@ public class GameplayManager : MonoBehaviour
         }
         outpostManagers[VCamManager.instance.Index].OutpostDisasterGraphSetUp(seismographGraphLine,gasSensorGraphLine,buoyAGraphLine,buoyBGraphLine, tideGaugeText);
     }
-
+    public void OutPostPopulationSetUp()
+    {
+        populationText.text = outpostManagers[VCamManager.instance.Index].Population.ToString();
+    }
 }

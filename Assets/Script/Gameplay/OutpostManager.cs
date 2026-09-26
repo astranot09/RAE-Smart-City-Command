@@ -36,7 +36,9 @@ public class OutpostManager : MonoBehaviour
     //Tide Gauge
 
     [Header("Population")]
+    [SerializeField] private int startPopulation = 36;
     [SerializeField] private int population;
+    public int Population => population;
 
     [Header("Setting")]
     [SerializeField] private float beginning_Stage_of_Disaster = 2f;
@@ -393,6 +395,7 @@ public class OutpostManager : MonoBehaviour
     public void UnlockOutpost()
     {
         outPostUnlocked = true;
+        population = startPopulation;
     }
 
     public void OutpostDisasterGraphSetUp(UIGraphLine seis, UIGraphLine gasSensor, UIGraphLine buoyA, UIGraphLine buoyB, TMP_Text tideGauge)
