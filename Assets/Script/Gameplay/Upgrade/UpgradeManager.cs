@@ -243,7 +243,7 @@ public class UpgradeManager : MonoBehaviour
         }
 
         // --- Type 4 ---
-        if (level_Type4 < maxLevel_Type3)
+        if (level_Type4 < maxLevel_Type4)
         {
             if (upgrade_Type4[level_Type4].icon != null)
                 iconUpgradeImage_Type4.sprite = upgrade_Type4[level_Type4].icon;
@@ -251,11 +251,11 @@ public class UpgradeManager : MonoBehaviour
             if (!string.IsNullOrEmpty(upgrade_Type4[level_Type4].upgradeName))
                 upgradeName_Type4.text = upgrade_Type4[level_Type4].upgradeName;
 
-            priceUpgrade_Type4.text = upgrade_Type3[level_Type4].price.ToString();
+            priceUpgrade_Type4.text = upgrade_Type4[level_Type4].price.ToString();
         }
         else
         {
-            priceUpgrade_Type3.text = "MAX";
+            priceUpgrade_Type4.text = "MAX";
         }
     }
 

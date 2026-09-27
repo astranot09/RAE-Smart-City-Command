@@ -42,6 +42,7 @@ public class DayReportManager : MonoBehaviour
     public void DayReportSetUp(int populationCurr, int populationChange, OutpostManager x, int evacTot)
     {
         Time.timeScale = 0;
+        CurrencyManager.instance.ChangeCurrency(earningValue);
         UIManager.instance.OpenPanel(dayReportPanel);
         outpostManager = x;
         earningText.text = $"Earnings : {earningValue}$";
