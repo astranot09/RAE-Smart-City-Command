@@ -13,6 +13,12 @@ Game Engine = Unity 6000.5.5f1
 | Stopit-m8 | Game Designer | ... |
 | raymondbenedict2802405245’s | Game Artist | ... |
 
+## My Contribution (astranot09)
+- Create all the code for game systems and features
+- Implement Animation Character in Unity, Animation UI
+- Create Game Logic
+- etc
+
 ## Key Features
 
 ### Evacuate
