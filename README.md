@@ -14,10 +14,13 @@ Game Engine = Unity 6000.5.5f1
 | raymondbenedict2802405245’s | Game Artist | ... |
 
 ## My Contribution (astranot09)
+- Outpost Logic (When Disaster will hit the outpost, When the time in that outpost to make graph alert, How much people left in that outpost, etc)
+- NPC State (When the state wandering around, when the state run to evactuation zone, when the state coming baack from zone, what happend when they died)
+- Change Camera Logic
 - Create all the code for game systems and features
-- Implement Animation Character in Unity, Animation UI
+- Implement Animation Character in Unity, Animation UI Dotween
 - Create Game Logic
-- Except making graph (got help by calude ai)
+- Except making graph (got help by claude ai)
 - etc
 
 ## Key Features
