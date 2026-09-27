@@ -17,6 +17,7 @@ Game Engine = Unity 6000.5.5f1
 - Create all the code for game systems and features
 - Implement Animation Character in Unity, Animation UI
 - Create Game Logic
+- Except making graph (got help by calude ai)
 - etc
 
 ## Key Features
