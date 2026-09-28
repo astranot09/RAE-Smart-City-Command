@@ -10,7 +10,7 @@ Game Engine = Unity 6000.5.5f1
 | Name | Roles | Duration |
 | :---: | :---: | :---: |
 | astranot09 | Game Programmer | 14 |
-| Stopit-m8 | Game Designer | ... |
+| Stopit-m8 | Game Designer | 7 |
 | raymondbenedict2802405245’s | Game Artist | ... |
 
 ## My Contribution (astranot09)
