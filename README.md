@@ -20,7 +20,6 @@ Game Engine = Unity 6000.5.5f1
 - Create all the code for game systems and features
 - Implement Animation Character in Unity, Animation UI Dotween
 - Create Game Logic
-- Except making graph (got help by claude ai)
 - etc
 
 ## Key Features
