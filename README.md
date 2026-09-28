@@ -24,24 +24,49 @@ Game Engine = Unity 6000.5.5f1
 
 ## Key Features
 
-### Evacuate
-Press Evacuate button to evacuate NPC from disaster that coming.
+### Real-time Telemetry & Graph Analysis
+Monitor live feeds from Seismographs, Buoys, Gas Sensors, and Tide Gauges to spot disaster anomalies.
 
-### Graph
-Read Graph to understand if the disaster is coming.
+### Evacuation Protocol Management
+Trigger region-wide evacuation orders to route civilians to safety before disasters strike.
 
-### NPC
-NPC is important because if there is evacuate, they will running to evacuate area.
+### Dynamic Civilian AI
+Population react dynamically to disaster events, seeking shelter and repopulating zones once threats clear.
 
-### Disaster
-Random disaster will be triggered, and you can anticipated it by reading the graph.
+### Equipment & Sensor Upgrades
+Reinvest command currency to upgrade sensor precision and filter out false alarms.
 
-### Upgrade
-You can upgrade the tool to upgrade the reading of graph, so its more easy to read.
+### Multi-Outpost Surveillance
+Switch camera feeds between various island regions to manage multiple outposts simultaneously.
+
+### After Disaster Day Reports
+Evaluate disaster responses, civilian survival rates, and unlocked outposts.
 
 ## Layer / Module Design
 
 ## Modules and Features
+
+| Name | Scene | Responsibility |
+| :---: | :---: | :---: |
+| Scene Controller | All Scene | Scene transitions, transition animation, exit game. |
+| Audio Manager | All Scene | Plays BGM/SFX globally via audio database. |
+| UI Manager | All Scene | Controls panel visibility, canvas layers, and overlay states. |
+| Dotween Animation Collections | All Scene | Library of reusable DOTween animations for UI hover. |
+| Main Menu Manager | Main Menu | Manages menu UI navigation, options, and game startup routines. |
+| Currency Manager | Gameplay Scene | Managed currency changes. |
+| VCam Manager | Gameplay Scene | Controls Cinemachine virtual camera switches between various outposts. |
+| Lose Manager | Gameplay Scene | Evaluates defeat conditions when populations reach 0. |
+| NPC Script | Gameplay Scene | Implements Finite State Machine (FSM) for civilian movement, evacuation, and death. |
+| Outpost Manager | Gameplay Scene | Core manager handling disaster countdowns, outpost population, graph alerts, and spawns. |
+| Buoy Simulator | Gameplay Scene | Logic for making graph when normal and alarmed. |
+| Gas Sensor Simulator | Gameplay Scene | Logic for making graph when normal and alarmed. |
+| Seismograph Simulator | Gameplay Scene | Logic for making graph when normal and alarmed. |
+| Tide Gauge Simulator | Gameplay Scene | Logic for making numbers when normal and alarmed. |
+| UI Graph Line | Gameplay Scene | Logic for draw line renderer in canvas. |
+| Upgrade Manager | Gameplay Scene | Logic for upgrade like UI, Insert if there is something to upgrade, etc. |
+| Evacuate Manager | Gameplay Scene | Logic for setUp UI for choosing evacuate. |
+| Day Report Manager | Gameplay Scene | Summarizes disaster responses, population survival rates, and outpost progression. |
+| Gameplay Manager | Gameplay Scene | Logic for changing graph when changing outpost. |
 
 ## Game Flow
 
