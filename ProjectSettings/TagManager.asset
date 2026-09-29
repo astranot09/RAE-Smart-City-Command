@@ -43,6 +43,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 112674901
+    locked: 0
+  - name: NPC
+    uniqueID: 4078205531
+    locked: 0
+  - name: Disaster
+    uniqueID: 3568309059
+    locked: 0
   m_RenderingLayers:
   - Default
   m_MigratedRenderPipelines: []

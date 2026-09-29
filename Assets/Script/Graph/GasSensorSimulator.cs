@@ -39,6 +39,17 @@ public class GasSensorSimulator : MonoBehaviour
     [SerializeField] private GameObject statusGameObject;
     [SerializeField] private bool statusUnlock;
 
+    private void OnEnable()
+    {
+        outpostManager.secondStageOfDisasterEvent += DisasterSecondAlarmTrigger;
+        outpostManager.cycleStart += CloseAllAlarmDisaster;
+    }
+    private void OnDisable()
+    {
+        outpostManager.secondStageOfDisasterEvent -= DisasterSecondAlarmTrigger;
+        outpostManager.cycleStart -= CloseAllAlarmDisaster;
+    }
+
     void Start()
     {
         for (int i = 0; i < maxPoints; i++)
@@ -124,5 +135,25 @@ public class GasSensorSimulator : MonoBehaviour
                 statusUnlock = true;
                 break;
         }
+    }
+
+    public void DisasterEarlyAlarmTrigger()
+    {
+        
+    }
+    public void DisasterSecondAlarmTrigger()
+    {
+        if(outpostManager.CurrentDisaster == DisasterType.Volcano)
+            isAlerting = true;
+    }
+
+    public void DisasterFinalAlarmTrigger()
+    {
+        if (level > 2)
+            Debug.Log("Predicted : Gas Sensor");
+    }
+    public void CloseAllAlarmDisaster()
+    {
+        isAlerting = false;
     }
 }

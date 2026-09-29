@@ -34,12 +34,21 @@ public class GameplayManager : MonoBehaviour
     {
         vcamManager.onCameraChange += OutPostGraphSetUp;
         vcamManager.onCameraChange += OutPostPopulationSetUp;
+        foreach(var manager in outpostManagers)
+        {
+            manager.cycleStart += OutPostPopulationSetUp;
+        }
     }
 
     private void OnDisable()
     {
         vcamManager.onCameraChange -= OutPostGraphSetUp;
         vcamManager.onCameraChange += OutPostPopulationSetUp;
+
+        foreach (var manager in outpostManagers)
+        {
+            manager.cycleStart -= OutPostPopulationSetUp;
+        }
     }
 
     public void OutPostGraphSetUp()

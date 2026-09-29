@@ -120,9 +120,8 @@ public class NPCScript : MonoBehaviour
                 rb.linearVelocity = new Vector2(directionX * moveSpeed, rb.linearVelocity.y);
             }
 
-            // Membalikkan arah visual sprite (facing left/right)
             if (directionX != 0)
-                spriteRenderer.flipX = directionX < 0;
+                spriteRenderer.flipX = directionX > 0;
 
             return false;
         }

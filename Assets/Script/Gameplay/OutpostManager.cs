@@ -25,6 +25,7 @@ public class OutpostManager : MonoBehaviour
 
     [Header("Disaster Type")]
     [SerializeField] private DisasterType disasterType = DisasterType.None;
+    public DisasterType CurrentDisaster => disasterType;
     private DisasterType disasterChoosen = DisasterType.None;
 
     [Header("Disaster Script")]
@@ -32,8 +33,7 @@ public class OutpostManager : MonoBehaviour
     [SerializeField] private GasSensorSimulator gasSensorSimulator;
     [SerializeField] private BuoySimulator buoySimulatorA;
     [SerializeField] private BuoySimulator buoySimulatorB;
-
-    //Tide Gauge
+    //[SerializeField] private TideGaugeSimulator tideGaugeSimulator
 
     [Header("Population")]
     [SerializeField] private int startPopulation = 36;
@@ -45,6 +45,7 @@ public class OutpostManager : MonoBehaviour
     [SerializeField] private float second_Stage_of_Disaster = 2f;
     [SerializeField] private float third_Stage_of_Disaster = 1f;
     [SerializeField] private bool outPostUnlocked = false;
+    public bool OutPostUnlocked => outPostUnlocked;
     [SerializeField] private float delay_Before_Check_False_Alarm = 2f;
     private bool onEvacuate = false;
 
@@ -74,6 +75,7 @@ public class OutpostManager : MonoBehaviour
 
     public event Action cycleStart;
     public event Action earlyStageOfDisasterEvent;
+    public event Action secondStageOfDisasterEvent;
     public event Action finalStageOfDisasterEvent;
 
     private void OnEnable()
@@ -171,7 +173,7 @@ public class OutpostManager : MonoBehaviour
         earlyStageOfDisasterEvent?.Invoke();
         yield return new WaitForSeconds(beginning_Stage_of_Disaster);
         //chart naik (versi normal)
-        earlyStageOfDisasterEvent?.Invoke();
+        secondStageOfDisasterEvent?.Invoke();
         yield return new WaitForSeconds(second_Stage_of_Disaster);
         //Predicted status muncul
         finalStageOfDisasterEvent?.Invoke();
@@ -286,6 +288,7 @@ public class OutpostManager : MonoBehaviour
         if (population <= 0)
         {
             //kalah
+            LoseManager.instance.LoseSetUp(this);
         }
     }
 

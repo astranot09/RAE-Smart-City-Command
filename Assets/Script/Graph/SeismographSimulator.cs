@@ -29,6 +29,20 @@ public class SeismographSimulator : MonoBehaviour
     [SerializeField] private float noiseUpgrade = 0.2f;
     [SerializeField] private GameObject statusGameObject;
     [SerializeField] private bool statusUnlock;
+
+    private void OnEnable()
+    {
+        outpostManager.secondStageOfDisasterEvent += DisasterdFirstAlarmTrigger;
+        outpostManager.cycleStart += CloseAllAlarmDisaster;
+    }
+    private void OnDisable()
+    {
+        outpostManager.secondStageOfDisasterEvent -= DisasterdFirstAlarmTrigger;
+        outpostManager.cycleStart -= CloseAllAlarmDisaster;
+    }
+
+
+
     private void Start()
     {
         InitSeimograph();
@@ -106,6 +120,22 @@ public class SeismographSimulator : MonoBehaviour
                 statusUnlock = true;
                 break;
         }
+    }
+
+    public void DisasterdFirstAlarmTrigger()
+    {
+        if (outpostManager.CurrentDisaster == DisasterType.Earthquake || outpostManager.CurrentDisaster == DisasterType.Volcano)
+            isAlerting = true;
+    }
+
+    public void DisasterFinalAlarmTrigger()
+    {
+        if(level > 2)
+            Debug.Log("Predicted : Seismograph");
+    }
+    public void CloseAllAlarmDisaster()
+    {
+        isAlerting = false;
     }
 
 }
