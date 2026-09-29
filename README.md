@@ -24,26 +24,57 @@ Game Engine = Unity 6000.5.5f1
 
 ## Key Features
 
-### Evacuate
-Press Evacuate button to evacuate NPC from disaster that coming.
+### Real-time Telemetry & Graph Analysis
+Monitor live feeds from Seismographs, Buoys, Gas Sensors, and Tide Gauges to spot disaster anomalies.
 
-### Graph
-Read Graph to understand if the disaster is coming.
+### Evacuation Protocol Management
+Trigger region-wide evacuation orders to route civilians to safety before disasters strike.
 
-### NPC
-NPC is important because if there is evacuate, they will running to evacuate area.
+### Dynamic Civilian AI
+Population react dynamically to disaster events, seeking shelter and repopulating zones once threats clear.
 
-### Disaster
-Random disaster will be triggered, and you can anticipated it by reading the graph.
+### Equipment & Sensor Upgrades
+Reinvest command currency to upgrade sensor precision and filter out false alarms.
 
-### Upgrade
-You can upgrade the tool to upgrade the reading of graph, so its more easy to read.
+### Multi-Outpost Surveillance
+Switch camera feeds between various island regions to manage multiple outposts simultaneously.
+
+### After Disaster Day Reports
+Evaluate disaster responses, civilian survival rates, and unlocked outposts.
 
 ## Layer / Module Design
 
+<img width="1222" height="1099" alt="RAEModule drawio" src="https://github.com/user-attachments/assets/1928e0a9-2254-40e4-8913-b689519558b7" />
+
+
 ## Modules and Features
 
+| Name | Scene | Responsibility |
+| :---: | :---: | :---: |
+| Scene Controller | All Scene | Scene transitions, transition animation, exit game. |
+| Audio Manager | All Scene | Plays BGM/SFX globally via audio database. |
+| UI Manager | All Scene | Controls panel visibility, canvas layers, and overlay states. |
+| Dotween Animation Collections | All Scene | Library of reusable DOTween animations for UI hover. |
+| Main Menu Manager | Main Menu | Manages menu UI navigation, options, and game startup routines. |
+| Currency Manager | Gameplay Scene | Managed currency changes. |
+| VCam Manager | Gameplay Scene | Controls Cinemachine virtual camera switches between various outposts. |
+| Lose Manager | Gameplay Scene | Evaluates defeat conditions when populations reach 0. |
+| NPC Script | Gameplay Scene | Implements Finite State Machine (FSM) for civilian movement, evacuation, and death. |
+| Outpost Manager | Gameplay Scene | Core manager handling disaster countdowns, outpost population, graph alerts, and spawns. |
+| Buoy Simulator | Gameplay Scene | Logic for making ocean telemetry graph when normal and alarmed. |
+| Gas Sensor Simulator | Gameplay Scene | Logic for making graph for gas levels in volcano when normal and alarmed. |
+| Seismograph Simulator | Gameplay Scene | Logic for making earthquake or volcano tremor when normal and alarmed. |
+| Tide Gauge Simulator | Gameplay Scene | Logic for making numerical water level data when normal and alarmed. |
+| UI Graph Line | Gameplay Scene | Handles real-time line rendering on UI canvas elements. |
+| Upgrade Manager | Gameplay Scene | Manages upgrade for sensor accuracy, noise filtering, etc |
+| Evacuate Manager | Gameplay Scene | Handles evacuation UI setup, and Select the type of disaster. |
+| Day Report Manager | Gameplay Scene | Summarizes disaster responses, population survival rates, and outpost progression. |
+| Gameplay Manager | Gameplay Scene | Logic for changing graph when changing outpost. |
+
 ## Game Flow
+
+<img width="1082" height="1487" alt="RAEGameFlow drawio" src="https://github.com/user-attachments/assets/f5c1417c-ec2a-412b-86b9-2c2281f34c17" />
+
 
 ## Unity Asset
 - Free Quick Effects Vol. 1
