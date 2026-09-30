@@ -53,12 +53,18 @@ public class GameplayManager : MonoBehaviour
 
     public void OutPostGraphSetUp()
     {
-        for(int i = 0; i < outpostManagers.Count; i++)
+        seismographGraphLine.ClearGraph();
+        gasSensorGraphLine.ClearGraph();
+        buoyAGraphLine.ClearGraph();
+        buoyBGraphLine.ClearGraph();
+
+        for (int i = 0; i < outpostManagers.Count; i++)
         {
-            outpostManagers[i].CloseUIGraph();
+            outpostManagers[i].GraphManager.CloseUIGraph();
         }
-        outpostManagers[VCamManager.instance.Index].OutpostDisasterGraphSetUp(seismographGraphLine,gasSensorGraphLine,buoyAGraphLine,buoyBGraphLine, tideGaugeText);
+        outpostManagers[VCamManager.instance.Index].GraphManager.OutpostDisasterGraphSetUp(seismographGraphLine,gasSensorGraphLine,buoyAGraphLine,buoyBGraphLine, tideGaugeText);
     }
+
     public void OutPostPopulationSetUp()
     {
         populationText.text = outpostManagers[VCamManager.instance.Index].Population.ToString();

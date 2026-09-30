@@ -9,7 +9,6 @@ public class UIGraphLine : Graphic
     public float lineThickness = 3f;
     public float valueScale = 50f;   // seberapa tinggi grafik merespons value
     public float minY = 0f;          // offset vertikal tengah garis
-
     protected override void OnPopulateMesh(VertexHelper vh)
     {
         vh.Clear();
@@ -59,7 +58,18 @@ public class UIGraphLine : Graphic
 
     public void SetValues(List<float> newValues)
     {
-        values = newValues;
-        SetVerticesDirty(); // trigger redraw
+        if (newValues == null) return;
+
+        // Buat/isi ulang List lokal dengan data copy-an baru
+        values = new List<float>(newValues);
+
+        SetVerticesDirty(); // trigger redraw Mesh
     }
+
+    public void ClearGraph()
+    {
+        values.Clear();     // Sekarang aman me-clear ini
+        SetVerticesDirty(); // Menghapus visual garis di Canvas tanpa merusak data SeismographSimulator
+    }
+
 }

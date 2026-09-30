@@ -436,6 +436,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 63977096}
+  - component: {fileID: 63977097}
   m_Layer: 0
   m_Name: GraphManager
   m_TagString: Untagged
@@ -463,6 +464,23 @@ Transform:
   - {fileID: 256289865}
   m_Father: {fileID: 138020434}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &63977097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63977095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ad5042f549305e4eabd3c0c29701e7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GraphManager
+  outpostManager: {fileID: 138020435}
+  seismographSimulator: {fileID: 1093587777}
+  gasSensorSimulator: {fileID: 2066748671}
+  buoySimulatorA: {fileID: 1229337250}
+  buoySimulatorB: {fileID: 2008461646}
 --- !u!1001 &77965113
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -728,18 +746,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bc0a5877f3f2844daa38c8bc9a53514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OutpostManager
-  minTimeDisaster: 5
-  maxTimeDisaster: 6
-  disasterType: 0
-  seismographSimulator: {fileID: 1093587777}
-  gasSensorSimulator: {fileID: 2066748671}
-  buoySimulatorA: {fileID: 1229337250}
-  buoySimulatorB: {fileID: 2008461646}
+  disasterManager: {fileID: 753796931}
+  graphManager: {fileID: 63977097}
   startPopulation: 36
   population: 0
-  beginning_Stage_of_Disaster: 2
-  second_Stage_of_Disaster: 2
-  third_Stage_of_Disaster: 1
   outPostUnlocked: 0
   delay_Before_Check_False_Alarm: 2
   maxNpcShow: 5
@@ -756,7 +766,6 @@ MonoBehaviour:
   populationLoss_Because_No_Evacuation: -30
   populationLoss_Because_Wrong_Evacuation: -15
   populationLoss_Because_FalseAlarm: -5
-  animator: {fileID: 138020436}
 --- !u!95 &138020436
 Animator:
   serializedVersion: 7
@@ -3209,6 +3218,8 @@ MonoBehaviour:
   alertAmplitude: 1
   transitionSpeed: 1
   outpostManager: {fileID: 2093833826}
+  disasterManager: {fileID: 0}
+  graphManager: {fileID: 0}
   level: 0
 --- !u!1 &411649909
 GameObject:
@@ -3589,6 +3600,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 481836455}
+  - component: {fileID: 481836456}
   m_Layer: 0
   m_Name: ==Disaster==
   m_TagString: Untagged
@@ -3614,6 +3626,26 @@ Transform:
   - {fileID: 1747832405}
   m_Father: {fileID: 2093833825}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &481836456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481836454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc97018a241993b4b891e160d45c98a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisasterManager
+  outpostManager: {fileID: 2093833826}
+  minTimeDisaster: 12
+  maxTimeDisaster: 45
+  disasterType: 0
+  beginning_Stage_of_Disaster: 2
+  second_Stage_of_Disaster: 2
+  third_Stage_of_Disaster: 1
+  animator: {fileID: 2093833827}
 --- !u!1 &501458760
 GameObject:
   m_ObjectHideFlags: 0
@@ -4668,6 +4700,8 @@ MonoBehaviour:
   alertAmplitude: 1
   transitionSpeed: 1
   outpostManager: {fileID: 1843994380}
+  disasterManager: {fileID: 0}
+  graphManager: {fileID: 0}
   level: 0
 --- !u!1 &608530039
 GameObject:
@@ -5596,6 +5630,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 753796930}
+  - component: {fileID: 753796931}
   m_Layer: 0
   m_Name: ==Disaster==
   m_TagString: Untagged
@@ -5621,6 +5656,26 @@ Transform:
   - {fileID: 479341738}
   m_Father: {fileID: 138020434}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &753796931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753796929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc97018a241993b4b891e160d45c98a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisasterManager
+  outpostManager: {fileID: 138020435}
+  minTimeDisaster: 12
+  maxTimeDisaster: 45
+  disasterType: 0
+  beginning_Stage_of_Disaster: 2
+  second_Stage_of_Disaster: 2
+  third_Stage_of_Disaster: 1
+  animator: {fileID: 138020436}
 --- !u!1 &757962452
 GameObject:
   m_ObjectHideFlags: 0
@@ -7342,6 +7397,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1021564325}
+  - component: {fileID: 1021564326}
   m_Layer: 0
   m_Name: GraphManager
   m_TagString: Untagged
@@ -7369,6 +7425,23 @@ Transform:
   - {fileID: 608530040}
   m_Father: {fileID: 1843994379}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1021564326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021564324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ad5042f549305e4eabd3c0c29701e7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GraphManager
+  outpostManager: {fileID: 1843994380}
+  seismographSimulator: {fileID: 2031213766}
+  gasSensorSimulator: {fileID: 1990734514}
+  buoySimulatorA: {fileID: 1413780331}
+  buoySimulatorB: {fileID: 605927768}
 --- !u!1 &1025388383
 GameObject:
   m_ObjectHideFlags: 0
@@ -8167,6 +8240,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1180712456}
+  - component: {fileID: 1180712457}
   m_Layer: 0
   m_Name: GraphManager
   m_TagString: Untagged
@@ -8194,6 +8268,23 @@ Transform:
   - {fileID: 554991890}
   m_Father: {fileID: 2093833825}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1180712457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180712455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ad5042f549305e4eabd3c0c29701e7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GraphManager
+  outpostManager: {fileID: 2093833826}
+  seismographSimulator: {fileID: 834932911}
+  gasSensorSimulator: {fileID: 886899504}
+  buoySimulatorA: {fileID: 1758840188}
+  buoySimulatorB: {fileID: 382481387}
 --- !u!1 &1194721446
 GameObject:
   m_ObjectHideFlags: 0
@@ -8495,6 +8586,8 @@ MonoBehaviour:
   alertAmplitude: 1
   transitionSpeed: 1
   outpostManager: {fileID: 138020435}
+  disasterManager: {fileID: 0}
+  graphManager: {fileID: 0}
   level: 0
 --- !u!1 &1231574874
 GameObject:
@@ -9426,6 +9519,8 @@ MonoBehaviour:
   alertAmplitude: 1
   transitionSpeed: 1
   outpostManager: {fileID: 1843994380}
+  disasterManager: {fileID: 0}
+  graphManager: {fileID: 0}
   level: 0
 --- !u!1 &1432291549
 GameObject:
@@ -11624,6 +11719,8 @@ MonoBehaviour:
   alertAmplitude: 1
   transitionSpeed: 1
   outpostManager: {fileID: 2093833826}
+  disasterManager: {fileID: 0}
+  graphManager: {fileID: 0}
   level: 0
 --- !u!1 &1770014037
 GameObject:
@@ -12420,6 +12517,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1829992214}
+  - component: {fileID: 1829992215}
   m_Layer: 0
   m_Name: ==Disaster==
   m_TagString: Untagged
@@ -12445,6 +12543,26 @@ Transform:
   - {fileID: 1025388384}
   m_Father: {fileID: 1843994379}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1829992215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829992213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc97018a241993b4b891e160d45c98a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisasterManager
+  outpostManager: {fileID: 1843994380}
+  minTimeDisaster: 4
+  maxTimeDisaster: 5
+  disasterType: 0
+  beginning_Stage_of_Disaster: 2
+  second_Stage_of_Disaster: 2
+  third_Stage_of_Disaster: 1
+  animator: {fileID: 1843994381}
 --- !u!1 &1838599137
 GameObject:
   m_ObjectHideFlags: 0
@@ -12711,18 +12829,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bc0a5877f3f2844daa38c8bc9a53514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OutpostManager
-  minTimeDisaster: 4
-  maxTimeDisaster: 5
-  disasterType: 0
-  seismographSimulator: {fileID: 2031213766}
-  gasSensorSimulator: {fileID: 1990734514}
-  buoySimulatorA: {fileID: 1413780331}
-  buoySimulatorB: {fileID: 605927768}
+  disasterManager: {fileID: 1829992215}
+  graphManager: {fileID: 1021564326}
   startPopulation: 0
   population: 36
-  beginning_Stage_of_Disaster: 2
-  second_Stage_of_Disaster: 2
-  third_Stage_of_Disaster: 1
   outPostUnlocked: 1
   delay_Before_Check_False_Alarm: 2
   maxNpcShow: 5
@@ -12739,7 +12849,6 @@ MonoBehaviour:
   populationLoss_Because_No_Evacuation: -30
   populationLoss_Because_Wrong_Evacuation: -15
   populationLoss_Because_FalseAlarm: -5
-  animator: {fileID: 1843994381}
 --- !u!95 &1843994381
 Animator:
   serializedVersion: 7
@@ -14360,6 +14469,8 @@ MonoBehaviour:
   alertAmplitude: 1
   transitionSpeed: 1
   outpostManager: {fileID: 138020435}
+  disasterManager: {fileID: 0}
+  graphManager: {fileID: 0}
   level: 0
 --- !u!1 &2008604783
 GameObject:
@@ -15238,18 +15349,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bc0a5877f3f2844daa38c8bc9a53514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OutpostManager
-  minTimeDisaster: 5
-  maxTimeDisaster: 6
-  disasterType: 0
-  seismographSimulator: {fileID: 834932911}
-  gasSensorSimulator: {fileID: 886899504}
-  buoySimulatorA: {fileID: 1758840188}
-  buoySimulatorB: {fileID: 382481387}
+  disasterManager: {fileID: 481836456}
+  graphManager: {fileID: 1180712457}
   startPopulation: 36
   population: 0
-  beginning_Stage_of_Disaster: 2
-  second_Stage_of_Disaster: 2
-  third_Stage_of_Disaster: 1
   outPostUnlocked: 0
   delay_Before_Check_False_Alarm: 2
   maxNpcShow: 5
@@ -15266,7 +15369,6 @@ MonoBehaviour:
   populationLoss_Because_No_Evacuation: -30
   populationLoss_Because_Wrong_Evacuation: -15
   populationLoss_Because_FalseAlarm: -5
-  animator: {fileID: 2093833827}
 --- !u!95 &2093833827
 Animator:
   serializedVersion: 7

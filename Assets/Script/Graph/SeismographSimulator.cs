@@ -32,12 +32,12 @@ public class SeismographSimulator : MonoBehaviour
 
     private void OnEnable()
     {
-        outpostManager.secondStageOfDisasterEvent += DisasterdFirstAlarmTrigger;
+        outpostManager.DisasterManager.secondStageOfDisasterEvent += DisasterdFirstAlarmTrigger;
         outpostManager.cycleStart += CloseAllAlarmDisaster;
     }
     private void OnDisable()
     {
-        outpostManager.secondStageOfDisasterEvent -= DisasterdFirstAlarmTrigger;
+        outpostManager.DisasterManager.secondStageOfDisasterEvent -= DisasterdFirstAlarmTrigger;
         outpostManager.cycleStart -= CloseAllAlarmDisaster;
     }
 
@@ -50,10 +50,15 @@ public class SeismographSimulator : MonoBehaviour
 
     public void InitSeimograph()
     {
-        for (int i = 0; i < maxPoints; i++)
+        // Hanya generate data awal jika values benar-benar belum punya isi
+        if (values.Count == 0)
         {
-            values.Add(Random.Range(-baseNoise, baseNoise));
+            for (int i = 0; i < maxPoints; i++)
+            {
+                values.Add(Random.Range(-baseNoise, baseNoise));
+            }
         }
+
         if (graphLine == null) return;
         graphLine.SetValues(values);
     }
@@ -124,7 +129,7 @@ public class SeismographSimulator : MonoBehaviour
 
     public void DisasterdFirstAlarmTrigger()
     {
-        if (outpostManager.CurrentDisaster == DisasterType.Earthquake || outpostManager.CurrentDisaster == DisasterType.Volcano)
+        if (outpostManager.DisasterManager.CurrentDisaster == DisasterType.Earthquake || outpostManager.DisasterManager.CurrentDisaster == DisasterType.Volcano)
             isAlerting = true;
     }
 

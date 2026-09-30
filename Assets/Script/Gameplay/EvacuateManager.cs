@@ -28,17 +28,17 @@ public class EvacuateManager : MonoBehaviour
 
     public void ChooseVolcano()
     {
-        outpostManagers[VCamManager.instance.Index].EvacuateConclusionType(DisasterType.Volcano);
+        outpostManagers[VCamManager.instance.Index].DisasterManager.EvacuateConclusionType(DisasterType.Volcano);
         CloseEvactuate();
     }
     public void ChooseTsunami()
     {
-        outpostManagers[VCamManager.instance.Index].EvacuateConclusionType(DisasterType.Tsunami);
+        outpostManagers[VCamManager.instance.Index].DisasterManager.EvacuateConclusionType(DisasterType.Tsunami);
         CloseEvactuate();
     }
     public void ChooseEarthquake()
     {
-        outpostManagers[VCamManager.instance.Index].EvacuateConclusionType(DisasterType.Earthquake);
+        outpostManagers[VCamManager.instance.Index].DisasterManager.EvacuateConclusionType(DisasterType.Earthquake);
         CloseEvactuate();
     }
 

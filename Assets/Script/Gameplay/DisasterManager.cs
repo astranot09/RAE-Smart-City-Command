@@ -1,7 +1,10 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 public class DisasterManager : MonoBehaviour
 {
+    [Header("Reference")]
     [SerializeField] private OutpostManager outpostManager;
 
     [Header("Disaster Time")]
@@ -13,21 +16,39 @@ public class DisasterManager : MonoBehaviour
     [Header("Disaster Type")]
     [SerializeField] private DisasterType disasterType = DisasterType.None;
     public DisasterType CurrentDisaster => disasterType;
-    private DisasterType disasterChoosen = DisasterType.None;
 
-    [Header("Disaster Script")]
-    [SerializeField] private SeismographSimulator seismographSimulator;
-    [SerializeField] private GasSensorSimulator gasSensorSimulator;
-    [SerializeField] private BuoySimulator buoySimulatorA;
-    [SerializeField] private BuoySimulator buoySimulatorB;
-    //[SerializeField] private TideGaugeSimulator tideGaugeSimulator
+    private DisasterType disasterChoosen = DisasterType.None;
+    public DisasterType DisasterChoosen => disasterChoosen;
 
     [Header("Setting")]
     [SerializeField] private float beginning_Stage_of_Disaster = 2f;
     [SerializeField] private float second_Stage_of_Disaster = 2f;
     [SerializeField] private float third_Stage_of_Disaster = 1f;
-    //[SerializeField] private float delay_Before_Check_False_Alarm = 2f;
-    //private bool onEvacuate = false;
+
+    [Header("Animator")]
+    [SerializeField] private Animator animator;
+
+    public event Action earlyStageOfDisasterEvent;
+    public event Action secondStageOfDisasterEvent;
+    public event Action finalStageOfDisasterEvent;
+
+    public event Action onDisasterHitOutpost;
+
+    private void OnEnable()
+    {
+        outpostManager.cycleStart += StartCycleOfDisaster;
+    }
+
+    private void OnDisable()
+    {
+        outpostManager.cycleStart -= StartCycleOfDisaster;
+    }
+
+    private void Start()
+    {
+        if(animator == null)
+            animator = GetComponent<Animator>();
+    }
 
     private void Update()
     {
@@ -41,6 +62,16 @@ public class DisasterManager : MonoBehaviour
         }
     }
 
+    private void StartCycleOfDisaster()
+    {
+        currTime = 0f;
+        disasterChoosen = DisasterType.None;
+
+        disasterTime = UnityEngine.Random.Range(minTimeDisaster, maxTimeDisaster);
+        disasterType = DisasterType.None;
+    }
+
+
     private void RandomizerDisaster()
     {
         int x = UnityEngine.Random.Range(0, 3);
@@ -48,17 +79,55 @@ public class DisasterManager : MonoBehaviour
         {
             case 0:
                 disasterType = DisasterType.Earthquake;
-                //StartCoroutine(DisasterCountDown(disasterType));
+                StartCoroutine(DisasterCountDown(disasterType));
                 break;
             case 1:
                 disasterType = DisasterType.Volcano;
-                //StartCoroutine(DisasterCountDown(disasterType));
+                StartCoroutine(DisasterCountDown(disasterType));
                 break;
             case 2:
                 disasterType = DisasterType.Tsunami;
-                //StartCoroutine(DisasterCountDown(disasterType));
+                StartCoroutine(DisasterCountDown(disasterType));
                 break;
         }
+    }
+    IEnumerator DisasterCountDown(DisasterType type)
+    {
+        //chart naik (versi upgrade)
+        earlyStageOfDisasterEvent?.Invoke();
+        yield return new WaitForSeconds(beginning_Stage_of_Disaster);
+
+        //chart naik (versi normal)
+        secondStageOfDisasterEvent?.Invoke();
+        yield return new WaitForSeconds(second_Stage_of_Disaster);
+
+        //Predicted status muncul
+        finalStageOfDisasterEvent?.Invoke();
+        yield return new WaitForSeconds(third_Stage_of_Disaster);
+
+        //mainin animasi disaster
+        switch (disasterType)
+        {
+            case DisasterType.Volcano:
+                animator.SetTrigger("Volcano");
+                break;
+            case DisasterType.Tsunami:
+                animator.SetTrigger("Tsunami");
+                break;
+            case DisasterType.Earthquake:
+                animator.SetTrigger("Earthquake");
+                break;
+        }
+    }
+
+    public void DisasterHitVillage()
+    {
+        onDisasterHitOutpost?.Invoke();
+    }
+    public void EvacuateConclusionType(DisasterType x)
+    {
+        disasterChoosen = x;
+        Time.timeScale = 1; //Unpaused
     }
 
 }

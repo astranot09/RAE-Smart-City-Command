@@ -41,12 +41,12 @@ public class GasSensorSimulator : MonoBehaviour
 
     private void OnEnable()
     {
-        outpostManager.secondStageOfDisasterEvent += DisasterSecondAlarmTrigger;
+        outpostManager.DisasterManager.secondStageOfDisasterEvent += DisasterSecondAlarmTrigger;
         outpostManager.cycleStart += CloseAllAlarmDisaster;
     }
     private void OnDisable()
     {
-        outpostManager.secondStageOfDisasterEvent -= DisasterSecondAlarmTrigger;
+        outpostManager.DisasterManager.secondStageOfDisasterEvent -= DisasterSecondAlarmTrigger;
         outpostManager.cycleStart -= CloseAllAlarmDisaster;
     }
 
@@ -55,6 +55,12 @@ public class GasSensorSimulator : MonoBehaviour
         for (int i = 0; i < maxPoints; i++)
             values.Add(0f);
     }
+    
+    public void InitGasSensor()
+    {
+        graphLine.SetValues(values);
+    }
+
 
     void Update()
     {
@@ -143,7 +149,7 @@ public class GasSensorSimulator : MonoBehaviour
     }
     public void DisasterSecondAlarmTrigger()
     {
-        if(outpostManager.CurrentDisaster == DisasterType.Volcano)
+        if(outpostManager.DisasterManager.CurrentDisaster == DisasterType.Volcano)
             isAlerting = true;
     }
 
