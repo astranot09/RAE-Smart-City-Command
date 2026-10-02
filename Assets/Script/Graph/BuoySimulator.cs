@@ -3,7 +3,13 @@ using UnityEngine;
 
 public class BuoySimulator : MonoBehaviour
 {
-    public UIGraphLine graphLine;
+    [Header("BuoyA")]
+    [SerializeField] private UIGraphLine graphLineBuoyA;
+
+    [Header("Buoy B")]
+    [SerializeField] private UIGraphLine graphLineBuoyB;
+
+    [Header("Setting")]
     public int pointCount = 50;
     public float baseAmplitude = 1f;   // Gelombang kecil normal
     public float bumpAmplitude = 5f;   // Tinggi bump besar
@@ -11,13 +17,17 @@ public class BuoySimulator : MonoBehaviour
     public float scrollSpeed = 1.5f;
 
     [Header("Trigger & Transition")]
-    public bool isAlerting = false;
+    public bool isAlertingBuoyA = false;
+    public bool isAlertingBuoyB = false;
     public float alertAmplitude = 3f;
     public float transitionSpeed = 2f; // Kecepatan perubahan amplitude
 
-    private List<float> values = new List<float>();
-    private float bumpTimer = 0f;
-    private float bumpPosition = -10f; // Posisi bump di sepanjang x
+    private List<float> valuesBuoyA = new List<float>();
+    private List<float> valuesBuoyB = new List<float>();
+    private float bumpTimerBuoyA = 0f;
+    private float bumpPositionBuoyA = -10f; // Posisi bump di sepanjang x
+    private float bumpTimerBuoyB = 0f;
+    private float bumpPositionBuoyB = -10f; // Posisi bump di sepanjang x
 
     [Header("Reference")]
     [SerializeField] private OutpostManager outpostManager;
@@ -27,51 +37,101 @@ public class BuoySimulator : MonoBehaviour
 
     [Header("Upgrade")]
     [SerializeField] private int level = 0;
+    private bool buoyB_Unlocked = false;
 
     // Variabel untuk menyimpan amplitude saat ini
-    private float currentAmplitude;
+    private float currentAmplitudeBuoyA;
+    private float currentAmplitudeBuoyB;
+
+
+
+    private void OnEnable()
+    {
+        outpostManager.DisasterManager.earlyStageOfDisasterEvent += DisasterFirstAlarmTrigger;
+        outpostManager.DisasterManager.secondStageOfDisasterEvent += DisasterSecondAlarmTrigger;
+        outpostManager.DisasterManager.thirdStageOfDisasterEvent += DisasterThirdAlarmTrigger;
+        outpostManager.cycleStart += CloseAllAlarmDisaster;
+    }
+    private void OnDisable()
+    {
+        outpostManager.DisasterManager.earlyStageOfDisasterEvent -= DisasterFirstAlarmTrigger;
+        outpostManager.DisasterManager.secondStageOfDisasterEvent -= DisasterSecondAlarmTrigger;
+        outpostManager.DisasterManager.thirdStageOfDisasterEvent -= DisasterThirdAlarmTrigger;
+        outpostManager.cycleStart -= CloseAllAlarmDisaster;
+    }
+
+
+
+
+
+
+
 
     void Start()
     {
-        if (graphLine == null) return;
+        if (graphLineBuoyA == null || graphLineBuoyB) return;
 
         // Atur amplitude awal sesuai status isAlerting
-        currentAmplitude = isAlerting ? alertAmplitude : baseAmplitude;
+        currentAmplitudeBuoyA = isAlertingBuoyA ? alertAmplitude : baseAmplitude;
+        currentAmplitudeBuoyB = isAlertingBuoyB ? alertAmplitude : baseAmplitude;
+
         InitBuoy();
+    }
+
+    public void SetUp(UIGraphLine buoyA, UIGraphLine buoyB)
+    {
+        graphLineBuoyA = buoyA;
+        graphLineBuoyB = buoyB;
     }
 
     public void InitBuoy()
     {
-        values.Clear();
+        //valuesBuoyA.Clear();
+        //valuesBuoyB.Clear();
         float t = Time.time * scrollSpeed;
 
         for (int i = 0; i < pointCount; i++)
         {
             float x = i * 0.2f;
-            float baseWave = Mathf.Sin(x + t) * currentAmplitude;
-            values.Add(baseWave);
+            float baseWaveBuoyA = Mathf.Sin(x + t) * currentAmplitudeBuoyA;
+            float baseWaveBuoyB = Mathf.Sin(x + t) * currentAmplitudeBuoyB;
+            valuesBuoyA.Add(baseWaveBuoyA);
+            valuesBuoyB.Add(baseWaveBuoyB);
         }
 
-        graphLine.SetValues(values);
+        graphLineBuoyA.SetValues(valuesBuoyA);
+        if (graphLineBuoyB == null || !buoyB_Unlocked) return;
+        graphLineBuoyB.SetValues(valuesBuoyB);
     }
 
     void Update()
     {
         // 1. Tentukan target amplitude berdasarkan status isAlerting
-        float targetAmplitude = isAlerting ? alertAmplitude : baseAmplitude;
+        float targetAmplitudeBuoyA = isAlertingBuoyA ? alertAmplitude : baseAmplitude;
+        float targetAmplitudeBuoyB = isAlertingBuoyB ? alertAmplitude : baseAmplitude;
 
         // 2. Transisi mulus nilai currentAmplitude menuju targetAmplitude
-        currentAmplitude = Mathf.Lerp(currentAmplitude, targetAmplitude, Time.deltaTime * transitionSpeed);
+        currentAmplitudeBuoyA = Mathf.Lerp(currentAmplitudeBuoyA, targetAmplitudeBuoyA, Time.deltaTime * transitionSpeed);
+        currentAmplitudeBuoyB = Mathf.Lerp(currentAmplitudeBuoyB, targetAmplitudeBuoyB, Time.deltaTime * transitionSpeed);
 
-        values.Clear();
+        valuesBuoyA.Clear();
+        valuesBuoyB.Clear();
+
         float t = Time.time * scrollSpeed;
 
         // Trigger bump baru sesekali
-        bumpTimer -= Time.deltaTime;
-        if (bumpTimer <= 0f)
+        bumpTimerBuoyA -= Time.deltaTime;
+        bumpTimerBuoyB -= Time.deltaTime;
+        if (bumpTimerBuoyA <= 0f)
         {
-            bumpTimer = Random.Range(4f, 8f);
-            bumpPosition = 0f;
+            bumpTimerBuoyA = Random.Range(4f, 8f);
+            bumpPositionBuoyA = 0f;
+        }
+
+        if (bumpTimerBuoyB <= 0f)
+        {
+            bumpTimerBuoyB = Random.Range(4f, 8f);
+            bumpPositionBuoyA = 0f;
         }
 
         for (int i = 0; i < pointCount; i++)
@@ -79,16 +139,78 @@ public class BuoySimulator : MonoBehaviour
             float x = i * 0.2f;
 
             // Gunakan currentAmplitude yang sudah mengalami transisi Lerp
-            float baseWave = Mathf.Sin(x + t) * currentAmplitude;
+            float baseWaveBuoyA = Mathf.Sin(x + t) * currentAmplitudeBuoyA;
+            float baseWaveBuoyB = Mathf.Sin(x + t) * currentAmplitudeBuoyA;
+
 
             // Bump: gelombang gaussian
-            float dist = x - (bumpPosition + t);
-            float bump = bumpAmplitude * Mathf.Exp(-dist * dist * 0.5f);
+            float distA = x - (bumpPositionBuoyA + t);
+            float bumpA = bumpAmplitude * Mathf.Exp(-distA * distA * 0.5f);
 
-            values.Add(baseWave + bump);
+            // Bump: gelombang gaussian
+            float distB = x - (bumpPositionBuoyB + t);
+            float bumpB = bumpAmplitude * Mathf.Exp(-distB * distB * 0.5f);
+
+            valuesBuoyA.Add(baseWaveBuoyA + bumpA);
+            valuesBuoyB.Add(baseWaveBuoyB + bumpB);
         }
 
-        if (graphLine == null) return;
-        graphLine.SetValues(values);
+        if (graphLineBuoyA == null) return;
+        graphLineBuoyA.SetValues(valuesBuoyA);
+        if (graphLineBuoyB == null || !buoyB_Unlocked) return;
+        graphLineBuoyB.SetValues(valuesBuoyB);
+    }
+
+
+    public void DisasterFirstAlarmTrigger()
+    {
+        if(level >= 2)
+        {
+            isAlertingBuoyB = true;
+        }
+        if(level >= 3)
+        {
+            isAlertingBuoyA = true;
+        }
+
+    }
+    public void DisasterSecondAlarmTrigger()
+    {
+        if (level >= 2 || !isAlertingBuoyA)
+        {
+            isAlertingBuoyA = true;
+        }
+    }
+    public void DisasterThirdAlarmTrigger()
+    {
+        if (level >= 1 || !isAlertingBuoyA)
+        {
+            isAlertingBuoyA = true;
+        }
+    }
+    public void DisasterFinalAlarmTrigger()
+    {
+        Debug.Log("Final");
+    }
+
+    public void CloseAllAlarmDisaster()
+    {
+        isAlertingBuoyA = false;
+        isAlertingBuoyB = false;
+    }
+    public void ResetUIBuoyGraph()
+    {
+        graphLineBuoyA = null;
+        graphLineBuoyB = null;
+    }
+    public void Upgrade()
+    {
+        level++;
+        switch (level)
+        {
+            case 2:
+                buoyB_Unlocked = true;
+                break;
+        }
     }
 }

@@ -32,12 +32,12 @@ public class SeismographSimulator : MonoBehaviour
 
     private void OnEnable()
     {
-        outpostManager.DisasterManager.secondStageOfDisasterEvent += DisasterdFirstAlarmTrigger;
+        outpostManager.DisasterManager.thirdStageOfDisasterEvent += DisasterdFirstAlarmTrigger;
         outpostManager.cycleStart += CloseAllAlarmDisaster;
     }
     private void OnDisable()
     {
-        outpostManager.DisasterManager.secondStageOfDisasterEvent -= DisasterdFirstAlarmTrigger;
+        outpostManager.DisasterManager.thirdStageOfDisasterEvent -= DisasterdFirstAlarmTrigger;
         outpostManager.cycleStart -= CloseAllAlarmDisaster;
     }
 

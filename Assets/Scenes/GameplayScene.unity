@@ -460,7 +460,6 @@ Transform:
   - {fileID: 1093587776}
   - {fileID: 2066748670}
   - {fileID: 1229337249}
-  - {fileID: 2008461645}
   - {fileID: 256289865}
   m_Father: {fileID: 138020434}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -479,8 +478,7 @@ MonoBehaviour:
   outpostManager: {fileID: 138020435}
   seismographSimulator: {fileID: 1093587777}
   gasSensorSimulator: {fileID: 2066748671}
-  buoySimulatorA: {fileID: 1229337250}
-  buoySimulatorB: {fileID: 2008461646}
+  buoySimulator: {fileID: 1229337250}
 --- !u!1001 &77965113
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2337,12 +2335,132 @@ MonoBehaviour:
   level_Type3: 0
   maxLevel_Type3: 4
   upgrade_Type3:
-  - price: 10
+  - price: 1
     icon: {fileID: 0}
     upgradeName: 
     upgradeEvents:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 1413780331}
+          m_TargetAssemblyTypeName: BuoySimulator, Assembly-CSharp
+          m_MethodName: Upgrade
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1229337250}
+          m_TargetAssemblyTypeName: BuoySimulator, Assembly-CSharp
+          m_MethodName: Upgrade
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1758840188}
+          m_TargetAssemblyTypeName: BuoySimulator, Assembly-CSharp
+          m_MethodName: Upgrade
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - price: 1
+    icon: {fileID: 0}
+    upgradeName: 
+    upgradeEvents:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1413780331}
+          m_TargetAssemblyTypeName: BuoySimulator, Assembly-CSharp
+          m_MethodName: Upgrade
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1229337250}
+          m_TargetAssemblyTypeName: BuoySimulator, Assembly-CSharp
+          m_MethodName: Upgrade
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1758840188}
+          m_TargetAssemblyTypeName: BuoySimulator, Assembly-CSharp
+          m_MethodName: Upgrade
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - price: 1
+    icon: {fileID: 0}
+    upgradeName: 
+    upgradeEvents:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1413780331}
+          m_TargetAssemblyTypeName: BuoySimulator, Assembly-CSharp
+          m_MethodName: Upgrade
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1229337250}
+          m_TargetAssemblyTypeName: BuoySimulator, Assembly-CSharp
+          m_MethodName: Upgrade
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1758840188}
+          m_TargetAssemblyTypeName: BuoySimulator, Assembly-CSharp
+          m_MethodName: Upgrade
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   iconUpgradeImage_Type4: {fileID: 1338201470}
   upgradeName_Type4: {fileID: 2098063677}
   orbUpgradeSpawner_Type4: {fileID: 1918058049}
@@ -3164,63 +3282,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 374376491}
   m_CullTransparentMesh: 1
---- !u!1 &382481385
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 382481386}
-  - component: {fileID: 382481387}
-  m_Layer: 0
-  m_Name: BuoyB
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &382481386
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 382481385}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1180712456}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &382481387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 382481385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03e79126e2781164ca587a69eb8d3a38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BuoySimulator
-  graphLine: {fileID: 0}
-  pointCount: 50
-  baseAmplitude: 0.25
-  bumpAmplitude: 5
-  frequency: 1
-  scrollSpeed: 1.5
-  isAlerting: 0
-  alertAmplitude: 1
-  transitionSpeed: 1
-  outpostManager: {fileID: 2093833826}
-  disasterManager: {fileID: 0}
-  graphManager: {fileID: 0}
-  level: 0
 --- !u!1 &411649909
 GameObject:
   m_ObjectHideFlags: 0
@@ -4646,63 +4707,6 @@ Transform:
   - {fileID: 1553154}
   m_Father: {fileID: 138020434}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &605927766
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 605927767}
-  - component: {fileID: 605927768}
-  m_Layer: 0
-  m_Name: BuoyB
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &605927767
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 605927766}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1021564325}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &605927768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 605927766}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03e79126e2781164ca587a69eb8d3a38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BuoySimulator
-  graphLine: {fileID: 0}
-  pointCount: 50
-  baseAmplitude: 0.25
-  bumpAmplitude: 5
-  frequency: 1
-  scrollSpeed: 1.5
-  isAlerting: 0
-  alertAmplitude: 1
-  transitionSpeed: 1
-  outpostManager: {fileID: 1843994380}
-  disasterManager: {fileID: 0}
-  graphManager: {fileID: 0}
-  level: 0
 --- !u!1 &608530039
 GameObject:
   m_ObjectHideFlags: 0
@@ -7421,7 +7425,6 @@ Transform:
   - {fileID: 2031213765}
   - {fileID: 1990734513}
   - {fileID: 1413780330}
-  - {fileID: 605927767}
   - {fileID: 608530040}
   m_Father: {fileID: 1843994379}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7440,8 +7443,7 @@ MonoBehaviour:
   outpostManager: {fileID: 1843994380}
   seismographSimulator: {fileID: 2031213766}
   gasSensorSimulator: {fileID: 1990734514}
-  buoySimulatorA: {fileID: 1413780331}
-  buoySimulatorB: {fileID: 605927768}
+  buoySimulator: {fileID: 1413780331}
 --- !u!1 &1025388383
 GameObject:
   m_ObjectHideFlags: 0
@@ -8264,7 +8266,6 @@ Transform:
   - {fileID: 834932910}
   - {fileID: 886899503}
   - {fileID: 1758840187}
-  - {fileID: 382481386}
   - {fileID: 554991890}
   m_Father: {fileID: 2093833825}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8283,8 +8284,7 @@ MonoBehaviour:
   outpostManager: {fileID: 2093833826}
   seismographSimulator: {fileID: 834932911}
   gasSensorSimulator: {fileID: 886899504}
-  buoySimulatorA: {fileID: 1758840188}
-  buoySimulatorB: {fileID: 382481387}
+  buoySimulator: {fileID: 1758840188}
 --- !u!1 &1194721446
 GameObject:
   m_ObjectHideFlags: 0
@@ -8576,18 +8576,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03e79126e2781164ca587a69eb8d3a38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BuoySimulator
-  graphLine: {fileID: 0}
+  graphLineBuoyA: {fileID: 0}
+  graphLineBuoyB: {fileID: 0}
   pointCount: 50
   baseAmplitude: 0.25
   bumpAmplitude: 5
   frequency: 1
   scrollSpeed: 1.5
-  isAlerting: 0
+  isAlertingBuoyA: 0
+  isAlertingBuoyB: 0
   alertAmplitude: 1
   transitionSpeed: 1
   outpostManager: {fileID: 138020435}
-  disasterManager: {fileID: 0}
-  graphManager: {fileID: 0}
+  disasterManager: {fileID: 753796931}
+  graphManager: {fileID: 63977097}
   level: 0
 --- !u!1 &1231574874
 GameObject:
@@ -9509,18 +9511,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03e79126e2781164ca587a69eb8d3a38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BuoySimulator
-  graphLine: {fileID: 0}
+  graphLineBuoyA: {fileID: 0}
+  graphLineBuoyB: {fileID: 0}
   pointCount: 50
   baseAmplitude: 0.25
   bumpAmplitude: 5
   frequency: 1
   scrollSpeed: 1.5
-  isAlerting: 0
+  isAlertingBuoyA: 0
+  isAlertingBuoyB: 0
   alertAmplitude: 1
   transitionSpeed: 1
   outpostManager: {fileID: 1843994380}
-  disasterManager: {fileID: 0}
-  graphManager: {fileID: 0}
+  disasterManager: {fileID: 1829992215}
+  graphManager: {fileID: 1021564326}
   level: 0
 --- !u!1 &1432291549
 GameObject:
@@ -11709,18 +11713,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03e79126e2781164ca587a69eb8d3a38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BuoySimulator
-  graphLine: {fileID: 0}
+  graphLineBuoyA: {fileID: 0}
+  graphLineBuoyB: {fileID: 0}
   pointCount: 50
   baseAmplitude: 0.25
   bumpAmplitude: 5
   frequency: 1
   scrollSpeed: 1.5
-  isAlerting: 0
+  isAlertingBuoyA: 0
+  isAlertingBuoyB: 0
   alertAmplitude: 1
   transitionSpeed: 1
   outpostManager: {fileID: 2093833826}
-  disasterManager: {fileID: 0}
-  graphManager: {fileID: 0}
+  disasterManager: {fileID: 481836456}
+  graphManager: {fileID: 1180712457}
   level: 0
 --- !u!1 &1770014037
 GameObject:
@@ -14415,63 +14421,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2005704984}
   m_CullTransparentMesh: 1
---- !u!1 &2008461644
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2008461645}
-  - component: {fileID: 2008461646}
-  m_Layer: 0
-  m_Name: BuoyB
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2008461645
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2008461644}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 63977096}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2008461646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2008461644}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03e79126e2781164ca587a69eb8d3a38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BuoySimulator
-  graphLine: {fileID: 0}
-  pointCount: 50
-  baseAmplitude: 0.25
-  bumpAmplitude: 5
-  frequency: 1
-  scrollSpeed: 1.5
-  isAlerting: 0
-  alertAmplitude: 1
-  transitionSpeed: 1
-  outpostManager: {fileID: 138020435}
-  disasterManager: {fileID: 0}
-  graphManager: {fileID: 0}
-  level: 0
 --- !u!1 &2008604783
 GameObject:
   m_ObjectHideFlags: 0

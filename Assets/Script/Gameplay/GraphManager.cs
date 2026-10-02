@@ -9,8 +9,7 @@ public class GraphManager : MonoBehaviour
     [Header("Disaster Script")]
     [SerializeField] private SeismographSimulator seismographSimulator;
     [SerializeField] private GasSensorSimulator gasSensorSimulator;
-    [SerializeField] private BuoySimulator buoySimulatorA;
-    [SerializeField] private BuoySimulator buoySimulatorB;
+    [SerializeField] private BuoySimulator buoySimulator;
     //[SerializeField] private TideGaugeSimulator tideGaugeSimulator
 
 
@@ -21,20 +20,18 @@ public class GraphManager : MonoBehaviour
             Debug.Log("Outpost belum unlock");
             return;
         }
-        if (seismographSimulator == null || gasSensorSimulator == null || buoySimulatorA == null || buoySimulatorB == null)
+        if (seismographSimulator == null || gasSensorSimulator == null)
         {
             Debug.Log("Graph kureng lengkap");
             return;
         }
         seismographSimulator.graphLine = seis;
         gasSensorSimulator.graphLine = gasSensor;
-        buoySimulatorA.graphLine = buoyA;
-        buoySimulatorB.graphLine = buoyB;
+        buoySimulator.SetUp(buoyA, buoyB);
 
         seismographSimulator.InitSeimograph();
         gasSensorSimulator.InitGasSensor();
-        buoySimulatorB.InitBuoy();
-        buoySimulatorB.InitBuoy();
+        buoySimulator.InitBuoy();
 
         Debug.Log("SetUpGraph");
     }
@@ -43,7 +40,6 @@ public class GraphManager : MonoBehaviour
     {
         seismographSimulator.graphLine = null;
         gasSensorSimulator.graphLine = null;
-        buoySimulatorA.graphLine = null;
-        buoySimulatorB.graphLine = null;
+        buoySimulator.ResetUIBuoyGraph();
     }
 }

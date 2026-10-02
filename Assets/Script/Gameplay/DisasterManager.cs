@@ -30,6 +30,7 @@ public class DisasterManager : MonoBehaviour
 
     public event Action earlyStageOfDisasterEvent;
     public event Action secondStageOfDisasterEvent;
+    public event Action thirdStageOfDisasterEvent;
     public event Action finalStageOfDisasterEvent;
 
     public event Action onDisasterHitOutpost;
@@ -95,10 +96,14 @@ public class DisasterManager : MonoBehaviour
     {
         //chart naik (versi upgrade)
         earlyStageOfDisasterEvent?.Invoke();
-        yield return new WaitForSeconds(beginning_Stage_of_Disaster);
+        yield return new WaitForSeconds(beginning_Stage_of_Disaster/2);
+
+        //chart naik (versi upgrade)
+        secondStageOfDisasterEvent?.Invoke();
+        yield return new WaitForSeconds(beginning_Stage_of_Disaster/2);
 
         //chart naik (versi normal)
-        secondStageOfDisasterEvent?.Invoke();
+        thirdStageOfDisasterEvent?.Invoke();
         yield return new WaitForSeconds(second_Stage_of_Disaster);
 
         //Predicted status muncul

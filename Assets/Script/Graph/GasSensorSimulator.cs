@@ -41,12 +41,12 @@ public class GasSensorSimulator : MonoBehaviour
 
     private void OnEnable()
     {
-        outpostManager.DisasterManager.secondStageOfDisasterEvent += DisasterSecondAlarmTrigger;
+        outpostManager.DisasterManager.thirdStageOfDisasterEvent += DisasterSecondAlarmTrigger;
         outpostManager.cycleStart += CloseAllAlarmDisaster;
     }
     private void OnDisable()
     {
-        outpostManager.DisasterManager.secondStageOfDisasterEvent -= DisasterSecondAlarmTrigger;
+        outpostManager.DisasterManager.thirdStageOfDisasterEvent -= DisasterSecondAlarmTrigger;
         outpostManager.cycleStart -= CloseAllAlarmDisaster;
     }
 
