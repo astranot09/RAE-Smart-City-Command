@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "InputSystem_Actions",
     "maps": [
         {
@@ -479,6 +480,15 @@
             "name": "UI",
             "id": "272f6d14-89ba-496f-b7ff-215263d3219f",
             "actions": [
+                {
+                    "name": "Paused",
+                    "type": "Button",
+                    "id": "80e6ad5a-ff27-48ac-8913-f3d4642b3369",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
                 {
                     "name": "Navigate",
                     "type": "PassThrough",
@@ -986,6 +996,56 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "TrackedDeviceOrientation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "be96d5b7-f7a9-4586-89dd-ac45b51d9979",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Paused",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Cutscene",
+            "id": "1247148d-d195-4af3-852a-21079146b31b",
+            "actions": [
+                {
+                    "name": "NextCutscene",
+                    "type": "Button",
+                    "id": "1587c1cd-4eca-467f-be68-68c5cb4a2e47",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "28e50be8-8db2-46ec-8447-766e248edc5d",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NextCutscene",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e197a435-2d6e-4bd0-9510-05ea8e33079c",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NextCutscene",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

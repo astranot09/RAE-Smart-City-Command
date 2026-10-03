@@ -132,7 +132,6 @@ public class DisasterManager : MonoBehaviour
     public void EvacuateConclusionType(DisasterType x)
     {
         disasterChoosen = x;
-        Time.timeScale = 1; //Unpaused
     }
 
 }

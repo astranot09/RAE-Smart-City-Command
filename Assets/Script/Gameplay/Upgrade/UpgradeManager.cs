@@ -262,7 +262,6 @@ public class UpgradeManager : MonoBehaviour
     public void ClosePanel()
     {
         UIManager.instance.ClosePanel(upgradePanel);
-        Time.timeScale = 1;
     }
 
 }

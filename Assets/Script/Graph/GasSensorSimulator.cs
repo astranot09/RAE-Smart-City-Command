@@ -10,6 +10,8 @@ public class GasSensorSimulator : MonoBehaviour
     public float flatNoise = 0.1f;
     public float riseSpeed = 0.05f;
     public float maxValue = 8f;
+    [SerializeField] private float intervalSpeed = 0.001f;
+    private float intervalTimer = 0f;
 
     [Header("Trigger (controlled by external script)")]
     public bool isAlerting = false; // HANYA dibaca, diubah dari luar
@@ -64,6 +66,11 @@ public class GasSensorSimulator : MonoBehaviour
 
     void Update()
     {
+
+        intervalTimer += Time.deltaTime;
+        if (intervalTimer < intervalSpeed) return;
+        intervalTimer = 0f;
+
         HandleFalseAlarmRoll();
 
         float newValue = ProcessLevel();

@@ -165,7 +165,6 @@ public class OutpostManager : MonoBehaviour
 
         }
         EvacuateManager.instance.SetUpEvacuate();
-        Time.timeScale = 0; //Dipause
     }
 
 

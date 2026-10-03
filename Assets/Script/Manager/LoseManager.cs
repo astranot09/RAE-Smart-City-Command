@@ -22,12 +22,14 @@ public class LoseManager : MonoBehaviour
     public void LoseSetUp(OutpostManager outpostManager)
     {
         UIManager.instance.OpenPanel(losePanel);
+        UIManager.instance.CanOpenPanel(false);
         outpostLose.text = $"This {outpostLose.gameObject.name} reached population to 0";
         dayLose.text = $"Alive : {DayReportManager.instance.DayCurrent.ToString()} days";
     }
 
     public void LoseConfirm(OutpostManager outpostManager)
     {
+        UIManager.instance.CanOpenPanel(true);
         SceneController.instance.LoadSceneByName("MainMenu");
     }
 }

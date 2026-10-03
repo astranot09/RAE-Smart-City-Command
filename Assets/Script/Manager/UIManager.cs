@@ -27,6 +27,7 @@ public class UIManager : MonoBehaviour
         }
 
         panel.SetActive(true);
+        CheckGamePaused();
     }
 
     public void ClosePanel(GameObject panel)
@@ -35,6 +36,7 @@ public class UIManager : MonoBehaviour
 
         panel.SetActive(false);
         openPanels.Remove(panel);
+        CheckGamePaused();
     }
 
     /// <summary>
@@ -49,6 +51,7 @@ public class UIManager : MonoBehaviour
 
         topPanel.SetActive(false);
         openPanels.RemoveAt(lastIndex);
+        CheckGamePaused();
     }
 
 
@@ -60,6 +63,7 @@ public class UIManager : MonoBehaviour
         {
             OpenPanel(newPanel);
         }
+        CheckGamePaused();
     }
 
     public void CloseAllPanels()
@@ -73,10 +77,23 @@ public class UIManager : MonoBehaviour
         }
 
         openPanels.Clear();
+        CheckGamePaused();
     }
 
     public void CanOpenPanel(bool x)
     {
         canOpenPanel = x;
+    }
+
+    public void CheckGamePaused()
+    {
+        if (openPanels.Count > 0)
+        {
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
     }
 }
