@@ -3719,6 +3719,7 @@ GameObject:
   - component: {fileID: 501458764}
   - component: {fileID: 501458763}
   - component: {fileID: 501458762}
+  - component: {fileID: 501458765}
   m_Layer: 5
   m_Name: VolcanoEruptionButton
   m_TagString: Untagged
@@ -3840,6 +3841,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 501458760}
   m_CullTransparentMesh: 1
+--- !u!114 &501458765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501458760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a89ca5451e43284bb8e4dca970e3b98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DotweenAnimationCollections
+  targetScaleValue: 1.1
+  durationAnimation: 0.2
+  targetRotateValue: 15
+  animationType: 1
+  onHover: 1
+  onLoop: 0
 --- !u!1 &519541976
 GameObject:
   m_ObjectHideFlags: 0
@@ -8586,7 +8605,7 @@ MonoBehaviour:
   isAlertingBuoyA: 0
   isAlertingBuoyB: 0
   alertAmplitude: 1
-  transitionSpeed: 1
+  transitionSpeed: 0.4
   outpostManager: {fileID: 138020435}
   disasterManager: {fileID: 753796931}
   graphManager: {fileID: 63977097}
@@ -9521,7 +9540,7 @@ MonoBehaviour:
   isAlertingBuoyA: 0
   isAlertingBuoyB: 0
   alertAmplitude: 1
-  transitionSpeed: 1
+  transitionSpeed: 0.4
   outpostManager: {fileID: 1843994380}
   disasterManager: {fileID: 1829992215}
   graphManager: {fileID: 1021564326}
@@ -10790,6 +10809,7 @@ GameObject:
   - component: {fileID: 1597941628}
   - component: {fileID: 1597941627}
   - component: {fileID: 1597941626}
+  - component: {fileID: 1597941629}
   m_Layer: 5
   m_Name: EartquakeButton
   m_TagString: Untagged
@@ -10911,6 +10931,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1597941624}
   m_CullTransparentMesh: 1
+--- !u!114 &1597941629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1597941624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a89ca5451e43284bb8e4dca970e3b98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DotweenAnimationCollections
+  targetScaleValue: 1.1
+  durationAnimation: 0.2
+  targetRotateValue: 15
+  animationType: 1
+  onHover: 1
+  onLoop: 0
 --- !u!1 &1601368643
 GameObject:
   m_ObjectHideFlags: 0
@@ -11096,6 +11134,7 @@ GameObject:
   - component: {fileID: 1636624985}
   - component: {fileID: 1636624984}
   - component: {fileID: 1636624983}
+  - component: {fileID: 1636624986}
   m_Layer: 5
   m_Name: TsunamiButton
   m_TagString: Untagged
@@ -11217,6 +11256,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1636624981}
   m_CullTransparentMesh: 1
+--- !u!114 &1636624986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1636624981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a89ca5451e43284bb8e4dca970e3b98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DotweenAnimationCollections
+  targetScaleValue: 1.1
+  durationAnimation: 0.2
+  targetRotateValue: 15
+  animationType: 1
+  onHover: 1
+  onLoop: 0
 --- !u!1 &1643548343
 GameObject:
   m_ObjectHideFlags: 0
@@ -11723,7 +11780,7 @@ MonoBehaviour:
   isAlertingBuoyA: 0
   isAlertingBuoyB: 0
   alertAmplitude: 1
-  transitionSpeed: 1
+  transitionSpeed: 0.4
   outpostManager: {fileID: 2093833826}
   disasterManager: {fileID: 481836456}
   graphManager: {fileID: 1180712457}

@@ -48,12 +48,14 @@ public class VCamManager : MonoBehaviour
     {
         int allCamera = cinemachineCameras.Count;
 
-        if (index >= allCamera - 1)
-        {
-            return;
-        }
-        
+
         index++;
+
+        if (index > allCamera - 1)
+        {
+            index = 0;
+        }
+
 
         for (int i = 0; i < allCamera; i++)
         {
@@ -72,12 +74,12 @@ public class VCamManager : MonoBehaviour
     {
         int allCamera = cinemachineCameras.Count;
 
-        if (index <= 0)
-        {
-            return;
-        }
-
         index--;
+
+        if (index < 0)
+        {
+            index = allCamera - 1;
+        }
 
         for (int i = 0; i < allCamera; i++)
         {
