@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerInputController : MonoBehaviour
 {
     [SerializeField] private CutsceneManager cutsceneManager;
+    [SerializeField] private DialogueUI dialogueUI;
     [SerializeField] private PausedManager pausedManager;
     public void OnPlayerClick(InputAction.CallbackContext ctx)
     {
@@ -12,6 +13,10 @@ public class PlayerInputController : MonoBehaviour
             if(cutsceneManager != null)
             {
                 cutsceneManager.OnNextCutscene();
+            }
+            if(dialogueUI != null)
+            {
+                dialogueUI.OnDialogueClick();
             }
             
         }
