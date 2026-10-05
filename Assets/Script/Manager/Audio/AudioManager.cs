@@ -19,10 +19,19 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource sfxSource;
 
     [Header("BGM")]
-    [SerializeField] private AudioClip bgm;
+    public AudioClip storyBGM;
+    public AudioClip mainMenuBGM;
+    public AudioClip gameplayBGM;
+    public AudioClip lostBGM;
 
     [Header("SFX")]
-    public AudioClip sfx;
+    public AudioClip alarm;
+    public AudioClip earthquacke;
+    public AudioClip tsunami;
+    public AudioClip buttonClick;
+    public AudioClip switchTV;
+    public AudioClip upgrade;
+    public AudioClip volcanoEruption;
 
     public void PlayBGM(AudioClip clip)
     {

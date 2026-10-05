@@ -10,6 +10,8 @@ public class MainMenuManager : MonoBehaviour
 
     public void StartGame()
     {
+        AudioManager.instance.PlayBGM(AudioManager.instance.mainMenuBGM);
+        AudioManager.instance.PlaySFX(AudioManager.instance.buttonClick);
         if (SceneController.instance != null)
         {
             SceneController.instance.LoadSceneByIndexPlus();
@@ -18,7 +20,8 @@ public class MainMenuManager : MonoBehaviour
 
     public void SettingPanel()
     {
-        if(UIManager.instance != null)
+        AudioManager.instance.PlaySFX(AudioManager.instance.buttonClick);
+        if (UIManager.instance != null)
         {
             if (settingPanel.activeSelf)
             {
@@ -33,6 +36,7 @@ public class MainMenuManager : MonoBehaviour
     }
     public void CreditPanel()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.buttonClick);
         if (UIManager.instance != null)
         {
             if (creditPanel.activeSelf)
@@ -48,6 +52,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void ExitGame()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.buttonClick);
         Application.Quit();
     }
 

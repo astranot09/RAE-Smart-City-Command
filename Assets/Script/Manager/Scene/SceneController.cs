@@ -49,7 +49,7 @@ public class SceneController : MonoBehaviour
             transition.SetTrigger("Start");
         }
 
-        yield return new WaitForSeconds(transitionTime);
+        yield return new WaitForSecondsRealtime(transitionTime);
 
         SceneManager.LoadScene(sceneName);
     }
@@ -66,7 +66,7 @@ public class SceneController : MonoBehaviour
             transition.SetTrigger("Start");
         }
 
-        yield return new WaitForSeconds(transitionTime);
+        yield return new WaitForSecondsRealtime(transitionTime);
 
         SceneManager.LoadScene(sceneIndex);
     }

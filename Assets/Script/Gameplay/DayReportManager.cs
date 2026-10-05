@@ -54,6 +54,7 @@ public class DayReportManager : MonoBehaviour
     public void Confirm()
     {
         outpostManager.StartCycle();
+        AudioManager.instance.PlaySFX(AudioManager.instance.buttonClick);
         UIManager.instance.ClosePanel(dayReportPanel);
         UpgradeManager.instance.UpgradeSetUp();
         dayCurrent++;

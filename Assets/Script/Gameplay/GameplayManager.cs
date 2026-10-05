@@ -50,7 +50,10 @@ public class GameplayManager : MonoBehaviour
             manager.cycleStart -= OutPostPopulationSetUp;
         }
     }
-
+    private void Start()
+    {
+        AudioManager.instance.PlayBGM(AudioManager.instance.gameplayBGM);
+    }
     public void OutPostGraphSetUp()
     {
         seismographGraphLine.ClearGraph();

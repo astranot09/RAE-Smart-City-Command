@@ -68,6 +68,7 @@ public class VCamManager : MonoBehaviour
                 cinemachineCameras[i].Priority = 1;
             }
         }
+        PlayAudioChangeCamera();
         onCameraChange?.Invoke();
     }
     public void ChangeToPreviousCamera()
@@ -92,7 +93,14 @@ public class VCamManager : MonoBehaviour
                 cinemachineCameras[i].Priority = 1;
             }
         }
+        PlayAudioChangeCamera();
         onCameraChange?.Invoke();
+    }
+
+    public void PlayAudioChangeCamera()
+    {
+        if(AudioManager.instance != null)
+            AudioManager.instance.PlaySFX(AudioManager.instance.switchTV);
     }
 
 }

@@ -23,6 +23,7 @@ public class EvacuateManager : MonoBehaviour
 
     public void SetUpEvacuate()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.buttonClick);
         UIManager.instance.OpenPanel(disasterChoosePanel);
     }
 
@@ -49,6 +50,7 @@ public class EvacuateManager : MonoBehaviour
 
     private void CloseEvactuate()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.buttonClick);
         UIManager.instance.ClosePanel(disasterChoosePanel);
     }
 }

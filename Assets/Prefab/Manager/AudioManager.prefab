@@ -306,5 +306,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   bgmSource: {fileID: 9174719435179625406}
   sfxSource: {fileID: 6802263019355998705}
-  bgm: {fileID: 0}
-  sfx: {fileID: 0}
+  storyBGM: {fileID: 8300000, guid: f22b4be9ba6afb84b8c4a7be4f0e2938, type: 3}
+  mainMenuBGM: {fileID: 8300000, guid: 5d0da086dba4a664ea8849fe28266ae0, type: 3}
+  gameplayBGM: {fileID: 8300000, guid: 2fe42d056cd8b4540969c83e70832cc0, type: 3}
+  lostBGM: {fileID: 8300000, guid: 6414de0984c57fe4aa02250d652fd240, type: 3}
+  alarm: {fileID: 8300000, guid: 4a97b4f198e32f4489eba22870044ae4, type: 3}
+  earthquacke: {fileID: 8300000, guid: 3cd9d700399c46b488fcba3d150d7f15, type: 3}
+  tsunami: {fileID: 8300000, guid: e303b1120ea206a4eb0f45fcb0d3e4bf, type: 3}
+  buttonClick: {fileID: 8300000, guid: 9a5a8c817efe0a74da520f8660a5dd30, type: 3}
+  switchTV: {fileID: 8300000, guid: f1a111831ba1c18458677c068927dc38, type: 3}
+  upgrade: {fileID: 8300000, guid: d200a3237188a274f96d6c43ad98f60b, type: 3}
+  volcanoEruption: {fileID: 8300000, guid: 1c6c6647485aa364a98d47252ae05e10, type: 3}

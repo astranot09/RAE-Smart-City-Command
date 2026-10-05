@@ -91,6 +91,7 @@ public class UpgradeManager : MonoBehaviour
 
     public void UpgradeType1()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.buttonClick);
         if (level_Type1 >= maxLevel_Type1)
         {
             Debug.Log("Udah Max Level Type 1");
@@ -107,6 +108,7 @@ public class UpgradeManager : MonoBehaviour
 
             level_Type1++;
             UpdateUpgradeUI();
+            AudioManager.instance.PlaySFX(AudioManager.instance.upgrade);
         }
         else
         {
@@ -116,6 +118,7 @@ public class UpgradeManager : MonoBehaviour
 
     public void UpgradeType2()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.buttonClick);
         if (level_Type2 >= maxLevel_Type2)
         {
             Debug.Log("Udah Max Level Type 2");
@@ -132,6 +135,7 @@ public class UpgradeManager : MonoBehaviour
 
             level_Type2++;
             UpdateUpgradeUI();
+            AudioManager.instance.PlaySFX(AudioManager.instance.upgrade);
         }
         else
         {
@@ -141,6 +145,7 @@ public class UpgradeManager : MonoBehaviour
 
     public void UpgradeType3()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.buttonClick);
         if (level_Type3 >= maxLevel_Type3)
         {
             Debug.Log("Udah Max Level Type 3");
@@ -157,6 +162,7 @@ public class UpgradeManager : MonoBehaviour
 
             level_Type3++;
             UpdateUpgradeUI();
+            AudioManager.instance.PlaySFX(AudioManager.instance.upgrade);
         }
         else
         {
@@ -166,6 +172,7 @@ public class UpgradeManager : MonoBehaviour
 
     public void UpgradeType4()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.buttonClick);
         if (level_Type4 >= maxLevel_Type4)
         {
             Debug.Log("Udah Max Level Type 4");
@@ -182,6 +189,7 @@ public class UpgradeManager : MonoBehaviour
 
             level_Type4++;
             UpdateUpgradeUI();
+            AudioManager.instance.PlaySFX(AudioManager.instance.upgrade);
         }
         else
         {

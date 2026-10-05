@@ -22,6 +22,7 @@ public class CutsceneManager : MonoBehaviour
 
     private void Start()
     {
+        AudioManager.instance.PlayBGM(AudioManager.instance.storyBGM);
         InitializeComic();
     }
 
