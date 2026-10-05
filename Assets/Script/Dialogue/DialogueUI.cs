@@ -129,8 +129,15 @@ public class DialogueUI : MonoBehaviour
         speakerName1.text = string.Empty;
         speakerName2.text = string.Empty;
         textLabel.text = string.Empty;
-        speakerImage1.sprite = null;
-        speakerImage2.sprite = null;
+
+        if(speakerImage1 != null)
+        {
+            speakerImage1.sprite = null;
+        }
+        if (speakerImage2 != null)
+        {
+            speakerImage2.sprite = null;
+        }
     }
 
     private void SetUpDialogueUI_OnStart()
@@ -140,7 +147,7 @@ public class DialogueUI : MonoBehaviour
         {
             speakerName1.text = dialogueData.speakerName1_Start;
             Sprite spriteSpeaker1 = DialogueManager.instance.GetSpeakerSprite(dialogueData.speakerName1_Start);
-            if (spriteSpeaker1 != null)
+            if (spriteSpeaker1 != null && speakerImage1 != null)
             {
                 speakerImage1.sprite = spriteSpeaker1;
             }
@@ -149,7 +156,7 @@ public class DialogueUI : MonoBehaviour
         {
             speakerName2.text = dialogueData.speakerName2_Start;
             Sprite spriteSpeaker2 = DialogueManager.instance.GetSpeakerSprite(dialogueData.speakerName2_Start);
-            if (spriteSpeaker2 != null)
+            if (spriteSpeaker2 != null && speakerImage2 != null)
             {
                 speakerImage2.sprite = spriteSpeaker2;
             }

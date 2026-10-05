@@ -10,7 +10,7 @@ public class Dialogue
 }
 
 [CreateAssetMenu(fileName = "DialogueSO", menuName = "Scriptable Objects/DialogueSO")]
-public class DialogueSO : MonoBehaviour
+public class DialogueSO : ScriptableObject
 {
     public string speakerName1_Start;
     public string speakerName2_Start;
