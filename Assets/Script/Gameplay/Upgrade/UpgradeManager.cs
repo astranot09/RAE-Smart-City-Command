@@ -176,7 +176,7 @@ public class UpgradeManager : MonoBehaviour
         {
             CurrencyManager.instance.ChangeCurrency(-upgrade_Type4[level_Type4].price);
 
-            upgrade_Type3[level_Type4].upgradeEvents?.Invoke();
+            upgrade_Type4[level_Type4].upgradeEvents?.Invoke();
 
             Instantiate(orbUpgradePrefab, orbUpgradeSpawner_Type4);
 

@@ -10,7 +10,7 @@ public class GraphManager : MonoBehaviour
     [SerializeField] private SeismographSimulator seismographSimulator;
     [SerializeField] private GasSensorSimulator gasSensorSimulator;
     [SerializeField] private BuoySimulator buoySimulator;
-    //[SerializeField] private TideGaugeSimulator tideGaugeSimulator
+    [SerializeField] private TideGaugeSimulator tideGaugeSimulator;
 
 
     public void OutpostDisasterGraphSetUp(UIGraphLine seis, UIGraphLine gasSensor, UIGraphLine buoyA, UIGraphLine buoyB, TMP_Text tideGauge)
@@ -28,6 +28,7 @@ public class GraphManager : MonoBehaviour
         seismographSimulator.graphLine = seis;
         gasSensorSimulator.graphLine = gasSensor;
         buoySimulator.SetUp(buoyA, buoyB);
+        tideGaugeSimulator.TideGaugeSetUp(tideGauge);
 
         seismographSimulator.InitSeimograph();
         gasSensorSimulator.InitGasSensor();
@@ -41,5 +42,6 @@ public class GraphManager : MonoBehaviour
         seismographSimulator.graphLine = null;
         gasSensorSimulator.graphLine = null;
         buoySimulator.ResetUIBuoyGraph();
+        tideGaugeSimulator.TideGaugeReset();
     }
 }

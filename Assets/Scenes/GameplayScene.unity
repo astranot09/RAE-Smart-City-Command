@@ -479,6 +479,7 @@ MonoBehaviour:
   seismographSimulator: {fileID: 1093587777}
   gasSensorSimulator: {fileID: 2066748671}
   buoySimulator: {fileID: 1229337250}
+  tideGaugeSimulator: {fileID: 256289866}
 --- !u!1 &71629818
 GameObject:
   m_ObjectHideFlags: 0
@@ -2610,7 +2611,127 @@ MonoBehaviour:
     upgradeName: 
     upgradeEvents:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 608530041}
+          m_TargetAssemblyTypeName: TideGaugeSimulator, Assembly-CSharp
+          m_MethodName: Upgrade
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 256289866}
+          m_TargetAssemblyTypeName: TideGaugeSimulator, Assembly-CSharp
+          m_MethodName: Upgrade
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 554991891}
+          m_TargetAssemblyTypeName: TideGaugeSimulator, Assembly-CSharp
+          m_MethodName: Upgrade
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - price: 0
+    icon: {fileID: 0}
+    upgradeName: 
+    upgradeEvents:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 608530041}
+          m_TargetAssemblyTypeName: TideGaugeSimulator, Assembly-CSharp
+          m_MethodName: Upgrade
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 256289866}
+          m_TargetAssemblyTypeName: TideGaugeSimulator, Assembly-CSharp
+          m_MethodName: Upgrade
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 554991891}
+          m_TargetAssemblyTypeName: TideGaugeSimulator, Assembly-CSharp
+          m_MethodName: Upgrade
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - price: 0
+    icon: {fileID: 0}
+    upgradeName: 
+    upgradeEvents:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 608530041}
+          m_TargetAssemblyTypeName: TideGaugeSimulator, Assembly-CSharp
+          m_MethodName: Upgrade
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 256289866}
+          m_TargetAssemblyTypeName: TideGaugeSimulator, Assembly-CSharp
+          m_MethodName: Upgrade
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 554991891}
+          m_TargetAssemblyTypeName: TideGaugeSimulator, Assembly-CSharp
+          m_MethodName: Upgrade
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!4 &244555236
 Transform:
   m_ObjectHideFlags: 0
@@ -2635,6 +2756,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 256289865}
+  - component: {fileID: 256289866}
   m_Layer: 0
   m_Name: TideGauge
   m_TagString: Untagged
@@ -2657,6 +2779,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 63977096}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &256289866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256289864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e809979c77cfcc45860d8e3ecda6e31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TideGaugeSimulator
+  tideGaugeText: {fileID: 0}
+  minNormalSeaLevel: 3
+  maxNormalSeaLevel: 8
+  minAlertSeaLevel: 12
+  maxAlertSeaLevel: 16
+  valueSeaLevel: 0
+  changeTextEverySecond: 0.3
+  isAlerting: 0
+  onUnlock: 0
+  outpostManager: {fileID: 138020435}
 --- !u!1 &264593816
 GameObject:
   m_ObjectHideFlags: 0
@@ -4925,6 +5069,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 554991890}
+  - component: {fileID: 554991891}
   m_Layer: 0
   m_Name: TideGauge
   m_TagString: Untagged
@@ -4947,6 +5092,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1180712456}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &554991891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554991889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e809979c77cfcc45860d8e3ecda6e31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TideGaugeSimulator
+  tideGaugeText: {fileID: 0}
+  minNormalSeaLevel: 3
+  maxNormalSeaLevel: 8
+  minAlertSeaLevel: 12
+  maxAlertSeaLevel: 16
+  valueSeaLevel: 0
+  changeTextEverySecond: 0.3
+  isAlerting: 0
+  onUnlock: 0
+  outpostManager: {fileID: 2093833826}
 --- !u!1 &565008875
 GameObject:
   m_ObjectHideFlags: 0
@@ -5312,6 +5479,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 608530040}
+  - component: {fileID: 608530041}
   m_Layer: 0
   m_Name: TideGauge
   m_TagString: Untagged
@@ -5334,6 +5502,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1021564325}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &608530041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608530039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e809979c77cfcc45860d8e3ecda6e31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TideGaugeSimulator
+  tideGaugeText: {fileID: 0}
+  minNormalSeaLevel: 3
+  maxNormalSeaLevel: 8
+  minAlertSeaLevel: 12
+  maxAlertSeaLevel: 16
+  valueSeaLevel: 0
+  changeTextEverySecond: 0.3
+  isAlerting: 0
+  onUnlock: 0
+  outpostManager: {fileID: 1843994380}
 --- !u!1 &630280335
 GameObject:
   m_ObjectHideFlags: 0
@@ -8244,6 +8434,7 @@ MonoBehaviour:
   seismographSimulator: {fileID: 2031213766}
   gasSensorSimulator: {fileID: 1990734514}
   buoySimulator: {fileID: 1413780331}
+  tideGaugeSimulator: {fileID: 608530041}
 --- !u!1 &1025388383
 GameObject:
   m_ObjectHideFlags: 0
@@ -9085,6 +9276,7 @@ MonoBehaviour:
   seismographSimulator: {fileID: 834932911}
   gasSensorSimulator: {fileID: 886899504}
   buoySimulator: {fileID: 1758840188}
+  tideGaugeSimulator: {fileID: 554991891}
 --- !u!1 &1194721446
 GameObject:
   m_ObjectHideFlags: 0

@@ -57,6 +57,7 @@ public class GameplayManager : MonoBehaviour
         gasSensorGraphLine.ClearGraph();
         buoyAGraphLine.ClearGraph();
         buoyBGraphLine.ClearGraph();
+        tideGaugeText.text = string.Empty;
 
         for (int i = 0; i < outpostManagers.Count; i++)
         {
