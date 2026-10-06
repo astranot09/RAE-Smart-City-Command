@@ -1,8 +1,9 @@
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 [System.Serializable]
 public class Upgrade
@@ -74,18 +75,28 @@ public class UpgradeManager : MonoBehaviour
     [SerializeField] private List<Upgrade> upgrade_Type4;
 
 
+    [Header("Animation")]
+    [SerializeField] private Transform upgradePanelTransform;
+    [SerializeField] private float animDuration = 0.3f;
+
+    [SerializeField] private Vector3 startScale = new Vector3(0.2f, 0.2f, 0.2f);
+    [SerializeField] private Vector3 targetScale = new Vector3(1f, 1f, 1f);
+    private bool onAnimation = false;
+
     private void Start()
     {
         maxLevel_Type1 = upgrade_Type1.Count;
         maxLevel_Type2 = upgrade_Type2.Count;
         maxLevel_Type3 = upgrade_Type3.Count;
         maxLevel_Type4 = upgrade_Type4.Count;
+        upgradePanelTransform.localScale = startScale;
     }
 
     public void UpgradeSetUp()
     {
         UIManager.instance.OpenPanel(upgradePanel);
         UpdateUpgradeUI();
+        PlayAnimationEntry();
     }
 
 
@@ -269,7 +280,41 @@ public class UpgradeManager : MonoBehaviour
 
     public void ClosePanel()
     {
-        UIManager.instance.ClosePanel(upgradePanel);
+        PlayAnimationExit();
     }
+
+    private void PlayAnimationEntry()
+    {
+        onAnimation = true;
+        upgradePanelTransform.DOKill();
+
+        Sequence s = DOTween.Sequence();
+        s.Append(upgradePanelTransform.DOScale(targetScale, animDuration))
+            .SetEase(Ease.OutBack)
+            .SetUpdate(true)
+            .OnComplete(() =>
+            {
+                upgradePanelTransform.DOKill();
+                onAnimation = false;
+            });
+    }
+
+    private void PlayAnimationExit()
+    {
+        onAnimation = true;
+        upgradePanelTransform.DOKill();
+
+        Sequence s = DOTween.Sequence();
+        s.Append(upgradePanelTransform.DOScale(startScale, animDuration))
+            .SetEase(Ease.InQuad)
+            .SetUpdate(true)
+            .OnComplete(() =>
+            {
+                upgradePanelTransform.DOKill();
+                onAnimation = false;
+                UIManager.instance.ClosePanel(upgradePanel);
+            });
+    }
+
 
 }

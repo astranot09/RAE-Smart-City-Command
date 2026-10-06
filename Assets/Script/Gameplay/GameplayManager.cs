@@ -72,5 +72,6 @@ public class GameplayManager : MonoBehaviour
     public void OutPostPopulationSetUp()
     {
         populationText.text = outpostManagers[VCamManager.instance.Index].Population.ToString();
+        outpostManagers[VCamManager.instance.Index].CheckAudioAlarm();  
     }
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
-
+using DG.Tweening;
 public class DialogueUI : MonoBehaviour
 {
     [Header("Data")]
@@ -28,12 +28,23 @@ public class DialogueUI : MonoBehaviour
     [Header("Setting")]
     [SerializeField] private float delayBeforeStartDialogue = 0.5f;
 
+    [Header("Animation")]
+    [SerializeField] private RectTransform rectTransform;
+    [SerializeField] private RectTransform startPos;
+    [SerializeField] private RectTransform targetPos;
+    [SerializeField] private float animDuration = 0.5f;
+
+
     private Coroutine dialogueCoroutine;
     private bool advancePressed;
 
     private void Start()
     {
-        CloseDialogue();
+        if (startPos != null)
+        {
+            rectTransform.anchoredPosition = startPos.anchoredPosition;
+        }
+
         ShowDialogue(dialogueData);
     }
 
@@ -46,6 +57,8 @@ public class DialogueUI : MonoBehaviour
         if (dialogueCoroutine == null)
         {
             dialogueData = dialogueSO;
+
+            PlayAnimationEntry();
 
             dialogueCoroutine = StartCoroutine(ShowDialogueComponent());
 
@@ -104,11 +117,12 @@ public class DialogueUI : MonoBehaviour
 
             yield return null;
         }
+
         CloseDialogue();
-        if (dialogueData.dialogueSO != null)
-        {
-            ShowDialogue(dialogueData.dialogueSO);
-        }
+        //if (dialogueData.dialogueSO != null)
+        //{
+        //    ShowDialogue(dialogueData.dialogueSO);
+        //}
     }
 
     public void CloseDialogue()
@@ -119,9 +133,8 @@ public class DialogueUI : MonoBehaviour
             StopCoroutine(dialogueCoroutine);
             dialogueCoroutine = null;
         }
-
-        ResetAllDialogueUI();
-        UIManager.instance.ClosePanel(dialoguePanel);
+        Debug.Log("Close");
+        PlayAnimationExit();
     }
 
     private void ResetAllDialogueUI()
@@ -198,6 +211,35 @@ public class DialogueUI : MonoBehaviour
     public void OnDialogueClick()
     {
         advancePressed = true;
+    }
+
+
+    //================ ANIMATION =======================
+
+    private void PlayAnimationEntry()
+    {
+        rectTransform.DOKill();
+        if (targetPos != null)
+        {
+            rectTransform.DOAnchorPos(targetPos.anchoredPosition, animDuration)
+                        .SetEase(Ease.OutBack).SetUpdate(true);
+        }
+    }
+
+    private void PlayAnimationExit()
+    {
+        rectTransform.DOKill();
+        if (startPos != null)
+        {
+            rectTransform.DOAnchorPos(startPos.anchoredPosition, animDuration)
+                        .SetEase(Ease.InBack).SetUpdate(true)
+                        .OnComplete(() =>
+                        {
+                            rectTransform.DOKill();
+                            ResetAllDialogueUI();
+                            UIManager.instance.ClosePanel(dialoguePanel);
+                        });
+        }
     }
 
 }

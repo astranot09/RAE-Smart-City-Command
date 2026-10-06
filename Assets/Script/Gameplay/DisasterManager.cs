@@ -105,7 +105,6 @@ public class DisasterManager : MonoBehaviour
         //chart naik (versi normal)
         thirdStageOfDisasterEvent?.Invoke();
         yield return new WaitForSeconds(second_Stage_of_Disaster);
-        AudioManager.instance.PlaySFX(AudioManager.instance.alarm);
 
         //Predicted status muncul
         finalStageOfDisasterEvent?.Invoke();

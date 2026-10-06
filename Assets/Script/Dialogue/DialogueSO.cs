@@ -16,6 +16,6 @@ public class DialogueSO : ScriptableObject
     public string speakerName2_Start;
     public List<Dialogue> dialogueList;
 
-    public bool onePerson;
-    public DialogueSO dialogueSO;
+    //public bool onePerson;
+    //public DialogueSO dialogueSO;
 }

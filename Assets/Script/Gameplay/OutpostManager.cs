@@ -18,6 +18,8 @@ public class OutpostManager : MonoBehaviour
     [Header("Reference")]
     [SerializeField] private DisasterManager disasterManager;
     [SerializeField] private GraphManager graphManager;
+    [SerializeField] private GameplayManager gameplayManager;
+
     public GraphManager GraphManager => graphManager;
     public DisasterManager DisasterManager => disasterManager;
 
@@ -31,7 +33,9 @@ public class OutpostManager : MonoBehaviour
     public bool OutPostUnlocked => outPostUnlocked;
     [SerializeField] private float delay_Before_Check_False_Alarm = 2f;
     private bool onEvacuate = false;
-
+    private bool onAlarmed = false;
+    
+    
     [Header("NPC")]
     [SerializeField] private int maxNpcShow = 5;
     private int currentNpcShow;
@@ -112,7 +116,7 @@ public class OutpostManager : MonoBehaviour
     {
         if (!onEvacuate)
         {
-            PopulationDecrease(populationLoss_Because_No_Evacuation);
+            PopulationChange(populationLoss_Because_No_Evacuation);
             totalPopulationLoss += populationLoss_Because_No_Evacuation;
         }
 
@@ -128,7 +132,7 @@ public class OutpostManager : MonoBehaviour
                     {
                         totalPopulationLoss--;
                         currentNpcShow--;
-                        PopulationDecrease(-1);
+                        PopulationChange(-1);
                         CheckNPCEvac();
                         y.NPC_Dead();
                     }
@@ -136,6 +140,8 @@ public class OutpostManager : MonoBehaviour
             }
 
         }
+        onAlarmed = false;
+        CheckAudioAlarm();
         DayReportManager.instance.DayReportSetUp(population, totalPopulationLoss, this, totalEvacuation);
     }
 
@@ -144,8 +150,10 @@ public class OutpostManager : MonoBehaviour
     {
         if(onEvacuate || !outPostUnlocked) return;
         totalEvacuation++;
+        onAlarmed = true;
         onEvacuate = true;
         npcIdle = 0;
+        CheckAudioAlarm();
 
         for (int i = 0; i < npcSpawner.Count; i++)
         {
@@ -169,10 +177,12 @@ public class OutpostManager : MonoBehaviour
 
 
 
-    public void PopulationDecrease(int value)
+    public void PopulationChange(int value)
     {
-        population += value;
+        if (!outPostUnlocked) return;
 
+        population += value;
+        gameplayManager.OutPostPopulationSetUp();
 
         if (currentNpcShow > population)
         {
@@ -253,7 +263,9 @@ public class OutpostManager : MonoBehaviour
         {
             Debug.Log("False Alarm");
             falseAlarm = false;
-            PopulationDecrease(populationLoss_Because_FalseAlarm);
+            onAlarmed = false;
+            CheckAudioAlarm();
+            PopulationChange(populationLoss_Because_FalseAlarm);
             totalPopulationLoss += (populationLoss_Because_FalseAlarm);
 
             for (int i = 0; i < npcSpawner.Count; i++)
@@ -277,7 +289,7 @@ public class OutpostManager : MonoBehaviour
         else
         {
             Debug.Log("Pilihan Salah");
-            PopulationDecrease(populationLoss_Because_Wrong_Evacuation);
+            PopulationChange(populationLoss_Because_Wrong_Evacuation);
             totalPopulationLoss += (populationLoss_Because_Wrong_Evacuation);
             //salah
         }
@@ -311,6 +323,11 @@ public class OutpostManager : MonoBehaviour
     {
         outPostUnlocked = true;
         population = startPopulation;
+    }
+
+    public void CheckAudioAlarm()
+    {
+        AudioManager.instance.PlayAlarmSFX(!onAlarmed);
     }
 
 }

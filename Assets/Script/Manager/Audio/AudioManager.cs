@@ -18,6 +18,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource bgmSource;
     [SerializeField] private AudioSource sfxSource;
 
+    [Header("Source -- Alarm")]
+    [SerializeField] private AudioSource sfxAlarmSource;
+
     [Header("BGM")]
     public AudioClip storyBGM;
     public AudioClip mainMenuBGM;
@@ -50,5 +53,10 @@ public class AudioManager : MonoBehaviour
         sfxSource.PlayOneShot(clip);
 
     }
+    public void PlayAlarmSFX(bool x)
+    {
+        if (sfxAlarmSource == null) return;
+        sfxAlarmSource.mute = x;
 
+    }
 }
