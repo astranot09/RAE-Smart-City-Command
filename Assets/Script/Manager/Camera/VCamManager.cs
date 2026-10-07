@@ -103,4 +103,10 @@ public class VCamManager : MonoBehaviour
             AudioManager.instance.PlaySFX(AudioManager.instance.switchTV);
     }
 
+    public void AddVirtualCamera(CinemachineCamera c)
+    {
+        cinemachineCameras.Add(c);
+        //muncul notif
+    }
+
 }

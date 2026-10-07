@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using DG.Tweening;
+using System.Collections.Generic;
+using UnityEngine.U2D.Animation;
 
 [System.Serializable]
 public enum NPCState
@@ -17,6 +19,9 @@ public class NPCScript : MonoBehaviour
     public bool InEvacuationArea => inEvacuationArea;
 
     [SerializeField] private NPCState currentState = NPCState.Wandering;
+
+    [SerializeField] private List<SpriteLibraryAsset> spriteLibrarieAssets = new ();
+    [SerializeField] private SpriteLibrary spriteLibrary;
 
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 5f;
@@ -45,6 +50,8 @@ public class NPCScript : MonoBehaviour
 
     private void Start()
     {
+        RandomizeSpriteLibrary();
+
         // Effect fade-in saat awal spawn
         Color color = spriteRenderer.color;
         color.a = 0f;
@@ -187,6 +194,20 @@ public class NPCScript : MonoBehaviour
         if (collision.CompareTag("EvacuateArea"))
         {
             inEvacuationArea = false;
+        }
+    }
+
+    private void RandomizeSpriteLibrary()
+    {
+        if (spriteLibrary != null && spriteLibrarieAssets.Count > 0)
+        {
+            int randomIndex = Random.Range(0, spriteLibrarieAssets.Count);
+
+            spriteLibrary.spriteLibraryAsset = spriteLibrarieAssets[randomIndex];
+        }
+        else
+        {
+            Debug.LogWarning($"[NPCScript] SpriteLibrary atau list SpriteLibraryAsset pada {gameObject.name} belum diisi!");
         }
     }
 

@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.2D.Animation.Runtime::UnityEngine.U2D.Animation.SpriteLibrarySourceAsset
+  m_Library:
+  - m_Name: Walking
+    m_Hash: 670923915
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: walk-Sheet_0
+      m_Hash: 779180870
+      m_Sprite: {fileID: -324825759, guid: b27aaf1fc4a204449bd49541ea0cc479, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -324825759, guid: b27aaf1fc4a204449bd49541ea0cc479, type: 3}
+    - m_Name: walk-Sheet_1
+      m_Hash: 427191248
+      m_Sprite: {fileID: -188565527, guid: b27aaf1fc4a204449bd49541ea0cc479, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -188565527, guid: b27aaf1fc4a204449bd49541ea0cc479, type: 3}
+    - m_Name: walk-Sheet_2
+      m_Hash: 8338026
+      m_Sprite: {fileID: -327708678, guid: b27aaf1fc4a204449bd49541ea0cc479, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -327708678, guid: b27aaf1fc4a204449bd49541ea0cc479, type: 3}
+    - m_Name: walk-Sheet_3
+      m_Hash: 930614012
+      m_Sprite: {fileID: -628782668, guid: b27aaf1fc4a204449bd49541ea0cc479, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -628782668, guid: b27aaf1fc4a204449bd49541ea0cc479, type: 3}
+    - m_Name: walk-Sheet_4
+      m_Hash: 689741663
+      m_Sprite: {fileID: 2019530884, guid: b27aaf1fc4a204449bd49541ea0cc479, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 2019530884, guid: b27aaf1fc4a204449bd49541ea0cc479, type: 3}
+    - m_Name: walk-Sheet_5
+      m_Hash: 505130953
+      m_Sprite: {fileID: 1155054431, guid: b27aaf1fc4a204449bd49541ea0cc479, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 1155054431, guid: b27aaf1fc4a204449bd49541ea0cc479, type: 3}
+    - m_Name: walk-Sheet_6
+      m_Hash: 118685299
+      m_Sprite: {fileID: 805496893, guid: b27aaf1fc4a204449bd49541ea0cc479, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 805496893, guid: b27aaf1fc4a204449bd49541ea0cc479, type: 3}
+    - m_Name: walk-Sheet_7
+      m_Hash: 806735589
+      m_Sprite: {fileID: 918300868, guid: b27aaf1fc4a204449bd49541ea0cc479, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 918300868, guid: b27aaf1fc4a204449bd49541ea0cc479, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 8
+  m_PrimaryLibraryGUID: 
+  m_ModificationHash: 639270190182916044
+  m_Version: 1

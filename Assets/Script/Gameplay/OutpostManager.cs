@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Cinemachine;
 
 [System.Serializable]
 public enum DisasterType
@@ -15,11 +16,15 @@ public enum DisasterType
 
 public class OutpostManager : MonoBehaviour
 {
+    [SerializeField] private string outpostName = string.Empty;
+
     [Header("Reference")]
     [SerializeField] private DisasterManager disasterManager;
     [SerializeField] private GraphManager graphManager;
     [SerializeField] private GameplayManager gameplayManager;
 
+    [Header("Camera")]
+    [SerializeField] private CinemachineCamera cinemachineCamera_Outpost;
     public GraphManager GraphManager => graphManager;
     public DisasterManager DisasterManager => disasterManager;
 
@@ -33,6 +38,7 @@ public class OutpostManager : MonoBehaviour
     public bool OutPostUnlocked => outPostUnlocked;
     [SerializeField] private float delay_Before_Check_False_Alarm = 2f;
     private bool onEvacuate = false;
+    public bool OnEvacuate => onEvacuate;
     private bool onAlarmed = false;
     
     
@@ -117,7 +123,7 @@ public class OutpostManager : MonoBehaviour
         if (!onEvacuate)
         {
             PopulationChange(populationLoss_Because_No_Evacuation);
-            totalPopulationLoss += populationLoss_Because_No_Evacuation;
+            //totalPopulationLoss += populationLoss_Because_No_Evacuation;
         }
 
         for (int i = 0; i < npcSpawner.Count; i++)
@@ -130,7 +136,7 @@ public class OutpostManager : MonoBehaviour
                     NPCScript y = x.GetComponent<NPCScript>();
                     if (y != null && !y.InEvacuationArea)
                     {
-                        totalPopulationLoss--;
+                        //totalPopulationLoss--;
                         currentNpcShow--;
                         PopulationChange(-1);
                         CheckNPCEvac();
@@ -142,7 +148,7 @@ public class OutpostManager : MonoBehaviour
         }
         onAlarmed = false;
         CheckAudioAlarm();
-        DayReportManager.instance.DayReportSetUp(population, totalPopulationLoss, this, totalEvacuation);
+        DayReportManager.instance.DayReportSetUp(totalPopulationLoss, this, totalEvacuation, outpostName);
     }
 
     //pasang di tombol
@@ -172,7 +178,6 @@ public class OutpostManager : MonoBehaviour
             }
 
         }
-        EvacuateManager.instance.SetUpEvacuate();
     }
 
 
@@ -182,6 +187,7 @@ public class OutpostManager : MonoBehaviour
         if (!outPostUnlocked) return;
 
         population += value;
+        totalPopulationLoss += value;
         gameplayManager.OutPostPopulationSetUp();
 
         if (currentNpcShow > population)
@@ -266,7 +272,7 @@ public class OutpostManager : MonoBehaviour
             onAlarmed = false;
             CheckAudioAlarm();
             PopulationChange(populationLoss_Because_FalseAlarm);
-            totalPopulationLoss += (populationLoss_Because_FalseAlarm);
+            //totalPopulationLoss += (populationLoss_Because_FalseAlarm);
 
             for (int i = 0; i < npcSpawner.Count; i++)
             {
@@ -290,7 +296,7 @@ public class OutpostManager : MonoBehaviour
         {
             Debug.Log("Pilihan Salah");
             PopulationChange(populationLoss_Because_Wrong_Evacuation);
-            totalPopulationLoss += (populationLoss_Because_Wrong_Evacuation);
+            //totalPopulationLoss += (populationLoss_Because_Wrong_Evacuation);
             //salah
         }
     }
@@ -323,6 +329,9 @@ public class OutpostManager : MonoBehaviour
     {
         outPostUnlocked = true;
         population = startPopulation;
+        NotificationManager.instance.CallNotification($"New Outpost at {outpostName} have been unlocked");
+        if(cinemachineCamera_Outpost != null) 
+            VCamManager.instance.AddVirtualCamera(cinemachineCamera_Outpost);
     }
 
     public void CheckAudioAlarm()

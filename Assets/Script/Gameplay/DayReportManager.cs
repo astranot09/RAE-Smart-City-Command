@@ -1,8 +1,7 @@
+using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-
 
 public class DayReportManager : MonoBehaviour
 {
@@ -18,12 +17,18 @@ public class DayReportManager : MonoBehaviour
 
     [SerializeField] private int dayCurrent = 0;
     public int DayCurrent => dayCurrent;
-    [Header("Outpost")]
+    [Header("Outpost -- 1")]
     [SerializeField] private OutpostManager outpost1;
+
+    [Header("Outpost -- 2")]
     [SerializeField] private OutpostManager outpost2;
     [SerializeField] private int outPost_2_Unlocked = 4;
+
+
+    [Header("Outpost -- 3")]
     [SerializeField] private OutpostManager outpost3;
     [SerializeField] private int outPost_3_Unlocked = 6;
+
 
     [Header("Setting")]
     [SerializeField] private OutpostManager outpostManager;
@@ -39,6 +44,8 @@ public class DayReportManager : MonoBehaviour
     [SerializeField] private GameObject dayReportPanel;
 
     [Header("UI")]
+    [SerializeField] private TMP_Text outpostName;
+
     [SerializeField] private TMP_Text earningText;
     [SerializeField] private TMP_Text evacFeeText;
     [SerializeField] private TMP_Text totalEarningText;
@@ -59,7 +66,7 @@ public class DayReportManager : MonoBehaviour
         dayReportTransform.localScale = startScale;
     }
 
-    public void DayReportSetUp(int populationCurr, int populationChange, OutpostManager x, int evacTot)
+    public void DayReportSetUp(int populationChange, OutpostManager x, int evacTot, string name)
     {
         CurrencyManager.instance.ChangeCurrency(earningValue);
         UIManager.instance.OpenPanel(dayReportPanel);
@@ -68,13 +75,16 @@ public class DayReportManager : MonoBehaviour
         if(dayCurrent % populationGrowthInterval == populationGrowthInterval-1)
         {
             populationChange += populationGrowth;
+            outpost1.PopulationChange(populationGrowth);
+            outpost2.PopulationChange(populationGrowth);
+            outpost3.PopulationChange(populationGrowth);
         }
-
+        outpostName.text = name;
         earningText.text = $"Earnings : {earningValue}$";
         evacFeeText.text = $"Evacuation Fee : {evacuationFee * evacTot}$";
         totalEarningText.text = $"Earnings : {earningValue + (evacuationFee * evacTot)}$";
         populationText.text = $"Population : {populationChange}";
-        totalPopulationText.text = $"Total Population : {populationCurr}";
+        totalPopulationText.text = $"Total Population : {x.Population}";
         PlayAnimationEntry();
     }
 
@@ -97,12 +107,6 @@ public class DayReportManager : MonoBehaviour
         else if(dayCurrent == outPost_3_Unlocked)
         {
             outpost3.UnlockOutpost();
-        }
-        if(dayCurrent%populationGrowthInterval == 0)
-        {
-            outpost1.PopulationChange(populationGrowth);
-            outpost2.PopulationChange(populationGrowth);
-            outpost3.PopulationChange(populationGrowth);
         }
     }
 

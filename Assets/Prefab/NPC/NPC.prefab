@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 966296686256346514}
   - component: {fileID: -7743903737827980235}
   - component: {fileID: 8877633146986024274}
+  - component: {fileID: 6083319317120698589}
+  - component: {fileID: 5009356623033668361}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -86,7 +88,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 8598911646308356358, guid: fee02daebdf5bb14c999ff2be8494a7d, type: 3}
+  m_Sprite: {fileID: 1712548768681341929, guid: fee02daebdf5bb14c999ff2be8494a7d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -110,6 +112,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPCScript
   currentState: 0
+  spriteLibrarieAssets:
+  - {fileID: 7108339969198208228, guid: d8cfc10e07454454d92c64176f22052e, type: 3}
+  - {fileID: 7108339969198208228, guid: fe50be43320e5b448bed728e6e4322ee, type: 3}
+  spriteLibrary: {fileID: 6083319317120698589}
   moveSpeed: 5
   stopDistance: 0.1
   evacLoc: {fileID: 0}
@@ -202,6 +208,36 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6083319317120698589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5498666156244975234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.2D.Animation.Runtime::UnityEngine.U2D.Animation.SpriteLibrary
+  m_Library: []
+  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: fe50be43320e5b448bed728e6e4322ee, type: 3}
+--- !u!114 &5009356623033668361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5498666156244975234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.2D.Animation.Runtime::UnityEngine.U2D.Animation.SpriteResolver
+  m_CategoryHash: 0
+  m_labelHash: 0
+  m_SpriteKey: 0
+  m_SpriteHash: 429837511
 --- !u!1 &8305772108632287176
 GameObject:
   m_ObjectHideFlags: 0

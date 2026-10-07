@@ -36,7 +36,7 @@ public class EvacuateManager : MonoBehaviour
     }
     public void SetUpEvacuate()
     {
-        AudioManager.instance.PlaySFX(AudioManager.instance.buttonClick);
+        if(outpostManagers[VCamManager.instance.Index].OnEvacuate) return;
         UIManager.instance.OpenPanel(disasterChoosePanel);
         PlayAnimationEntry();
     }
@@ -45,28 +45,32 @@ public class EvacuateManager : MonoBehaviour
     {
         if(onAnimation) return;
         outpostManagers[VCamManager.instance.Index].DisasterManager.EvacuateConclusionType(DisasterType.Volcano);
+        Evacuate();
         CloseEvactuate();
     }
     public void ChooseTsunami()
     {
         if (onAnimation) return;
         outpostManagers[VCamManager.instance.Index].DisasterManager.EvacuateConclusionType(DisasterType.Tsunami);
+        Evacuate();
         CloseEvactuate();
     }
     public void ChooseEarthquake()
     {
         if (onAnimation) return;
         outpostManagers[VCamManager.instance.Index].DisasterManager.EvacuateConclusionType(DisasterType.Earthquake);
+        Evacuate();
         CloseEvactuate();
     }
 
     public void Evacuate()
     {
         if (onAnimation) return;
+        AudioManager.instance.PlaySFX(AudioManager.instance.buttonClick);
         outpostManagers[VCamManager.instance.Index].Evacuate();
     }
 
-    private void CloseEvactuate()
+    public void CloseEvactuate()
     {
         AudioManager.instance.PlaySFX(AudioManager.instance.buttonClick);
         PlayAnimationExit();

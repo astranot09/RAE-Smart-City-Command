@@ -59,4 +59,10 @@ public class PausedManager : MonoBehaviour
                 UIManager.instance.CanOpenPanel(true);
             });
     }
+
+
+    public void BackToMainMenu()
+    {
+        SceneController.instance.LoadSceneByName("MainMenu");
+    }
 }
