@@ -7,10 +7,13 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private GameObject creditPanel;
 
 
-
-    public void StartGame()
+    private void Start()
     {
         AudioManager.instance.PlayBGM(AudioManager.instance.mainMenuBGM);
+        AudioManager.instance.PlayAlarmSFX(true);
+    }
+    public void StartGame()
+    {
         AudioManager.instance.PlaySFX(AudioManager.instance.buttonClick);
         if (SceneController.instance != null)
         {

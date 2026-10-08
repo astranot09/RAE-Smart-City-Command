@@ -48,6 +48,12 @@ public class VCamManager : MonoBehaviour
     {
         int allCamera = cinemachineCameras.Count;
 
+        if (allCamera == 1)
+        {
+            NotificationManager.instance.CallNotification("You only have 1 outpost");
+            return;
+        }
+
 
         index++;
 
@@ -74,6 +80,12 @@ public class VCamManager : MonoBehaviour
     public void ChangeToPreviousCamera()
     {
         int allCamera = cinemachineCameras.Count;
+
+        if(allCamera == 1)
+        {
+            NotificationManager.instance.CallNotification("You only have 1 outpost");
+            return;
+        }
 
         index--;
 

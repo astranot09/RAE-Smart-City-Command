@@ -23,6 +23,7 @@ public class LoseManager : MonoBehaviour
     {
         UIManager.instance.OpenPanel(losePanel);
         UIManager.instance.CanOpenPanel(false);
+        AudioManager.instance.PlayAlarmSFX(true);
         AudioManager.instance.PlayBGM(AudioManager.instance.lostBGM);
         outpostLose.text = $"This {outpostLose.gameObject.name} reached population to 0";
         dayLose.text = $"Alive : {DayReportManager.instance.DayCurrent.ToString()} days";
