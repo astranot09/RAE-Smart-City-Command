@@ -4336,6 +4336,7 @@ GameObject:
   - component: {fileID: 322919551}
   - component: {fileID: 322919550}
   - component: {fileID: 322919549}
+  - component: {fileID: 322919552}
   m_Layer: 0
   m_Name: CinemachineCamera (2)
   m_TagString: Untagged
@@ -4432,6 +4433,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1843994379}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &322919552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322919548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c11265b855408d42af33d62691f5194, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineExternalImpulseListener
+  ChannelMask: 1
+  Gain: 1
+  Use2DDistance: 0
+  UseLocalSpace: 1
+  ReactionSettings:
+    m_SecondaryNoise: {fileID: 0}
+    AmplitudeGain: 1
+    FrequencyGain: 1
+    Duration: 1
+    m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &335239764
 GameObject:
   m_ObjectHideFlags: 0
@@ -5973,7 +5996,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5981,7 +6004,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!1 &481836454
@@ -6038,6 +6061,10 @@ MonoBehaviour:
   second_Stage_of_Disaster: 2
   third_Stage_of_Disaster: 1
   animator: {fileID: 2093833827}
+  backgroundTransform: {fileID: 581651586}
+  duration: 1
+  strength: 0.3
+  vibrato: 20
 --- !u!1 &501458760
 GameObject:
   m_ObjectHideFlags: 0
@@ -8373,6 +8400,10 @@ MonoBehaviour:
   second_Stage_of_Disaster: 2
   third_Stage_of_Disaster: 1
   animator: {fileID: 138020436}
+  backgroundTransform: {fileID: 757962455}
+  duration: 1
+  strength: 0.3
+  vibrato: 20
 --- !u!1 &756342789
 GameObject:
   m_ObjectHideFlags: 0
@@ -11003,11 +11034,11 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -726658237
-  m_SortingLayer: 3
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -11015,7 +11046,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!1 &1031137935
@@ -16857,7 +16888,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -16865,7 +16896,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!1 &1758840186
@@ -17745,6 +17776,10 @@ MonoBehaviour:
   second_Stage_of_Disaster: 2
   third_Stage_of_Disaster: 1
   animator: {fileID: 1843994381}
+  backgroundTransform: {fileID: 322919551}
+  duration: 1
+  strength: 0.3
+  vibrato: 20
 --- !u!1 &1843994377
 GameObject:
   m_ObjectHideFlags: 0

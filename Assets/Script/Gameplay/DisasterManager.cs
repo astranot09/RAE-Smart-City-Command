@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
-
+using DG.Tweening;
 public class DisasterManager : MonoBehaviour
 {
     [Header("Reference")]
@@ -35,6 +35,14 @@ public class DisasterManager : MonoBehaviour
 
     public event Action onDisasterHitOutpost;
 
+    [Header("Shake Settings")]
+    [SerializeField] private Transform backgroundTransform;
+    [SerializeField] private float duration = 1f;
+    [SerializeField] private float strength = 0.3f;
+    [SerializeField] private int vibrato = 20;
+    private Tween shakeTween;
+    private Vector3 backgroundOriginalPos;
+
     private void OnEnable()
     {
         outpostManager.cycleStart += StartCycleOfDisaster;
@@ -49,6 +57,8 @@ public class DisasterManager : MonoBehaviour
     {
         if(animator == null)
             animator = GetComponent<Animator>();
+        if (backgroundTransform != null)
+            backgroundOriginalPos = backgroundTransform.localPosition;
     }
 
     private void Update()
@@ -132,6 +142,30 @@ public class DisasterManager : MonoBehaviour
     public void EvacuateConclusionType(DisasterType x)
     {
         disasterChoosen = x;
+    }
+
+
+    
+
+    // ======================== EarthQuake ==================
+    public void EarthquakeOn()
+    {
+        shakeTween = backgroundTransform.DOShakePosition(duration, strength, vibrato, 90f, false, false)
+            .SetLoops(-1, LoopType.Restart);
+    }
+
+    public void EarthquakeStop()
+    {
+        if (shakeTween != null && shakeTween.IsActive())
+        {
+            shakeTween.Kill();
+        }
+
+        // Kembalikan background persis ke posisi awalnya
+        if (backgroundTransform != null)
+        {
+            backgroundTransform.localPosition = backgroundOriginalPos;
+        }
     }
 
 }

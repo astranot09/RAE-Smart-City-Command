@@ -339,4 +339,12 @@ public class OutpostManager : MonoBehaviour
         AudioManager.instance.PlayAlarmSFX(!onAlarmed);
     }
 
+    public void PlayEarthquakeAnimation()
+    {
+        disasterManager.EarthquakeOn();
+    }
+    public void StopEarthquakeAnimation()
+    {
+        disasterManager.EarthquakeStop();
+    }
 }

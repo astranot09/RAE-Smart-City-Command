@@ -5,7 +5,7 @@ using UnityEngine;
 public class Tutorial
 {
     public string title;
-    public Sprite tutorialSprite;
+    public AnimationClip tutorialAnimation;
     [TextArea(3,5)]public string description;
 }
 

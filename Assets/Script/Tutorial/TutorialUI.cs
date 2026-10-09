@@ -28,7 +28,7 @@ public class TutorialUI : MonoBehaviour
     public void SetUpUITutorial()
     {
         Mathf.Clamp(indexTutorial, 0, maximumIndexTutorial);
-        imageTutorial.sprite = tutorialSO.tutorials[indexTutorial].tutorialSprite;
+        //imageTutorial.sprite = tutorialSO.tutorials[indexTutorial].tutorialSprite;
         titleTutorial.text = tutorialSO.tutorials[indexTutorial].title.ToString();
         descriptionTutorial.text = tutorialSO.tutorials[indexTutorial].description.ToString();
     }
