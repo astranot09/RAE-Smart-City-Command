@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Video;
 [System.Serializable]
 public class Tutorial
 {
     public string title;
-    public AnimationClip tutorialAnimation;
+    public VideoClip videoClip;
     [TextArea(3,5)]public string description;
 }
 

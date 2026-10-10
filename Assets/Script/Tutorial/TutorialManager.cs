@@ -18,7 +18,7 @@ public class TutorialManager : MonoBehaviour
 
     public void CallTutorial(TutorialSO tutorialSO)
     {
-
+        tutorialUI.SetUpTutorialData(tutorialSO);
     }
 
 }
