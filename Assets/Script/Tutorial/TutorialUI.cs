@@ -38,8 +38,18 @@ public class TutorialUI : MonoBehaviour
         prevButton.SetActive(true);
         nextButton.SetActive(true);
         Mathf.Clamp(indexTutorial, 0, maximumIndexTutorial-1);
-        videoTutorial.clip = tutorialSO.tutorials[indexTutorial].videoClip;
-        titleTutorial.text = tutorialSO.tutorials[indexTutorial].title.ToString();
+        if(tutorialSO.tutorials[indexTutorial].videoClip != null)
+        {
+            videoTutorial.clip = tutorialSO.tutorials[indexTutorial].videoClip;
+        }
+        if (tutorialSO.tutorials[indexTutorial].title != null)
+        {
+            titleTutorial.text = tutorialSO.tutorials[indexTutorial].title.ToString();
+        }
+        if (tutorialSO.tutorials[indexTutorial].description != null)
+        {
+            descriptionTutorial.text = tutorialSO.tutorials[indexTutorial].description.ToString();
+        }
         descriptionTutorial.text = tutorialSO.tutorials[indexTutorial].description.ToString();
         if(indexTutorial >= maximumIndexTutorial - 1)
         {
