@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbb14da8dbe44cd42a1e8f43f32d01de, type: 3}
+  m_Name: DialogueOnStart
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSO
+  speakerName1_Start: RAE
+  speakerName2_Start: 
+  dialogueList:
+  - dialogueName: RAE
+    dialogueText: 'Initiating system...
+
+      System initiated.
+
+      Rapid Analysis
+      Engine is online.'
+    onLeft: 1
+  - dialogueName: Budi
+    dialogueText: Finally got it working.
+    onLeft: 1
+  - dialogueName: Budi
+    dialogueText: Tell me your main task.
+    onLeft: 1
+  - dialogueName: RAE
+    dialogueText: 'My primary responsibility is to monitor potential natural disasters
+      and issue timely warnings to protect the public.
+
+      Budi: Good, good. Start
+      disaster prevention protocol.'
+    onLeft: 1
+  - dialogueName: RAE
+    dialogueText: Accessing disaster prevention protocol...
+    onLeft: 1
+  - dialogueName: RAE
+    dialogueText: 'Disaster data...
+
+      Disaster pattern......not found
+
+      Evacuation
+      protocol......found
+
+      Sensors......Online'
+    onLeft: 1
+  - dialogueName: Budi
+    dialogueText: "Figures, since i didn\u2019t have any data on the area."
+    onLeft: 1
+  - dialogueName: Budi
+    dialogueText: But...this should make up for it.
+    onLeft: 1
+  - dialogueName: RAE
+    dialogueText: Downloading disaster pattern analyzer...
+    onLeft: 1

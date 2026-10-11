@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class GameplayManager : MonoBehaviour
 {
@@ -30,6 +31,10 @@ public class GameplayManager : MonoBehaviour
 
     [SerializeField] private VCamManager vcamManager;
 
+    [Header("Dialogue")]
+    [SerializeField] private DialogueSO dialogueStart;
+    [SerializeField] private TutorialSO tutorial1;
+    [SerializeField] private DialogueSO dialogueAfterTutorial;
     private void OnEnable()
     {
         vcamManager.onCameraChange += OutPostGraphSetUp;
@@ -53,6 +58,7 @@ public class GameplayManager : MonoBehaviour
     private void Start()
     {
         AudioManager.instance.PlayBGM(AudioManager.instance.gameplayBGM);
+        DialogueOnStart();
     }
     public void OutPostGraphSetUp()
     {
@@ -73,5 +79,28 @@ public class GameplayManager : MonoBehaviour
     {
         populationText.text = outpostManagers[VCamManager.instance.Index].Population.ToString();
         outpostManagers[VCamManager.instance.Index].CheckAudioAlarm();  
+    }
+
+
+    // Dialogue Entry
+    private void DialogueOnStart()
+    {
+        DialogueManager.instance.PlayDialogue(dialogueStart);
+        DialogueManager.instance.dialogueEvent += TriggerTutorialAfterDialogueOnStart;
+    }
+
+
+    // Tutorial After Dialogue 1
+    private void TriggerTutorialAfterDialogueOnStart()
+    {
+        TutorialManager.instance.CallTutorial(tutorial1);
+        TutorialManager.instance.tutorialEvent += TriggerDialogueAfterTutorial;
+    }
+
+
+    // Dialogue After Tutorial
+    private void TriggerDialogueAfterTutorial()
+    {
+        DialogueManager.instance.PlayDialogue(dialogueAfterTutorial);
     }
 }

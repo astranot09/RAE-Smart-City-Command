@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,6 +24,10 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private List<DialogueCharacterData> dialogueCharacterDatas = new();
     public List<DialogueCharacterData> DialogueCharacterDatas => dialogueCharacterDatas;
 
+    public event Action dialogueEvent;
+
+    private bool onDialogue;
+
     [Header("Reference")]
     [SerializeField] private DialogueUI dialogueUI;
 
@@ -41,12 +46,17 @@ public class DialogueManager : MonoBehaviour
 
     public void PlayDialogue(DialogueSO dialogue)
     {
+        if(onDialogue) return;
+
+        onDialogue = true;
+        dialogueEvent = null;
         dialogueUI.ShowDialogue(dialogue);
     }
 
-    public void BruteForcedCloseDialogue()
+    public void DialogueFinish()
     {
-        dialogueUI.CloseDialogue();
+        onDialogue = false;
+        dialogueEvent?.Invoke();
     }
 
 }

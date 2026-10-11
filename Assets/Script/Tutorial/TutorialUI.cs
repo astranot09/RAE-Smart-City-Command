@@ -10,6 +10,7 @@ public class TutorialUI : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] private GameObject tutorialPanel;
+    [SerializeField] private Transform tutorialPanelTransform;
 
     [SerializeField] private TMP_Text titleTutorial;
     [SerializeField] private VideoPlayer videoTutorial;
@@ -17,6 +18,7 @@ public class TutorialUI : MonoBehaviour
 
     [SerializeField] private GameObject prevButton;
     [SerializeField] private GameObject nextButton;
+    [SerializeField] private GameObject closeButton;
 
     [Header("Animation")]
     [SerializeField] private float animDuration;
@@ -37,6 +39,7 @@ public class TutorialUI : MonoBehaviour
     {
         prevButton.SetActive(true);
         nextButton.SetActive(true);
+        closeButton.SetActive(false);
         Mathf.Clamp(indexTutorial, 0, maximumIndexTutorial-1);
         if(tutorialSO.tutorials[indexTutorial].videoClip != null)
         {
@@ -54,6 +57,7 @@ public class TutorialUI : MonoBehaviour
         if(indexTutorial >= maximumIndexTutorial - 1)
         {
             nextButton.SetActive(false);
+            closeButton.SetActive(true);
         }
         if (indexTutorial <= 0)
         {
@@ -72,31 +76,35 @@ public class TutorialUI : MonoBehaviour
     }
     public void TutorialClose()
     {
+        Debug.Log("Close Tutorial");
         ExitAnimation();
     }
 
     private void EntryAnimation()
     {
-        Transform x = tutorialPanel.transform;
+        tutorialPanelTransform.DOKill();
 
-        x.DOKill();
+        tutorialPanelTransform.localScale = Vector3.zero;
+        Sequence s = DOTween.Sequence().SetUpdate(true);
 
-        x.localScale = Vector3.zero;
-        Sequence s = DOTween.Sequence();
-        
-        s.Append(x.DOScale(new Vector3(1.2f, 1.2f, 1.2f), animDuration).SetEase(Ease.OutQuad))
-                          .Append(x.DOScale(Vector3.one, animDuration * 0.5f).SetEase(Ease.InOutQuad))
-                          .SetUpdate(true);
+        s.Append(tutorialPanelTransform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), animDuration).SetEase(Ease.OutQuad))
+                          .Append(tutorialPanelTransform.DOScale(Vector3.one, animDuration * 0.5f).SetEase(Ease.InOutQuad));
     }
     private void ExitAnimation()
     {
-        Transform x = tutorialPanel.transform;
+        tutorialPanelTransform.DOKill();
 
-        x.DOKill();
-        Sequence s = DOTween.Sequence();
+        Sequence s = DOTween.Sequence().SetUpdate(true);
 
-        s.Append(x.DOScale(new Vector3(1.1f, 1.1f, 1.1f), animDuration * 0.4f).SetEase(Ease.OutQuad))
-                     .Append(x.DOScale(Vector3.zero, animDuration).SetEase(Ease.InBack))
-                     .OnComplete(() => UIManager.instance.ClosePanel(tutorialPanel));
+        s.Append(tutorialPanelTransform.DOScale(new Vector3(1.1f, 1.1f, 1.1f), animDuration * 0.4f).SetEase(Ease.OutQuad))
+                     .Append(tutorialPanelTransform.DOScale(Vector3.zero, animDuration).SetEase(Ease.InBack))
+                     .OnComplete(() =>
+                     {
+                         UIManager.instance.ClosePanel(tutorialPanel);
+                         TutorialManager.instance.CloseTutorial();
+                            
+                     }
+
+                     );
     }
 }

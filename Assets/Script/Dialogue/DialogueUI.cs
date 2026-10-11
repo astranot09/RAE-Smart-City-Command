@@ -237,6 +237,7 @@ public class DialogueUI : MonoBehaviour
                         {
                             rectTransform.DOKill();
                             ResetAllDialogueUI();
+                            DialogueManager.instance.DialogueFinish();
                             UIManager.instance.ClosePanel(dialoguePanel);
                         });
         }

@@ -17,9 +17,7 @@ MonoBehaviour:
   dialogueList:
   - dialogueName: adadada
     dialogueText: aaaaaaaaaaaaaaaaaaaaaaaaaaaa
-    onLeft: 0
+    onLeft: 1
   - dialogueName: ssssssssssssssss
     dialogueText: bbbbbbbbbbbbbbbb
-    onLeft: 0
-  onePerson: 0
-  dialogueSO: {fileID: 0}
+    onLeft: 1
