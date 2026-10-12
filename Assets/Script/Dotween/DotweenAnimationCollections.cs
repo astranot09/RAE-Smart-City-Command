@@ -7,7 +7,9 @@ public enum AnimationType
 {
     None,
     ScaleUp,
-    ScaleRotation
+    ScaleRotation,
+    FadeInFadeOut
+
 }
 
 public class DotweenAnimationCollections : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
@@ -19,10 +21,16 @@ public class DotweenAnimationCollections : MonoBehaviour, IPointerEnterHandler, 
     [Header("Setting Rotate Value")]
     [SerializeField] private float targetRotateValue = 15f;
 
+    [Header("Setting Fade Value")]
+    [SerializeField] private float fadeInDuration = 0.3f;
+    [SerializeField] private float fadeOutDuration = 0.3f;
+
     [Header("Setting Animation")]
     [SerializeField] AnimationType animationType;
     [SerializeField] bool onHover;
     [SerializeField] bool onLoop;
+
+    [SerializeField] private CanvasGroup canvasGroup;
 
     private Vector3 startScale;
     private Quaternion startRotation;
@@ -34,18 +42,24 @@ public class DotweenAnimationCollections : MonoBehaviour, IPointerEnterHandler, 
         startRotation = transform.localRotation;
     }
 
-    private void OnEnable()
+    //private void OnEnable()
+    //{
+    //    if (onLoop)
+    //    {
+    //        PlayLoopAnimation();
+    //    }
+    //}
+
+    private void Start()
     {
-        // Jika mode Loop diaktifkan, jalankan loop saat objek aktif
         if (onLoop)
         {
-            //PlayLoopAnimation();
+            PlayLoopAnimation();
         }
     }
 
     private void OnDisable()
     {
-        // Bersihkan tween jika objek di-disable agar tidak memory leak
         transform.DOKill();
     }
 
@@ -114,6 +128,21 @@ public class DotweenAnimationCollections : MonoBehaviour, IPointerEnterHandler, 
             s.Append(transform.DOScale(startScale, durationAnimation))
              .Join(transform.DORotateQuaternion(startRotation, durationAnimation))
              .SetUpdate(true);
+        }
+    }
+
+    private void PlayLoopAnimation()
+    {
+        if (animationType == AnimationType.FadeInFadeOut)
+        {
+            canvasGroup.DOKill();
+
+            DOTween.Sequence()
+                .Append(canvasGroup.DOFade(1f, fadeInDuration))
+                .AppendInterval(0.5f)
+                .Append(canvasGroup.DOFade(0f, fadeOutDuration))
+                .SetLoops(-1, LoopType.Restart)
+                .SetUpdate(true);
         }
     }
 
