@@ -77,6 +77,7 @@ public class DisasterManager : MonoBehaviour
     {
         currTime = 0f;
         disasterChoosen = DisasterType.None;
+        AudioManager.instance.StopDisasterSound(outpostManager.OutpostIndex);
 
         disasterTime = UnityEngine.Random.Range(minTimeDisaster, maxTimeDisaster);
         disasterType = DisasterType.None;
@@ -124,12 +125,15 @@ public class DisasterManager : MonoBehaviour
         switch (disasterType)
         {
             case DisasterType.Volcano:
+                AudioManager.instance.PlayDisasterSound(outpostManager.OutpostIndex, AudioManager.instance.volcanoEruption);
                 animator.SetTrigger("Volcano");
                 break;
             case DisasterType.Tsunami:
+                AudioManager.instance.PlayDisasterSound(outpostManager.OutpostIndex, AudioManager.instance.tsunami);
                 animator.SetTrigger("Tsunami");
                 break;
             case DisasterType.Earthquake:
+                AudioManager.instance.PlayDisasterSound(outpostManager.OutpostIndex, AudioManager.instance.earthquacke);
                 animator.SetTrigger("Earthquake");
                 break;
         }
