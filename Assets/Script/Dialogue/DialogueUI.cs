@@ -155,6 +155,9 @@ public class DialogueUI : MonoBehaviour
 
     private void SetUpDialogueUI_OnStart()
     {
+        speakerName1.text = string.Empty;
+        speakerName2.text = string.Empty;
+        textLabel.text = string.Empty;
 
         if (!string.IsNullOrEmpty(dialogueData.speakerName1_Start))
         {
