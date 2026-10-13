@@ -71,6 +71,7 @@ public class GameplayManager : MonoBehaviour
         for (int i = 0; i < outpostManagers.Count; i++)
         {
             outpostManagers[i].GraphManager.CloseUIGraph();
+            //outpostManagers[i].DisasterManager
         }
         outpostManagers[VCamManager.instance.Index].GraphManager.OutpostDisasterGraphSetUp(seismographGraphLine,gasSensorGraphLine,buoyAGraphLine,buoyBGraphLine, tideGaugeText);
     }

@@ -28,16 +28,18 @@ public class SeismographSimulator : MonoBehaviour
     [SerializeField] private int level = 0;
     [SerializeField] private float noiseUpgrade = 0.2f;
     [SerializeField] private GameObject statusGameObject;
-    [SerializeField] private bool statusUnlock;
+    [SerializeField] private bool statusOn;
 
     private void OnEnable()
     {
         outpostManager.DisasterManager.thirdStageOfDisasterEvent += DisasterdFirstAlarmTrigger;
+        outpostManager.DisasterManager.finalStageOfDisasterEvent += DisasterFinalAlarmTrigger;
         outpostManager.cycleStart += CloseAllAlarmDisaster;
     }
     private void OnDisable()
     {
         outpostManager.DisasterManager.thirdStageOfDisasterEvent -= DisasterdFirstAlarmTrigger;
+        outpostManager.DisasterManager.finalStageOfDisasterEvent -= DisasterFinalAlarmTrigger;
         outpostManager.cycleStart -= CloseAllAlarmDisaster;
     }
 
@@ -61,6 +63,19 @@ public class SeismographSimulator : MonoBehaviour
 
         if (graphLine == null) return;
         graphLine.SetValues(values);
+        CheckStatusWarning();
+    }
+
+    public void CheckStatusWarning()
+    {
+        if (statusOn)
+        {
+            statusGameObject.SetActive(true);
+        }
+        else
+        {
+            statusGameObject.SetActive(false);
+        }
     }
 
     void Update()
@@ -122,7 +137,6 @@ public class SeismographSimulator : MonoBehaviour
                 baseNoise = noiseUpgrade;
                 break;
             case 3:
-                statusUnlock = true;
                 break;
         }
     }
@@ -135,12 +149,18 @@ public class SeismographSimulator : MonoBehaviour
 
     public void DisasterFinalAlarmTrigger()
     {
-        if(level > 2)
+        if(level > 2 && (outpostManager.DisasterManager.CurrentDisaster == DisasterType.Earthquake || outpostManager.DisasterManager.CurrentDisaster == DisasterType.Volcano))
+        {
+            statusOn = true;
             Debug.Log("Predicted : Seismograph");
+            CheckStatusWarning();
+        }
     }
     public void CloseAllAlarmDisaster()
     {
         isAlerting = false;
+        statusOn = false;
+        CheckStatusWarning();
     }
 
 }

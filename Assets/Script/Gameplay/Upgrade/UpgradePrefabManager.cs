@@ -20,6 +20,7 @@ public class UpgradePrefabManager : MonoBehaviour, IPointerEnterHandler
     private void Start()
     {
         maxLevel_Type = upgrade_Type.Count;
+        UpdateUpgradeUI();
     }
     private void OnEnable()
     {
