@@ -48,7 +48,7 @@ public class TideGaugeSimulator : MonoBehaviour
     }
     public void CheckStatusWarning()
     {
-        if (statusOn)
+        if (statusOn && VCamManager.instance.Index - 1 == outpostManager.OutpostIndex)
         {
             statusGameObject.SetActive(true);
         }
