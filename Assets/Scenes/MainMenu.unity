@@ -1134,9 +1134,12 @@ MonoBehaviour:
   targetScaleValue: 1.2
   durationAnimation: 0.2
   targetRotateValue: 2
+  fadeInDuration: 0.3
+  fadeOutDuration: 0.3
   animationType: 2
   onHover: 1
   onLoop: 0
+  canvasGroup: {fileID: 0}
 --- !u!1 &427086842
 GameObject:
   m_ObjectHideFlags: 0
@@ -2963,9 +2966,12 @@ MonoBehaviour:
   targetScaleValue: 1.2
   durationAnimation: 0.2
   targetRotateValue: 2
+  fadeInDuration: 0.3
+  fadeOutDuration: 0.3
   animationType: 2
   onHover: 1
   onLoop: 0
+  canvasGroup: {fileID: 0}
 --- !u!1 &1262878287
 GameObject:
   m_ObjectHideFlags: 0
@@ -3730,9 +3736,12 @@ MonoBehaviour:
   targetScaleValue: 1.2
   durationAnimation: 0.2
   targetRotateValue: 2
+  fadeInDuration: 0.3
+  fadeOutDuration: 0.3
   animationType: 2
   onHover: 1
   onLoop: 0
+  canvasGroup: {fileID: 0}
 --- !u!1 &1476178053
 GameObject:
   m_ObjectHideFlags: 0
@@ -4681,9 +4690,12 @@ MonoBehaviour:
   targetScaleValue: 1.2
   durationAnimation: 0.2
   targetRotateValue: 2
+  fadeInDuration: 0.3
+  fadeOutDuration: 0.3
   animationType: 2
   onHover: 1
   onLoop: 0
+  canvasGroup: {fileID: 0}
 --- !u!1 &2098194847
 GameObject:
   m_ObjectHideFlags: 0
@@ -4876,7 +4888,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
