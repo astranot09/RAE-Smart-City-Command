@@ -39,6 +39,8 @@ public class DayReportManager : MonoBehaviour
     [SerializeField] private int populationGrowth = 8;
     [SerializeField] private int populationGrowthInterval = 3;
 
+    [Header("Game Finish")]
+    [SerializeField] private int gameFinishDay = 15;
 
     [Header("Panel")]
     [SerializeField] private GameObject dayReportPanel;
@@ -107,6 +109,10 @@ public class DayReportManager : MonoBehaviour
         else if(dayCurrent == outPost_3_Unlocked)
         {
             outpost3.UnlockOutpost();
+        }
+        if(dayCurrent == gameFinishDay)
+        {
+            FinishManager.instance.WinSetUp();
         }
     }
 

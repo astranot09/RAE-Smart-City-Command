@@ -30,6 +30,7 @@ public class TutorialUI : MonoBehaviour
         tutorialSO = data;
         indexTutorial = 0;
         maximumIndexTutorial = tutorialSO.tutorials.Count;
+        UIManager.instance.CloseAllPanels();
         UIManager.instance.OpenPanel(tutorialPanel);
         EntryAnimation();
         SetUpUITutorial();

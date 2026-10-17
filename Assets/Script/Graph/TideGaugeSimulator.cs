@@ -19,6 +19,10 @@ public class TideGaugeSimulator : MonoBehaviour
     [SerializeField] private bool isAlerting;
     [SerializeField] private bool onUnlock;
     private int level;
+
+    [SerializeField] private GameObject statusGameObject;
+    private bool statusOn;
+
     [Header("Reference")]
     [SerializeField] private OutpostManager outpostManager;
 
@@ -40,8 +44,19 @@ public class TideGaugeSimulator : MonoBehaviour
     public void TideGaugeSetUp(TMP_Text label)
     {
         tideGaugeText = label;
+        CheckStatusWarning();
     }
-
+    public void CheckStatusWarning()
+    {
+        if (statusOn && VCamManager.instance.Index - 1 == outpostManager.OutpostIndex)
+        {
+            statusGameObject.SetActive(true);
+        }
+        else
+        {
+            statusGameObject.SetActive(false);
+        }
+    }
     IEnumerator ChangeTideGaugeText()
     {
         while (onUnlock)
@@ -89,7 +104,7 @@ public class TideGaugeSimulator : MonoBehaviour
     public void DisasterFirstAlarmTrigger()
     {
         //level 1
-        if ((level >= 3 || outpostManager.DisasterManager.CurrentDisaster == DisasterType.Tsunami) && !isAlerting)
+        if ((level >= 3 && outpostManager.DisasterManager.CurrentDisaster == DisasterType.Tsunami) && !isAlerting)
             isAlerting = true;
     }
 
@@ -97,12 +112,20 @@ public class TideGaugeSimulator : MonoBehaviour
     public void DisasterFinalAlarmTrigger()
     {
         //level 2
-        if (level >= 2 || outpostManager.DisasterManager.CurrentDisaster == DisasterType.Tsunami)
+        if (level >= 2 && outpostManager.DisasterManager.CurrentDisaster == DisasterType.Tsunami)
+        {
+            statusOn = true;
+            CheckStatusWarning();
             Debug.Log("Predicted : TideGauge");
+        }
+            
     }
     public void CloseAllAlarmDisaster()
     {
+        statusOn = false;
         isAlerting = false;
+        statusGameObject.SetActive(false);
+        CheckStatusWarning();
     }
 
     public void TideGaugeReset()

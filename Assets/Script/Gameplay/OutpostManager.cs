@@ -17,6 +17,8 @@ public enum DisasterType
 public class OutpostManager : MonoBehaviour
 {
     [SerializeField] private string outpostName = string.Empty;
+    [SerializeField] private int outpostIndex;
+    public int OutpostIndex => outpostIndex;
 
     [Header("Reference")]
     [SerializeField] private DisasterManager disasterManager;
@@ -337,6 +339,7 @@ public class OutpostManager : MonoBehaviour
     public void CheckAudioAlarm()
     {
         AudioManager.instance.PlayAlarmSFX(!onAlarmed);
+        AudioManager.instance.MuteOtherDisasterOutpost(outpostIndex);
     }
 
     public void PlayEarthquakeAnimation()
