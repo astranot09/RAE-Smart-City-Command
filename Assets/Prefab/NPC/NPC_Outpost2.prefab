@@ -116,10 +116,10 @@ MonoBehaviour:
   - {fileID: 7108339969198208228, guid: d8cfc10e07454454d92c64176f22052e, type: 3}
   - {fileID: 7108339969198208228, guid: fe50be43320e5b448bed728e6e4322ee, type: 3}
   spriteLibrary: {fileID: 6083319317120698589}
-  moveSpeed: 5
+  moveSpeed: 3
   stopDistance: 0.1
   evacLoc: {fileID: 0}
-  waderingSpeed: 2
+  waderingSpeed: 1.3
   minXLoc: 0
   maxXLoc: 0
   minWanderDistance: 3
