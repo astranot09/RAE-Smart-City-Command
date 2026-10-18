@@ -30,17 +30,17 @@ MonoBehaviour:
     dialogueText: Tell me your main task.
     onLeft: 1
   - dialogueName: RAE
-    dialogueText: 'My primary responsibility is to monitor potential natural disasters
+    dialogueText: My primary responsibility is to monitor potential natural disasters
       and issue timely warnings to protect the public.
-
-      Budi: Good, good. Start
-      disaster prevention protocol.'
+    onLeft: 1
+  - dialogueName: Budi
+    dialogueText: Good, good. Start disaster prevention protocol.
     onLeft: 1
   - dialogueName: RAE
     dialogueText: Accessing disaster prevention protocol...
     onLeft: 1
   - dialogueName: RAE
-    dialogueText: 'Disaster data...
+    dialogueText: 'Disaster data......found
 
       Disaster pattern......not found
 
@@ -50,7 +50,7 @@ MonoBehaviour:
       Sensors......Online'
     onLeft: 1
   - dialogueName: Budi
-    dialogueText: "Figures, since i didn\u2019t have any data on the area."
+    dialogueText: Figures, since i did not have any data on the area.
     onLeft: 1
   - dialogueName: Budi
     dialogueText: But...this should make up for it.
