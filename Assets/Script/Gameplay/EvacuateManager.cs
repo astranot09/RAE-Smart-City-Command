@@ -52,6 +52,7 @@ public class EvacuateManager : MonoBehaviour
     {
         if (onAnimation) return;
         outpostManagers[VCamManager.instance.Index].DisasterManager.EvacuateConclusionType(DisasterType.Tsunami);
+        AudioManager.instance.PlaySFX(AudioManager.instance.buttonClick);
         Evacuate();
         CloseEvactuate();
     }

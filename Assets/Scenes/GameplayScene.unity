@@ -371,7 +371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.392}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6134,8 +6134,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DisasterManager
   outpostManager: {fileID: 2093833826}
-  minTimeDisaster: 10
-  maxTimeDisaster: 15
+  minTimeDisaster: 14
+  maxTimeDisaster: 19
   disasterType: 0
   beginning_Stage_of_Disaster: 4
   second_Stage_of_Disaster: 2
@@ -9166,8 +9166,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DisasterManager
   outpostManager: {fileID: 138020435}
-  minTimeDisaster: 10
-  maxTimeDisaster: 15
+  minTimeDisaster: 12
+  maxTimeDisaster: 17
   disasterType: 0
   beginning_Stage_of_Disaster: 4
   second_Stage_of_Disaster: 2
@@ -13860,8 +13860,8 @@ Camera:
   m_GameObject: {fileID: 1194721446}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -16587,7 +16587,7 @@ MonoBehaviour:
   outpost3: {fileID: 2093833826}
   outPost_3_Unlocked: 7
   outpostManager: {fileID: 0}
-  earningValue: 100
+  earningValue: 40
   evacuationFee: -10
   populationGrowth: 8
   populationGrowthInterval: 3
@@ -24237,7 +24237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1954c4378f8f38048978a375e54ff4cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CurrencyManager
-  currencyCurrent: 492
+  currencyCurrent: 0
 --- !u!4 &2057033442
 Transform:
   m_ObjectHideFlags: 0
