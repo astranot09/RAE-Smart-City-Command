@@ -1294,6 +1294,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1242086121168191993, guid: 4046012eedec0a54a8e113c3a8a5d209, type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493982284913277742, guid: 4046012eedec0a54a8e113c3a8a5d209, type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2828160544779616454, guid: 4046012eedec0a54a8e113c3a8a5d209, type: 3}
       propertyPath: m_LocalPosition.x
       value: 618.4467
@@ -1332,6 +1340,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2828160544779616454, guid: 4046012eedec0a54a8e113c3a8a5d209, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3518124495495282055, guid: 4046012eedec0a54a8e113c3a8a5d209, type: 3}
+      propertyPath: Loop
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5680971080355629847, guid: 4046012eedec0a54a8e113c3a8a5d209, type: 3}
@@ -16944,7 +16956,7 @@ SpriteRenderer:
   m_Size: {x: 4.444444, y: 2.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!1 &1460207850
