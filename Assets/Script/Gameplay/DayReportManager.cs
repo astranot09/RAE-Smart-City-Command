@@ -82,7 +82,7 @@ public class DayReportManager : MonoBehaviour
             outpost2.PopulationChange(populationGrowth);
             outpost3.PopulationChange(populationGrowth);
         }
-        dayReportDay.text = $"Day {dayCurrent} Report$";
+        dayReportDay.text = $"Day {dayCurrent} Report";
         outpostName.text = name;
         earningText.text = $"Earnings : {earningValue}$";
         evacFeeText.text = $"Evacuation Fee : {evacuationFee * evacTot}$";
