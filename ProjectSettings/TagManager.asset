@@ -49,6 +49,9 @@ TagManager:
   - name: NPC
     uniqueID: 4078205531
     locked: 0
+  - name: FrontNPC
+    uniqueID: 1541307905
+    locked: 0
   - name: Disaster
     uniqueID: 3568309059
     locked: 0

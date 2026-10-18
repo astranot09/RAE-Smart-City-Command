@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 108
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -103,12 +103,12 @@ TextureImporter:
       name: dial box_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 5
-        width: 282
-        height: 75
+        x: 4
+        y: 6
+        width: 280
+        height: 58
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -121,11 +121,33 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: dial box_1
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 64
+        width: 81
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b233702b3d07c24478ff34d9aca7a580
+      internalID: -1247042043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5efba6739d2c77e42bb18ecf18b508ce
     internalID: 0
     vertices: []
     indices: 
@@ -136,6 +158,7 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       dial box_0: 8871471029450470455
+      dial box_1: -1247042043
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
