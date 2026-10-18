@@ -46,6 +46,7 @@ public class DayReportManager : MonoBehaviour
     [SerializeField] private GameObject dayReportPanel;
 
     [Header("UI")]
+    [SerializeField] private TMP_Text dayReportDay;
     [SerializeField] private TMP_Text outpostName;
 
     [SerializeField] private TMP_Text earningText;
@@ -81,6 +82,7 @@ public class DayReportManager : MonoBehaviour
             outpost2.PopulationChange(populationGrowth);
             outpost3.PopulationChange(populationGrowth);
         }
+        dayReportDay.text = $"Day {dayCurrent} Report$";
         outpostName.text = name;
         earningText.text = $"Earnings : {earningValue}$";
         evacFeeText.text = $"Evacuation Fee : {evacuationFee * evacTot}$";

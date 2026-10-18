@@ -5293,7 +5293,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 36.967, y: 0}
+  m_AnchoredPosition: {x: 36.96704, y: 0}
   m_SizeDelta: {x: 70.068, y: 70.068}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &411649911
@@ -16412,7 +16412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e4e5fb932f8183459e9fa0000b87e98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DayReportManager
-  dayCurrent: 0
+  dayCurrent: 1
   outpost1: {fileID: 1843994380}
   outpost2: {fileID: 138020435}
   outPost_2_Unlocked: 3
@@ -16425,6 +16425,7 @@ MonoBehaviour:
   populationGrowthInterval: 3
   gameFinishDay: 15
   dayReportPanel: {fileID: 16331296}
+  dayReportDay: {fileID: 1979250023}
   outpostName: {fileID: 1109042671}
   earningText: {fileID: 1165182202}
   evacFeeText: {fileID: 1056535162}
@@ -23974,7 +23975,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1954c4378f8f38048978a375e54ff4cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CurrencyManager
-  currencyCurrent: 0
+  currencyCurrent: 492
 --- !u!4 &2057033442
 Transform:
   m_ObjectHideFlags: 0
