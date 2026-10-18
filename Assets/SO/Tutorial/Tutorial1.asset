@@ -13,9 +13,14 @@ MonoBehaviour:
   m_Name: Tutorial1
   m_EditorClassIdentifier: Assembly-CSharp::TutorialSO
   tutorials:
-  - title: aaaaaa
-    videoClip: {fileID: 0}
-    description: asasasasa
-  - title: bbbbbbbbb
-    videoClip: {fileID: 0}
-    description: fgfgfgfgfgfgfg
+  - title: Graph
+    videoClip: {fileID: 32900000, guid: a2d4e4338404d1b46a8d874ccd1e0376, type: 3}
+    description: Analyze the graph to identify potential natural disasters
+  - title: Sudden Changes
+    videoClip: {fileID: 32900000, guid: 070e83c5209ee754caaff29c818f77b0, type: 3}
+    description: Watch for sudden changes in the graph. They may indicate an incoming
+      disaster
+  - title: Evacuation
+    videoClip: {fileID: 32900000, guid: 710ab27760081ba42a3ae2686aa31310, type: 3}
+    description: Click the Evacuate button, then select the disaster you predict
+      will occur to evacuate the affected area.
