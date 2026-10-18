@@ -331,6 +331,7 @@ public class OutpostManager : MonoBehaviour
     {
         outPostUnlocked = true;
         population = startPopulation;
+        SpawnNPC();
         NotificationManager.instance.CallNotification($"New Outpost at {outpostName} have been unlocked");
         if(cinemachineCamera_Outpost != null) 
             VCamManager.instance.AddVirtualCamera(cinemachineCamera_Outpost);

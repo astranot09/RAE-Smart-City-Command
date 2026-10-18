@@ -10445,6 +10445,14 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6055533099130524112, guid: ae9bdcaa1a8496449b1068fd7844906c, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6055533099130524112, guid: ae9bdcaa1a8496449b1068fd7844906c, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -726658237
+      objectReference: {fileID: 0}
     - target: {fileID: 7640970267051462298, guid: ae9bdcaa1a8496449b1068fd7844906c, type: 3}
       propertyPath: m_Name
       value: vfx_MeteorRain_01 (2)
@@ -11095,6 +11103,14 @@ PrefabInstance:
     - target: {fileID: 5690135326645581097, guid: ae9bdcaa1a8496449b1068fd7844906c, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6055533099130524112, guid: ae9bdcaa1a8496449b1068fd7844906c, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6055533099130524112, guid: ae9bdcaa1a8496449b1068fd7844906c, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -726658237
       objectReference: {fileID: 0}
     - target: {fileID: 7640970267051462298, guid: ae9bdcaa1a8496449b1068fd7844906c, type: 3}
       propertyPath: m_Name
@@ -15232,6 +15248,14 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6055533099130524112, guid: ae9bdcaa1a8496449b1068fd7844906c, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6055533099130524112, guid: ae9bdcaa1a8496449b1068fd7844906c, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -726658237
+      objectReference: {fileID: 0}
     - target: {fileID: 7640970267051462298, guid: ae9bdcaa1a8496449b1068fd7844906c, type: 3}
       propertyPath: m_Name
       value: vfx_MeteorRain_01 (1)
@@ -19299,7 +19323,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1726254761
 RectTransform:
   m_ObjectHideFlags: 0
