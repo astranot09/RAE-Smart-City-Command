@@ -1,5 +1,12 @@
 # RAE : Smart City Command (WIP) 
 
+<img width="320" height="180" alt="RAE (1)" src="https://github.com/user-attachments/assets/7b389fb7-e09b-4ee8-8465-fef3f82adbfc" />
+
+<img width="320" height="180" alt="RAE2 (1)" src="https://github.com/user-attachments/assets/b727f07b-6e96-4c2f-8174-7ede8d4e82fc" />
+
+<img width="320" height="180" alt="RAE3 (1)" src="https://github.com/user-attachments/assets/fb7f356c-89ad-4133-81fa-c94f7816860e" />
+
+
 ## About Game
 A serious game, where player play as RAE, monitor CCTV feeds and sensor data, and determine emergency levels across multiple island regions. Upgrade your equipment to boost sensor accuracy and spot false alarms with ease.
 
