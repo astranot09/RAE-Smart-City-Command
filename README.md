@@ -50,8 +50,8 @@ Switch camera feeds between various island regions to manage multiple outposts s
 Evaluate disaster responses, civilian survival rates, and unlocked outposts.
 
 ## Layer / Module Design
+<img width="1542" height="1207" alt="ModuleDesignRAE drawio" src="https://github.com/user-attachments/assets/2d791dd3-2045-4807-adcb-548e913da06e" />
 
-<img width="1222" height="1099" alt="RAEModule drawio" src="https://github.com/user-attachments/assets/1928e0a9-2254-40e4-8913-b689519558b7" />
 
 
 ## Modules and Features
@@ -63,11 +63,17 @@ Evaluate disaster responses, civilian survival rates, and unlocked outposts.
 | UI Manager | All Scene | Controls panel visibility, canvas layers, and overlay states. |
 | Dotween Animation Collections | All Scene | Library of reusable DOTween animations for UI hover. |
 | Main Menu Manager | Main Menu | Manages menu UI navigation, options, and game startup routines. |
+| Tutorial Manager | Gameplay Scene | Handles tutorial videos and tutorial description. |
+| Dialogue Manager | Gameplay Scene | Handles typewriter dialogue rendering and narrative queues.|
+| Notification Manager | Gameplay Scene | Handles notification when needed. |
 | Currency Manager | Gameplay Scene | Managed currency changes. |
 | VCam Manager | Gameplay Scene | Controls Cinemachine virtual camera switches between various outposts. |
 | Lose Manager | Gameplay Scene | Evaluates defeat conditions when populations reach 0. |
+| Finish Manager | Gameplay Scene | Evaluates win conditions when reach 15 days. |
 | NPC Script | Gameplay Scene | Implements Finite State Machine (FSM) for civilian movement, evacuation, and death. |
-| Outpost Manager | Gameplay Scene | Core manager handling disaster countdowns, outpost population, graph alerts, and spawns. |
+| Outpost Manager | Gameplay Scene | Core manager handling outpost population and spawns. |
+| Graph Manager | Gameplay Scene | Core manager handling disaster countdowns. |
+| Disaster Manager | Gameplay Scene | Core manager handling graph alerts. |
 | Buoy Simulator | Gameplay Scene | Logic for making ocean telemetry graph when normal and alarmed. |
 | Gas Sensor Simulator | Gameplay Scene | Logic for making graph for gas levels in volcano when normal and alarmed. |
 | Seismograph Simulator | Gameplay Scene | Logic for making earthquake or volcano tremor when normal and alarmed. |
