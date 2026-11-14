@@ -165,14 +165,14 @@ public class BuoySimulator : MonoBehaviour
     public void DisasterFirstAlarmTrigger()
     {
         if(outpostManager.DisasterManager.CurrentDisaster != DisasterType.Tsunami) return;
-        if(level >= 2 && !isAlertingBuoyB)
-        {
-            isAlertingBuoyB = true;
-        }
         if(level >= 3 && !isAlertingBuoyB)
         {
             isAlertingBuoyB = true;
         }
+        //if(level >= 3 && !isAlertingBuoyA)
+        //{
+        //    isAlertingBuoyA = true;
+        //}
 
     }
     public void DisasterSecondAlarmTrigger()
@@ -181,6 +181,10 @@ public class BuoySimulator : MonoBehaviour
         if (level >= 1 && !isAlertingBuoyA)
         {
             isAlertingBuoyA = true;
+        }
+        if (level >= 2 && !isAlertingBuoyB)
+        {
+            isAlertingBuoyB = true;
         }
     }
     public void DisasterThirdAlarmTrigger()
