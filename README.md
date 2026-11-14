@@ -1,4 +1,4 @@
-# RAE : Smart City Command (WIP) 
+# RAE : Smart City Command
 
 <img width="320" height="180" alt="RAE (1)" src="https://github.com/user-attachments/assets/7b389fb7-e09b-4ee8-8465-fef3f82adbfc" />
 
