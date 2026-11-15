@@ -17,6 +17,7 @@ public enum DisasterType
 public class OutpostManager : MonoBehaviour
 {
     [SerializeField] private string outpostName = string.Empty;
+    public string OutpostName => outpostName;
     [SerializeField] private int outpostIndex;
     public int OutpostIndex => outpostIndex;
 
